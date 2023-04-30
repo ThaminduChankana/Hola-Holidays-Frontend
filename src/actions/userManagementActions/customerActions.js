@@ -30,6 +30,7 @@ import {
 } from "../../constants/userManagementConstants/customerConstants";
 import axios from "axios";
 import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { API_ENDPOINT } from "../../config";
 
 // customer loggin action
@@ -226,14 +227,7 @@ export const customerDeleteProfile = () => async (dispatch, getState) => {
 		//call the backend route
 		const { data } = await axios.delete(`${API_ENDPOINT}/user/customer/delete`, config);
 
-		dispatch({ type: CUSTOMER_DELETE_SUCCESS, payload: data });
-		swal({
-			title: "Success !!!",
-			text: "Customer Account Delete Successful.",
-			icon: "success",
-			timer: 2000,
-			button: false,
-		});
+		dispatch({ type: CUSTOMER_DELETE_SUCCESS, payload: data });	
 
 		window.location.href = "/";
 

@@ -1,6 +1,7 @@
 .customerList {
 	background: rgb(48, 58, 54);
 	background-repeat: no-repeat;
+	min-height: 95vh;
 }
 .vendorList {
 	background: rgb(86, 118, 126);

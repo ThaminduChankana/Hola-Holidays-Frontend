@@ -36,8 +36,6 @@ const CustomerRegisterScreen = () => {
 		}
 	};
 
-	const options = ["Male", "Female", "Rather not say"];
-
 	const demoHandler = async (e) => {
 		e.preventDefault();
 
@@ -72,7 +70,7 @@ const CustomerRegisterScreen = () => {
 		if (pics.type === "image/jpeg" || pics.type === "image/png" || pics.type === "image/jpg") {
 			const data = new FormData();
 			data.append("file", pics);
-			data.append("upload_preset", "customerProfile");
+			data.append("upload_preset", "HolaHolidaysCustomerProfile");
 			data.append("cloud_name", "dfmnpw0yp");
 			fetch("https://api.cloudinary.com/v1_1/dfmnpw0yp/image/upload", {
 				method: "post",
@@ -131,7 +129,7 @@ const CustomerRegisterScreen = () => {
 						<Row className="CustomerProfileContainer">
 							<Col md={6}>
 								<Form onSubmit={submitHandler}>
-									<Form.Group controlId="customerName">
+									<Form.Group controlId="customerFirstName">
 										<Form.Label>First Name</Form.Label>
 										<Form.Control
 											type="name"
@@ -142,7 +140,7 @@ const CustomerRegisterScreen = () => {
 										/>
 									</Form.Group>
 									<br></br>
-									<Form.Group controlId="customerName">
+									<Form.Group controlId="customerLastName">
 										<Form.Label>Last Name</Form.Label>
 										<Form.Control
 											type="name"
@@ -167,31 +165,38 @@ const CustomerRegisterScreen = () => {
 									<br></br>
 									<Form.Group controlId="customerFormBasicAddress">
 										<Form.Label>Address</Form.Label>
-										<Form.Control
-											type="textArea"
+										<textarea
+											style={{
+												width: "100%",
+												fontSize: "16px",
+												borderRadius: "5px",
+												padding: "5px",
+												border: "none",
+											}}
 											value={address}
-											placeholder="Enter  your home address"
 											onChange={(e) => setAddress(e.target.value)}
+											placeholder="Enter your address"
 											required
+											rows={2}
 										/>
 									</Form.Group>
 									<br></br>
-									<Form.Group controlId="customerFormBasicAddress">
-										<Form.Label>Gender</Form.Label>
-										<br></br>
-										<Form.Select
+									<div className="form-group">
+										<label className="customerGender">Gender</label>
+										<select
+											className="form-control"
+											id="customerGender"
+											value={gender}
 											onChange={(e) => setGender(e.target.value)}
-											size="lg"
-											style={{ width: "100%", padding: "5px", border: "none" }}
+											required
 										>
-											<option>Select your gender</option>
-											<option value="Male">Male</option>
-											<option value="Female">Female</option>
-											<option value="Rather Not Say">Rather Not Say</option>
-										</Form.Select>
-									</Form.Group>
+											<option>Select Gender</option>
+											<option value={gender.Male}>Male</option>
+											<option value={gender.Female}>Female</option>
+										</select>
+									</div>
 									<br></br>
-									<Form.Group controlId="customerFormBasicAddress">
+									<Form.Group controlId="customerFormBasicCountry">
 										<Form.Label>Country</Form.Label>
 										<Form.Control
 											type="textArea"

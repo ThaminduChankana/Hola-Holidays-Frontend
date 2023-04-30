@@ -6,9 +6,12 @@ import { customerLogout } from "../../../actions/userManagementActions/customerA
 import "./ViewScreen.css";
 
 const CustomerViewScreen = ({ history }) => {
-	const [name, setName] = useState("");
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
 	const [telephone, setTelephone] = useState("");
 	const [address, setAddress] = useState("");
+	const [gender, setGender] = useState("");
+	const [country, setCountry] = useState("");
 	const [email, setEmail] = useState("");
 	const [pic, setPic] = useState("https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg");
 
@@ -16,9 +19,12 @@ const CustomerViewScreen = ({ history }) => {
 	const { customerInfo } = customer_Login;
 
 	useEffect(() => {
-		setName(customerInfo.name);
+		setFirstName(customerInfo.firstName);
+		setLastName(customerInfo.lastName);
 		setTelephone(customerInfo.telephone);
 		setAddress(customerInfo.address);
+		setGender(customerInfo.gender);
+		setCountry(customerInfo.country);
 		setEmail(customerInfo.email);
 		setPic(customerInfo.pic);
 	}, [customerInfo]);
@@ -80,14 +86,26 @@ const CustomerViewScreen = ({ history }) => {
 							<Row className="CustomerProfileContainer">
 								<Col md={6}>
 									<Form>
-										<Form.Group controlId="customerViewName">
-											<Form.Label>Name</Form.Label>
+										<Form.Group controlId="customerFirstName">
+											<Form.Label>First Name</Form.Label>
 											<Form.Control
-												type="text"
-												value={name}
-												onChange={(e) => setName(e.target.value)}
+												type="name"
+												value={firstName}
+												placeholder="Enter your first name"
+												onChange={(e) => setFirstName(e.target.value)}
 												readOnly
-											></Form.Control>
+											/>
+										</Form.Group>
+										<br></br>
+										<Form.Group controlId="customerLastName">
+											<Form.Label>Last Name</Form.Label>
+											<Form.Control
+												type="name"
+												value={lastName}
+												placeholder="Enter your last name"
+												onChange={(e) => setLastName(e.target.value)}
+												readOnly
+											/>
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="customerFormBasicTelephone">
@@ -95,8 +113,10 @@ const CustomerViewScreen = ({ history }) => {
 											<Form.Control
 												type="text"
 												value={telephone}
+												placeholder="Enter Telephone Number"
 												onChange={(e) => setTelephone(e.target.value)}
 												readOnly
+												maxLength={10}
 											/>
 										</Form.Group>
 										<br></br>
@@ -105,14 +125,43 @@ const CustomerViewScreen = ({ history }) => {
 											<Form.Control
 												type="textArea"
 												value={address}
+												placeholder="Enter  your home address"
 												onChange={(e) => setAddress(e.target.value)}
+												readOnly
+											/>
+										</Form.Group>
+										<br></br>
+										<Form.Group controlId="customerFormBasicGender">
+											<Form.Label>Gender</Form.Label>
+											<Form.Control
+												type="textArea"
+												value={gender}
+												placeholder="Enter  your home address"
+												onChange={(e) => setGender(e.target.value)}
+												readOnly
+											/>
+										</Form.Group>
+										<br></br>
+										<Form.Group controlId="customerFormBasicCountry">
+											<Form.Label>Country</Form.Label>
+											<Form.Control
+												type="textArea"
+												value={country}
+												placeholder="Enter your home country"
+												onChange={(e) => setCountry(e.target.value)}
 												readOnly
 											/>
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="customerFormBasicEmail">
 											<Form.Label>Email</Form.Label>
-											<Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} readOnly />
+											<Form.Control
+												type="email"
+												value={email}
+												placeholder="Enter  your email address"
+												onChange={(e) => setEmail(e.target.value)}
+												readOnly
+											/>
 										</Form.Group>
 									</Form>
 									<br></br>
@@ -136,7 +185,7 @@ const CustomerViewScreen = ({ history }) => {
 								>
 									<img
 										src={pic}
-										alt={name}
+										alt={firstName}
 										className="profilePic"
 										style={{
 											boxShadow: "7px 7px 20px ",

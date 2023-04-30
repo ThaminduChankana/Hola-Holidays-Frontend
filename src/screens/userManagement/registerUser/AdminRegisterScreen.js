@@ -60,7 +60,7 @@ const AdminRegisterScreen = () => {
 		if (pics.type === "image/jpeg" || pics.type === "image/png" || pics.type === "image/jpg") {
 			const data = new FormData();
 			data.append("file", pics);
-			data.append("upload_preset", "adminProfile");
+			data.append("upload_preset", "HolaHolidaysAdminProfile");
 			data.append("cloud_name", "dfmnpw0yp");
 			fetch("https://api.cloudinary.com/v1_1/dfmnpw0yp/image/upload", {
 				method: "post",

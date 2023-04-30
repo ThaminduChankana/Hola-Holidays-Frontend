@@ -79,6 +79,7 @@ const CustomerListForAdminScreen = () => {
 		return (
 			<div className="customerList">
 				<br></br>
+				<br></br>
 				<MainScreen title={`Welcome Back ${adminInfo && adminInfo.name}..`}>
 					<Row>
 						<Col>
@@ -132,7 +133,7 @@ const CustomerListForAdminScreen = () => {
 								customers
 									.filter(
 										(filteredCustomers) =>
-											filteredCustomers.name.toLowerCase().includes(search.toLowerCase()) ||
+											filteredCustomers.firstName.toLowerCase().includes(search.toLowerCase()) ||
 											filteredCustomers.email.includes(search)
 									)
 									.reverse()
