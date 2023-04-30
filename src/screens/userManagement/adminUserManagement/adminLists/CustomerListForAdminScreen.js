@@ -174,20 +174,20 @@ const CustomerListForAdminScreen = () => {
 																}}
 															>
 																<label
-																	className="nic"
+																	className="name"
 																	style={{
 																		paddingInline: 20,
 																		marginTop: 10,
 																		fontSize: 18,
 																	}}
 																>
-																	Customer Email : &emsp;
-																	{customerList.email}{" "}
+																	<b>Customer Name :</b> &emsp;
+																	{customerList.firstName} {customerList.lastName}
 																</label>{" "}
 																<br></br>
-																<label className="name" style={{ paddingInline: 20, fontSize: 18 }}>
-																	Customer Name : &emsp;
-																	{customerList.name}
+																<label className="email" style={{ paddingInline: 20, fontSize: 18 }}>
+																	<b>Customer Email :</b> &emsp;
+																	{customerList.email}{" "}
 																</label>{" "}
 															</span>
 															<div>
@@ -216,9 +216,13 @@ const CustomerListForAdminScreen = () => {
 													<Card.Body>
 														<Row>
 															<Col md={6}>
-																<h5>Name - {customerList.name}</h5>
+																<h5>
+																	Name - {customerList.firstName} {customerList.lastName}{" "}
+																</h5>
 																<h5>Telephone - {customerList.telephone}</h5>
 																<h5>Address - {customerList.address}</h5>
+																<h5>Gender - {customerList.gender}</h5>
+																<h5>Country - {customerList.country}</h5>
 																<h5>Email - {customerList.email}</h5>
 																<br></br>
 															</Col>

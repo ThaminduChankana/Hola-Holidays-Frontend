@@ -6,7 +6,6 @@ import ErrorMessage from "../../../components/ErrorMessage";
 import MainScreen from "../../../components/MainScreen";
 import { customerUpdateProfile, customerDeleteProfile } from "../../../actions/userManagementActions/customerActions";
 import swal from "sweetalert";
-import Swal from "sweetalert2";
 import "./EditScreen.css";
 
 const CustomerEditScreen = () => {
@@ -37,9 +36,9 @@ const CustomerEditScreen = () => {
 	useEffect(() => {
 		setFirstName(customerInfo.firstName);
 		setLastName(customerInfo.lastName);
+		setGender(customerInfo.gender);
 		setTelephone(customerInfo.telephone);
 		setAddress(customerInfo.address);
-		setGender(customerInfo.gender);
 		setCountry(customerInfo.country);
 		setEmail(customerInfo.email);
 		setPic(customerInfo.pic);
@@ -53,7 +52,7 @@ const CustomerEditScreen = () => {
 		if (pics.type === "image/jpeg" || pics.type === "image/png" || pics.type === "image/jpg") {
 			const data = new FormData();
 			data.append("file", pics);
-			data.append("upload_preset", "HolaHolidaysCustomerProfile");
+			data.append("upload_preset", "customerProfile");
 			data.append("cloud_name", "dfmnpw0yp");
 			fetch("https://api.cloudinary.com/v1_1/dfmnpw0yp/image/upload", {
 				method: "post",
@@ -76,34 +75,19 @@ const CustomerEditScreen = () => {
 
 		if (password !== confirmpassword) {
 			setMessage("Passwords do not match");
-
-			Swal.fire({
-				icon: "error",
-				title: "Oops...",
-				html: `<b>${message}</b>`,
-			});
 		} else {
-			if (error) {
-				Swal.fire({
-					icon: "error",
-					title: "Oops...",
-					text: "Something went wrong! Account not updated!",
-					footer: `<p style='color:red'>Error : ${error} </p> `,
-				});
-			} else {
-				const customerUpdatedInfo = {
-					firstName,
-					lastName,
-					telephone,
-					address,
-					gender,
-					country,
-					email,
-					password,
-					pic,
-				};
-				dispatch(customerUpdateProfile(customerUpdatedInfo));
-			}
+			const customerUpdatedInfo = {
+				firstName,
+				lastName,
+				telephone,
+				address,
+				gender,
+				country,
+				email,
+				password,
+				pic,
+			};
+			dispatch(customerUpdateProfile(customerUpdatedInfo));
 		}
 	};
 
@@ -170,7 +154,12 @@ const CustomerEditScreen = () => {
 					>
 						<div className="loginContainer">
 							<br></br>
-
+							<div>
+								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+								{message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
+								{loading && <Loading />}
+							</div>
+							<br></br>
 							<Row className="CustomerProfileContainer">
 								<Col md={6}>
 									<Form onSubmit={submitHandler}>
@@ -238,7 +227,6 @@ const CustomerEditScreen = () => {
 												<option>Select Gender</option>
 												<option value={gender.Male}>Male</option>
 												<option value={gender.Female}>Female</option>
-												<option value={gender}>Female</option>
 											</select>
 										</div>
 										<br></br>

@@ -29,7 +29,6 @@ import {
 	CUSTOMER_DELETE_BY_ID_SUCCESS,
 } from "../../constants/userManagementConstants/customerConstants";
 import axios from "axios";
-import swal from "sweetalert";
 import Swal from "sweetalert2";
 import { API_ENDPOINT } from "../../config";
 
@@ -52,7 +51,7 @@ export const customerLogin = (email, password) => async (dispatch) => {
 		);
 
 		dispatch({ type: CUSTOMER_LOGIN_SUCCESS, payload: data });
-		swal({
+		Swal.fire({
 			title: "Success !!!",
 			text: "Customer Log In Successful.",
 			icon: "success",
@@ -118,7 +117,7 @@ export const customerRegister =
 			);
 
 			dispatch({ type: CUSTOMER_REGISTER_SUCCESS, payload: data });
-			swal({
+			Swal.fire({
 				title: "Success !!!",
 				text: "Customer Registration Successful.",
 				icon: "success",
@@ -187,7 +186,7 @@ export const customerUpdateProfile = (customer) => async (dispatch, getState) =>
 		const { data } = await axios.put(`${API_ENDPOINT}/user/customer/edit`, customer, config);
 
 		dispatch({ type: CUSTOMER_UPDATE_SUCCESS, payload: data });
-		swal({
+		Swal.fire({
 			title: "Success !!!",
 			text: "Customer Account Update Successful.",
 			icon: "success",
@@ -227,10 +226,9 @@ export const customerDeleteProfile = () => async (dispatch, getState) => {
 		//call the backend route
 		const { data } = await axios.delete(`${API_ENDPOINT}/user/customer/delete`, config);
 
-		dispatch({ type: CUSTOMER_DELETE_SUCCESS, payload: data });	
+		dispatch({ type: CUSTOMER_DELETE_SUCCESS, payload: data });
 
 		window.location.href = "/";
-
 		dispatch({ type: CUSTOMER_LOGOUT });
 		localStorage.removeItem("customerInfo");
 	} catch (error) {
@@ -366,7 +364,7 @@ export const customerUpdateProfileById =
 				type: CUSTOMER_UPDATE_BY_ID_SUCCESS,
 				payload: data,
 			});
-			swal({
+			Swal.fire({
 				title: "Success !!!",
 				text: "Customer Account Update Successful.",
 				icon: "success",

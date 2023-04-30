@@ -11,9 +11,12 @@ import { API_ENDPOINT } from "../../../../config";
 import "./adminUserEdit.css";
 
 const CustomerEditByAdminScreen = ({ match }) => {
-	const [name, setName] = useState("");
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
 	const [telephone, setTelephone] = useState("");
 	const [address, setAddress] = useState("");
+	const [gender, setGender] = useState("");
+	const [country, setCountry] = useState("");
 	const [email, setEmail] = useState("");
 	const [pic, setPic] = useState();
 	const [password, setPassword] = useState("");
@@ -62,7 +65,20 @@ const CustomerEditByAdminScreen = ({ match }) => {
 		if (password !== confirmpassword) {
 			setMessage("Passwords do not match");
 		} else {
-			dispatch(customerUpdateProfileById(match.params.id, name, telephone, address, email, password, pic, regDate));
+			dispatch(
+				customerUpdateProfileById(
+					match.params.id,
+					firstName,
+					lastName,
+					telephone,
+					address,
+					gender,
+					country,
+					email,
+					password,
+					pic
+				)
+			);
 		}
 	};
 
@@ -72,9 +88,12 @@ const CustomerEditByAdminScreen = ({ match }) => {
 				const { data } = await axios.get(`${API_ENDPOINT}/user/admin/customer/profile/view/${match.params.id}`, {
 					headers: authHeader(),
 				});
-				setName(data.name);
+				setFirstName(data.firstName);
+				setLastName(data.lastName);
+				setGender(data.gender);
 				setTelephone(data.telephone);
 				setAddress(data.address);
+				setCountry(data.country);
 				setEmail(data.email);
 				setPic(data.pic);
 				setRegDate(data.regDate);
@@ -99,7 +118,7 @@ const CustomerEditByAdminScreen = ({ match }) => {
 						href="/admin-customers"
 					>
 						{" "}
-						Back to customers List
+						Back to Customers List
 					</Button>
 					<br></br>
 
@@ -127,13 +146,24 @@ const CustomerEditByAdminScreen = ({ match }) => {
 							<Row className="customerProfileContainer">
 								<Col md={6}>
 									<Form onSubmit={submitHandler}>
-										<Form.Group controlId="customerName">
-											<Form.Label>Name</Form.Label>
+										<Form.Group controlId="customerFirstName">
+											<Form.Label>First Name</Form.Label>
 											<Form.Control
 												type="name"
-												value={name}
-												placeholder="Enter name"
-												onChange={(e) => setName(e.target.value)}
+												value={firstName}
+												placeholder="Enter your first name"
+												onChange={(e) => setFirstName(e.target.value)}
+												required
+											/>
+										</Form.Group>
+										<br></br>
+										<Form.Group controlId="customerLastName">
+											<Form.Label>Last Name</Form.Label>
+											<Form.Control
+												type="name"
+												value={lastName}
+												placeholder="Enter your last name"
+												onChange={(e) => setLastName(e.target.value)}
 												required
 											/>
 										</Form.Group>
@@ -152,21 +182,54 @@ const CustomerEditByAdminScreen = ({ match }) => {
 										<br></br>
 										<Form.Group controlId="customerFormBasicAddress">
 											<Form.Label>Address</Form.Label>
+											<textarea
+												style={{
+													width: "100%",
+													fontSize: "16px",
+													borderRadius: "5px",
+													padding: "5px",
+													border: "none",
+												}}
+												value={address}
+												onChange={(e) => setAddress(e.target.value)}
+												placeholder="Enter your address"
+												required
+												rows={2}
+											/>
+										</Form.Group>
+										<br></br>
+										<div className="form-group">
+											<label className="customerGender">Gender</label>
+											<select
+												className="form-control"
+												id="customerGender"
+												value={gender}
+												onChange={(e) => setGender(e.target.value)}
+												required
+											>
+												<option>Select Gender</option>
+												<option value={gender.Male}>Male</option>
+												<option value={gender.Female}>Female</option>
+											</select>
+										</div>
+										<br></br>
+										<Form.Group controlId="customerFormBasicCountry">
+											<Form.Label>Country</Form.Label>
 											<Form.Control
 												type="textArea"
-												value={address}
-												placeholder="Enter Address"
-												onChange={(e) => setAddress(e.target.value)}
+												value={country}
+												placeholder="Enter your home country"
+												onChange={(e) => setCountry(e.target.value)}
 												required
 											/>
 										</Form.Group>
 										<br></br>
-										<Form.Group controlId="doctorFormBasicEmail">
+										<Form.Group controlId="customerFormBasicEmail">
 											<Form.Label>Email</Form.Label>
 											<Form.Control
 												type="email"
 												value={email}
-												placeholder="Enter Email Address"
+												placeholder="Enter  your email address"
 												onChange={(e) => setEmail(e.target.value)}
 												required
 											/>
@@ -231,7 +294,7 @@ const CustomerEditByAdminScreen = ({ match }) => {
 								>
 									<img
 										src={pic}
-										alt={name}
+										alt={firstName}
 										className="profilePic"
 										style={{
 											boxShadow: "7px 7px 20px ",
