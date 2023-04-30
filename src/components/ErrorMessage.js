@@ -1,5 +1,6 @@
 import React from "react";
 import { Alert } from "react-bootstrap";
+import Swal from "sweetalert2";
 
 const ErrorMessage = ({ variant = "info", children }) => {
 	return (
