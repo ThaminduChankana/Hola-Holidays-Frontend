@@ -1,11 +1,7 @@
 .customerList {
-	background: rgb(48, 58, 54);
+	background: rgba(80, 97, 35, 0.61);
 	background-repeat: no-repeat;
 	min-height: 95vh;
-}
-.vendorList {
-	background: rgb(86, 118, 126);
-	background-repeat: no-repeat;
 }
 .denied {
 	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761809/images/accessDenied_zhvugi.jpg");

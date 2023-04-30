@@ -87,7 +87,7 @@ const CustomerListForAdminScreen = () => {
 								style={{
 									display: "flex",
 									marginLeft: "10px",
-									width: "500px",
+									width: "100%",
 									color: "azure",
 									fontStyle: "italic",
 								}}
@@ -96,18 +96,20 @@ const CustomerListForAdminScreen = () => {
 							</h1>
 						</Col>
 						<Col>
-							<div className="search" style={{ marginTop: 5, marginLeft: 150 }}>
+						
+							<div className="search" style={{ marginTop: 5, marginLeft: 150}}>
 								<Form>
 									<input
 										type="text"
 										placeholder="Search..."
 										style={{
-											width: 400,
+											width: "100%",
 											height: 40,
 											borderRadius: 50,
 											padding: "10px",
 											paddingLeft: "15px",
 											fontSize: 18,
+											border:"none"
 										}}
 										onChange={searchHandler}
 									/>
@@ -143,8 +145,6 @@ const CustomerListForAdminScreen = () => {
 												style={{
 													margin: 10,
 													borderRadius: 25,
-													borderWidth: 1.0,
-													borderColor: "rgb(0,0,0,0.5)",
 													marginTop: 20,
 													paddingInline: 10,
 													background: "rgb(235, 235, 235)",
@@ -159,8 +159,7 @@ const CustomerListForAdminScreen = () => {
 																borderRadius: 25,
 																marginTop: 10,
 																marginBottom: 10,
-																borderColor: "black",
-																background: "#76BA99",
+																background: "#17BEBB",
 															}}
 														>
 															<span
