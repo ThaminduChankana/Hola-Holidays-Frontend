@@ -2,7 +2,40 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-const reducer = combineReducers({});
+import {
+	adminLoginReducer,
+	adminRegisterReducer,
+	adminViewReducer,
+	adminUpdateReducer,
+} from "./reducers/userManagementReducers/adminReducers";
+
+import {
+	customerLoginReducer,
+	customerRegisterReducer,
+	customerViewReducer,
+	customerUpdateReducer,
+	customerDeleteReducer,
+	customerListReducer,
+	customerViewByIdReducer,
+	customerUpdateByIdReducer,
+	customerDeleteByIdReducer,
+} from "./reducers/userManagementReducers/customerReducers";
+
+const reducer = combineReducers({
+	admin_Login: adminLoginReducer,
+	adminRegistration: adminRegisterReducer,
+	adminView: adminViewReducer,
+	adminUpdate: adminUpdateReducer,
+	customer_Login: customerLoginReducer,
+	customerRegistration: customerRegisterReducer,
+	customerView: customerViewReducer,
+	customerUpdate: customerUpdateReducer,
+	customerList: customerListReducer,
+	customerDelete: customerDeleteReducer,
+	customerViewById: customerViewByIdReducer,
+	customerUpdateById: customerUpdateByIdReducer,
+	customerDeleteById: customerDeleteByIdReducer,
+});
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;
 

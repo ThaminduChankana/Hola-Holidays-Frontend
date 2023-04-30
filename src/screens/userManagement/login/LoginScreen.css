@@ -1,0 +1,11 @@
+.loginContainer {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	margin: 20px;
+}
+.loginBg {
+	background: url("https://res.cloudinary.com/dfmnpw0yp/image/upload/v1681751076/assets/kjfjbmjfquuyrvdhyqeu.jpg");
+	background-position: center;
+	background-size: cover;
+}
