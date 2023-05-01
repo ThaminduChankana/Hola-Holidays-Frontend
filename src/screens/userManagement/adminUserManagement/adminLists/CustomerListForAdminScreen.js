@@ -96,8 +96,7 @@ const CustomerListForAdminScreen = () => {
 							</h1>
 						</Col>
 						<Col>
-						
-							<div className="search" style={{ marginTop: 5, marginLeft: 150}}>
+							<div className="search" style={{ marginTop: 5, marginLeft: 150 }}>
 								<Form>
 									<input
 										type="text"
@@ -109,7 +108,7 @@ const CustomerListForAdminScreen = () => {
 											padding: "10px",
 											paddingLeft: "15px",
 											fontSize: 18,
-											border:"none"
+											border: "none",
 										}}
 										onChange={searchHandler}
 									/>
