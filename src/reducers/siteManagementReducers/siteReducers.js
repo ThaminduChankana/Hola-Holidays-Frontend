@@ -31,7 +31,7 @@ export const customerSiteListReducer = (state = { products: [] }, action) => {
 		default:
 			return state;
 	}
-}
+};
 
 export const adminSiteListReducer = (state = { products: [] }, action) => {
 	switch (action.type) {
@@ -45,7 +45,7 @@ export const adminSiteListReducer = (state = { products: [] }, action) => {
 		default:
 			return state;
 	}
-}
+};
 
 export const locationSiteListReducer = (state = { products: [] }, action) => {
 	switch (action.type) {
@@ -59,7 +59,7 @@ export const locationSiteListReducer = (state = { products: [] }, action) => {
 		default:
 			return state;
 	}
-}
+};
 
 export const siteCreateReducer = (state = {}, action) => {
 	switch (action.type) {

@@ -28,8 +28,7 @@ import {
 	siteCreateReducer,
 	siteUpdateByAdminReducer,
 	siteDeleteByAdminReducer,
-
-} from "./reducers/siteManagementReducers/siteReducers"
+} from "./reducers/siteManagementReducers/siteReducers";
 
 const reducer = combineReducers({
 	admin_Login: adminLoginReducer,
