@@ -125,13 +125,13 @@ export const createSite =
 			});
 
 			const {
-				vendor_Login: { vendorInfo },
+				admin_Login: { adminInfo },
 			} = getState();
 
 			const config = {
 				headers: {
 					"Content-Type": "application/json",
-					Authorization: `Bearer ${vendorInfo.token}`,
+					Authorization: `Bearer ${adminInfo.token}`,
 				},
 			};
 

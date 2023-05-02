@@ -1,0 +1,18 @@
+.siteContainer {
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
+}
+.siteCont {
+	background: rgba(196, 201, 201, 0.5);
+}
+.siteBg {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1664258771/images/note-3454277_1920_rqewvj.jpg");
+	background-position: center;
+	background-size: cover;
+}
+.denied {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761809/images/accessDenied_zhvugi.jpg");
+	background-position: center;
+	background-size: cover;
+}
