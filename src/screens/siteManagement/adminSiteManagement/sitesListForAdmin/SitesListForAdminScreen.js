@@ -135,8 +135,9 @@ const SitesListForAdminScreen = () => {
 									.filter(
 										(filteredSites) =>
 											filteredSites.siteName.toLowerCase().includes(search.toLowerCase()) ||
-											filteredSites.province.includes(search.toLowerCase)
+											filteredSites.province.toLowerCase().includes(search.toLowerCase())
 									)
+
 									.reverse()
 									.map((adminSiteList) => (
 										<AccordionItem key={adminSiteList._id} className="listContainer">
