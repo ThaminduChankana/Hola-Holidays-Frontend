@@ -81,7 +81,7 @@ const AdminViewScreen = ({ history }) => {
 								<Col md={6}>
 									<Form>
 										<Form.Group controlId="adminViewName">
-											<Form.Label>Name</Form.Label>
+											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Name</Form.Label>
 											<Form.Control
 												type="text"
 												value={name}
@@ -92,7 +92,7 @@ const AdminViewScreen = ({ history }) => {
 										<br></br>
 
 										<Form.Group controlId="adminFormBasicTelephone">
-											<Form.Label>Telephone</Form.Label>
+											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Telephone</Form.Label>
 											<Form.Control
 												type="text"
 												value={telephone}
@@ -102,7 +102,7 @@ const AdminViewScreen = ({ history }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="adminFormBasicAddress">
-											<Form.Label>Address</Form.Label>
+											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Address</Form.Label>
 											<Form.Control
 												type="textArea"
 												value={address}
@@ -112,7 +112,7 @@ const AdminViewScreen = ({ history }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="adminFormBasicEmail">
-											<Form.Label>Email</Form.Label>
+											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Email</Form.Label>
 											<Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} readOnly />
 										</Form.Group>
 									</Form>

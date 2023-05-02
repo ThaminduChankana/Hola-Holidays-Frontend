@@ -183,7 +183,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 		return (
 			<div className="siteEditBg">
 				<br></br>
-				<MainScreen title="Edit Your Site">
+				<MainScreen title={`Edit Site ${siteName}`}>
 					<Button
 						variant="success"
 						style={{
@@ -194,7 +194,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 						href="/admin-sites"
 					>
 						{" "}
-						Back to site List
+						Back to Sites List
 					</Button>
 					<br></br>
 					<br></br>
@@ -223,7 +223,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 										{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
 										<Form.Group controlId="siteFormBasicSiteName">
-											<Form.Label>Site Name</Form.Label>
+											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Name</Form.Label>
 											<Form.Control
 												type="text"
 												placeholder="Enter Site Name"
@@ -234,7 +234,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicSiteCountry">
-											<Form.Label>Located Country</Form.Label>
+											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Located Country</Form.Label>
 											<Form.Control
 												type="text"
 												value={country}
@@ -245,7 +245,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicProvince">
-											<Form.Label>Province or State</Form.Label>
+											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Province or State</Form.Label>
 											<Form.Control
 												type="text"
 												value={province}
@@ -256,7 +256,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicLocation">
-											<Form.Label>Site Located City</Form.Label>
+											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Located City</Form.Label>
 											<Form.Control
 												type="text"
 												value={siteLocation}
@@ -267,7 +267,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicCode">
-											<Form.Label>Site Code</Form.Label>
+											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Code</Form.Label>
 											<Form.Control
 												type="text"
 												value={postalCode}
@@ -278,7 +278,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicDescription">
-											<Form.Label>Site Description</Form.Label>
+											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Description</Form.Label>
 											<textarea
 												style={{
 													width: "100%",
@@ -294,7 +294,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicRecommendations">
-											<Form.Label>Recommendations</Form.Label>
+											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Recommendations</Form.Label>
 											<textarea
 												style={{
 													width: "100%",
@@ -310,7 +310,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormSpecialEvents">
-											<Form.Label>Special Events</Form.Label>
+											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Special Events</Form.Label>
 											<textarea
 												style={{
 													width: "100%",
@@ -326,7 +326,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicInstructions">
-											<Form.Label>Special Instructions</Form.Label>
+											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Special Instructions</Form.Label>
 											<textarea
 												style={{
 													width: "100%",
@@ -343,7 +343,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										<br></br>
 										{picMessage && <ErrorMessage variant="danger">{picMessage}</ErrorMessage>}
 										<Form.Group controlId="pic">
-											<Form.Label>Site Picture</Form.Label>
+											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Picture</Form.Label>
 											&emsp;
 											<input
 												type="file"
