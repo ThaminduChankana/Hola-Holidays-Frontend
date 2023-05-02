@@ -1,0 +1,10 @@
+.adminSiteList {
+	background: rgb(148, 148, 148);
+	background-repeat: no-repeat;
+	min-height: 100vh;
+}
+.denied {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761809/images/accessDenied_zhvugi.jpg");
+	background-position: center;
+	background-size: cover;
+}

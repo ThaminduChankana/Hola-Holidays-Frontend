@@ -206,7 +206,7 @@ export const updateSiteByAdmin =
 			};
 
 			const { data } = await axios.put(
-				`${API_ENDPOINT}/admin/get/${id}`,
+				`${API_ENDPOINT}/sites/admin/get/${id}`,
 				{
 					siteName,
 					country,
@@ -251,7 +251,7 @@ export const deleteSiteByAdmin = (id) => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.delete(`${API_ENDPOINT}/admin/get/${id}`, config);
+		const { data } = await axios.delete(`${API_ENDPOINT}/sites/admin/get/${id}`, config);
 
 		dispatch({
 			type: SITES_DELETE_BY_ADMIN_SUCCESS,

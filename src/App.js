@@ -1,5 +1,6 @@
 import { BrowserRouter, Route } from "react-router-dom";
 import React from "react";
+import AccessDenied from "./components/AccessDenied";
 import AdminRegisterScreen from "./screens/userManagement/registerUser/AdminRegisterScreen";
 import CustomerRegisterScreen from "./screens/userManagement/registerUser/CustomerRegisterScreen";
 import AdminLogin from "./screens/userManagement/login/AdminLoginScreen";
@@ -11,11 +12,13 @@ import CustomerEditScreen from "./screens/userManagement/editUser/CustomerEditSc
 import CustomerListForAdminScreen from "./screens/userManagement/adminUserManagement/adminLists/CustomerListForAdminScreen";
 import CustomerEditByAdminScreen from "./screens/userManagement/adminUserManagement/adminUserEditScreens/CustomerEditByAdminScreen";
 import AddSiteByAdminScreen from "./screens/siteManagement/adminSiteManagement/addSiteByAdmin/AddSiteByAdminScreen";
+import SitesListForAdminScreen from "./screens/siteManagement/adminSiteManagement/sitesListForAdmin/SitesListForAdminScreen";
 
 function App() {
 	return (
 		<BrowserRouter>
 			<main>
+				<Route path="/access-denied" component={AccessDenied} />
 				<Route path="/admin-login" component={AdminLogin} />
 				<Route path="/customer-login" component={CustomerLogin} />
 				<Route path="/admin-register" component={AdminRegisterScreen} exact />
@@ -28,6 +31,7 @@ function App() {
 				<Route path="/admin-customer-edit/:id" component={CustomerEditByAdminScreen} exact />
 
 				<Route path="/admin-site-create" component={AddSiteByAdminScreen} exact />
+				<Route path="/admin-sites" component={SitesListForAdminScreen} exact />
 			</main>
 		</BrowserRouter>
 	);

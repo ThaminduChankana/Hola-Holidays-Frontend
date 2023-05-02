@@ -19,12 +19,12 @@ import {
 	SITES_DELETE_BY_ADMIN_FAIL,
 } from "../../constants/siteManagementConstants/siteConstants";
 
-export const customerSiteListReducer = (state = { products: [] }, action) => {
+export const customerSiteListReducer = (state = { sites: [] }, action) => {
 	switch (action.type) {
 		case SITES_LIST_FOR_CUSTOMER_REQUEST:
 			return { loading: true };
 		case SITES_LIST_FOR_CUSTOMER_SUCCESS:
-			return { loading: false, products: action.payload };
+			return { loading: false, sites: action.payload };
 		case SITES_LIST_FOR_CUSTOMER_FAIL:
 			return { loading: false, error: action.payload };
 
@@ -33,12 +33,12 @@ export const customerSiteListReducer = (state = { products: [] }, action) => {
 	}
 };
 
-export const adminSiteListReducer = (state = { products: [] }, action) => {
+export const adminSiteListReducer = (state = { sites: [] }, action) => {
 	switch (action.type) {
 		case SITES_LIST_FOR_ADMIN_REQUEST:
 			return { loading: true };
 		case SITES_LIST_FOR_ADMIN_SUCCESS:
-			return { loading: false, products: action.payload };
+			return { loading: false, sites: action.payload };
 		case SITES_LIST_FOR_ADMIN_FAIL:
 			return { loading: false, error: action.payload };
 
@@ -47,12 +47,12 @@ export const adminSiteListReducer = (state = { products: [] }, action) => {
 	}
 };
 
-export const locationSiteListReducer = (state = { products: [] }, action) => {
+export const locationSiteListReducer = (state = { sites: [] }, action) => {
 	switch (action.type) {
 		case SITES_LIST_FOR_EACH_LOCATION_REQUEST:
 			return { loading: true };
 		case SITES_LIST_FOR_EACH_LOCATION_SUCCESS:
-			return { loading: false, products: action.payload };
+			return { loading: false, sites: action.payload };
 		case SITES_LIST_FOR_EACH_LOCATION_FAIL:
 			return { loading: false, error: action.payload };
 

@@ -1,0 +1,16 @@
+.productEditBg {
+	background: url("https://res.cloudinary.com/dfmnpw0yp/image/upload/v1681726796/assets/yrjg0mur6ftpoaa1uj7s.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.productContainer {
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
+}
+.denied {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761809/images/accessDenied_zhvugi.jpg");
+	background-position: center;
+	background-size: cover;
+}
