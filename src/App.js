@@ -13,6 +13,7 @@ import CustomerListForAdminScreen from "./screens/userManagement/adminUserManage
 import CustomerEditByAdminScreen from "./screens/userManagement/adminUserManagement/adminUserEditScreens/CustomerEditByAdminScreen";
 import AddSiteByAdminScreen from "./screens/siteManagement/adminSiteManagement/addSiteByAdmin/AddSiteByAdminScreen";
 import SitesListForAdminScreen from "./screens/siteManagement/adminSiteManagement/sitesListForAdmin/SitesListForAdminScreen";
+import SingleSiteForAdminScreen from "./screens/siteManagement/adminSiteManagement/getSingleSiteForAdmin/SingleSiteForAdminScreen";
 
 function App() {
 	return (
@@ -32,6 +33,7 @@ function App() {
 
 				<Route path="/admin-site-create" component={AddSiteByAdminScreen} exact />
 				<Route path="/admin-sites" component={SitesListForAdminScreen} exact />
+				<Route path="/admin-site-edit/:id" component={SingleSiteForAdminScreen} exact />
 			</main>
 		</BrowserRouter>
 	);

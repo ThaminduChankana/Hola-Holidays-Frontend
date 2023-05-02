@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import MainScreen from "../../../../components/MainScreen";
+import axios from "axios";
+import { Button, Card, Form, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Button, Row, Col, Card } from "react-bootstrap";
-import { createSite } from "../../../../actions/siteManagementActions/siteActions";
-import Loading from "../../../../components/Loading";
+import {
+	authHeaderForAdmin,
+	deleteSiteByAdmin,
+	updateSiteByAdmin,
+} from "../../../../actions/siteManagementActions/siteActions";
 import ErrorMessage from "../../../../components/ErrorMessage";
-import "./addSite.css";
+import Loading from "../../../../components/Loading";
+import swal from "sweetalert";
+import "./singleSite.css";
+import { API_ENDPOINT } from "../../../../config";
 
-function AddSiteByAdminScreen() {
+function SingleSiteForAdminScreen({ match, history }) {
 	const [siteName, setSiteName] = useState("");
 	const [country, setCountry] = useState("");
 	const [province, setProvince] = useState("");
@@ -20,13 +27,15 @@ function AddSiteByAdminScreen() {
 	const [recommendations, setRecommendations] = useState("");
 	const [specialEvents, setSpecialEvents] = useState("");
 	const [specialInstructions, setSpecialInstructions] = useState("");
-	const [message] = useState(null);
 	const [picMessage, setPicMessage] = useState(null);
 
 	const dispatch = useDispatch();
 
-	const siteCreate = useSelector((state) => state.siteCreate);
-	const { loading, error } = siteCreate;
+	const siteUpdateByAdmin = useSelector((state) => state.siteUpdateByAdmin);
+	const { loading, error } = siteUpdateByAdmin;
+
+	const siteDeleteByAdmin = useSelector((state) => state.siteDeleteByAdmin);
+	const { loading: loadingDelete, error: errorDelete } = siteDeleteByAdmin;
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
@@ -37,64 +46,42 @@ function AddSiteByAdminScreen() {
 		setProvince("");
 		setSiteLocation("");
 		setPostalCode("");
+		setPostalCode("");
 		setDescription("");
 		setRecommendations("");
 		setSpecialEvents("");
 		setSpecialInstructions("");
 	};
 
-	const demoHandler = () => {
-		setSiteName("Dambulla Temple");
-		setCountry("Sri Lanka");
-		setProvince("North-Central");
-		setSiteLocation("Dambulla");
-		setPostalCode(21100);
-		setDescription(
-			"A sacred pilgrimage site for 22 centuries, this cave monastery, with its five sanctuaries, is the largest, best-preserved cave-temple complex in Sri Lanka."
-		);
-		setRecommendations(
-			"Great site to see painted frescos amazingly painted on uneven rock. There were five caves open at the time of our visit and all had something of interest to see. If you are not in a rush then try to make time to visit here."
-		);
-		setSpecialEvents(
-			"The temple is open from 7am to 7pm. The best time to visit is early morning or late afternoon. Sil events can be seen on full moon days."
-		);
-		setSpecialInstructions(
-			"Be sure to but your ticket before you make the climb, and dress appropriately (although they will provide shawls to cover bare shoulders or knees if you are wearing shorts). You also need to remove your shoes and leave them at a station where the charge is 25 rupees a pair. The ground can get pretty hot, but the is a covered / shaded facade that runs from the second to fifth cave so you’re spare scorched soles."
-		);
-	};
+	const deleteHandler = (id) => {
+		swal({
+			title: "Are you sure?",
+			text: "Once deleted, you will not be able to recover these details!",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		})
+			.then((willDelete) => {
+				if (willDelete) {
+					dispatch(deleteSiteByAdmin(id));
+					swal({
+						title: "Success!",
+						text: "Deleted Site Successfully",
+						icon: "success",
+						timer: 2000,
+						button: false,
+					});
 
-	const submitHandler = (e) => {
-		e.preventDefault();
-
-		if (
-			!siteName ||
-			!country ||
-			!province ||
-			!siteLocation ||
-			!postalCode ||
-			!picURL ||
-			!description ||
-			!recommendations ||
-			!specialEvents ||
-			!specialInstructions
-		)
-			return;
-		dispatch(
-			createSite(
-				siteName,
-				country,
-				province,
-				siteLocation,
-				postalCode,
-				picURL,
-				description,
-				recommendations,
-				specialEvents,
-				specialInstructions
-			)
-		);
-
-		resetHandler();
+					history.push("/admin-sites");
+				}
+			})
+			.catch((err) => {
+				swal({
+					title: "Error!",
+					text: "Couldn't Delete Note",
+					type: "error",
+				});
+			});
 	};
 
 	const postDetails = (pics) => {
@@ -126,12 +113,77 @@ function AddSiteByAdminScreen() {
 		}
 	};
 
-	useEffect(() => {}, []);
+	useEffect(() => {
+		if (adminInfo != null) {
+			const fetching = async () => {
+				const { data } = await axios.get(`${API_ENDPOINT}/sites/admin/get/${match.params.id}`, {
+					headers: authHeaderForAdmin(),
+				});
+				setSiteName(data.siteName);
+				setCountry(data.country);
+				setProvince(data.province);
+				setSiteLocation(data.siteLocation);
+				setPostalCode(data.postalCode);
+				setDescription(data.description);
+				setPicUrl(data.picURL);
+				setRecommendations(data.recommendations);
+				setSpecialEvents(data.specialEvents);
+				setSpecialInstructions(data.specialInstructions);
+			};
+
+			fetching();
+		}
+	}, [match.params.id, adminInfo]);
+
+	const updateHandler = (e) => {
+		e.preventDefault();
+		dispatch(
+			updateSiteByAdmin(
+				match.params.id,
+				siteName,
+				country,
+				province,
+				siteLocation,
+				postalCode,
+				picURL,
+				description,
+				recommendations,
+				specialEvents,
+				specialInstructions
+			)
+		);
+		if (
+			!siteName ||
+			!country ||
+			!province ||
+			!siteLocation ||
+			!postalCode ||
+			!picURL ||
+			!description ||
+			!recommendations ||
+			!specialEvents ||
+			!specialInstructions
+		)
+			return;
+
+		resetHandler();
+
+		swal({
+			title: "Success !!!",
+			text: "Site Update Successful.",
+			icon: "success",
+			timer: 2000,
+			button: false,
+		});
+		setTimeout(function () {
+			window.location.href = "/admin-sites";
+		}, 2000);
+	};
 	if (adminInfo) {
 		return (
-			<div className="siteBg">
+			<div className="siteEditBg">
 				<br></br>
-				<MainScreen title="Add a New Site">
+				<MainScreen title="Edit Your Site">
 					<Button
 						variant="success"
 						style={{
@@ -142,7 +194,7 @@ function AddSiteByAdminScreen() {
 						href="/admin-sites"
 					>
 						{" "}
-						Back to Sites List
+						Back to site List
 					</Button>
 					<br></br>
 					<br></br>
@@ -162,13 +214,14 @@ function AddSiteByAdminScreen() {
 						<div className="siteContainer">
 							<div>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-								{message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
 								{loading && <Loading />}
 							</div>
-							<br></br>
 							<Row className="SiteContainer">
 								<Col md={6}>
-									<Form onSubmit={submitHandler}>
+									<Form onSubmit={updateHandler}>
+										{loadingDelete && <Loading />}
+										{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+										{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
 										<Form.Group controlId="siteFormBasicSiteName">
 											<Form.Label>Site Name</Form.Label>
 											<Form.Control
@@ -284,7 +337,7 @@ function AddSiteByAdminScreen() {
 												placeholder="Enter Special Instructions"
 												onChange={(e) => setSpecialInstructions(e.target.value)}
 												required
-												rows={3}
+												rows={2}
 											/>
 										</Form.Group>
 										<br></br>
@@ -308,30 +361,20 @@ function AddSiteByAdminScreen() {
 												marginTop: 10,
 											}}
 										>
-											Submit
+											Update Site
 										</Button>
 										&emsp;
 										<Button
 											variant="danger"
-											onClick={resetHandler}
+											onClick={deleteHandler}
 											style={{
 												fontSize: 15,
 												marginTop: 10,
 											}}
 										>
-											Reset
+											Delete Site
 										</Button>
 										&emsp;
-										<Button
-											variant="info"
-											onClick={demoHandler}
-											style={{
-												fontSize: 15,
-												marginTop: 10,
-											}}
-										>
-											Demo
-										</Button>
 									</Form>
 								</Col>
 								<Col
@@ -344,7 +387,7 @@ function AddSiteByAdminScreen() {
 									<img
 										src={picURL}
 										alt={siteName}
-										className="sitePic"
+										className="profilePic"
 										style={{
 											boxShadow: "7px 7px 20px ",
 											borderColor: "black",
@@ -357,8 +400,8 @@ function AddSiteByAdminScreen() {
 									/>
 								</Col>
 							</Row>
+							<br></br>
 						</div>
-						<br></br>
 					</Card>
 					<br></br>
 				</MainScreen>
@@ -374,4 +417,4 @@ function AddSiteByAdminScreen() {
 	}
 }
 
-export default AddSiteByAdminScreen;
+export default SingleSiteForAdminScreen;
