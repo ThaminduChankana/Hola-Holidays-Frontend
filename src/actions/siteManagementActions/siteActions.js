@@ -116,7 +116,8 @@ export const createSite =
 		description,
 		recommendations,
 		specialEvents,
-		specialInstructions
+		specialInstructions,
+		moreInfoURL
 	) =>
 	async (dispatch, getState) => {
 		try {
@@ -148,6 +149,7 @@ export const createSite =
 					recommendations,
 					specialEvents,
 					specialInstructions,
+					moreInfoURL,
 				},
 				config
 			);
@@ -186,7 +188,8 @@ export const updateSiteByAdmin =
 		description,
 		recommendations,
 		specialEvents,
-		specialInstructions
+		specialInstructions,
+		moreInfoURL
 	) =>
 	async (dispatch, getState) => {
 		try {
@@ -218,6 +221,7 @@ export const updateSiteByAdmin =
 					recommendations,
 					specialEvents,
 					specialInstructions,
+					moreInfoURL,
 				},
 				config
 			);

@@ -147,7 +147,7 @@ const CustomerEditByAdminScreen = ({ match }) => {
 								<Col md={6}>
 									<Form onSubmit={submitHandler}>
 										<Form.Group controlId="customerFirstName">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>First Name</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>First Name</Form.Label>
 											<Form.Control
 												type="name"
 												value={firstName}
@@ -158,7 +158,7 @@ const CustomerEditByAdminScreen = ({ match }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="customerLastName">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Last Name</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Last Name</Form.Label>
 											<Form.Control
 												type="name"
 												value={lastName}
@@ -169,7 +169,7 @@ const CustomerEditByAdminScreen = ({ match }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="customerFormBasicTelephone">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Telephone</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Telephone</Form.Label>
 											<Form.Control
 												type="text"
 												value={telephone}
@@ -181,7 +181,7 @@ const CustomerEditByAdminScreen = ({ match }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="customerFormBasicAddress">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Address</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Address</Form.Label>
 											<textarea
 												style={{
 													width: "100%",
@@ -199,7 +199,9 @@ const CustomerEditByAdminScreen = ({ match }) => {
 										</Form.Group>
 										<br></br>
 										<div className="form-group">
-											<label className="customerGender" style={{fontWeight:"bold", fontStyle:"italic"}}>Gender</label>
+											<label className="customerGender" style={{ fontWeight: "bold", fontStyle: "italic" }}>
+												Gender
+											</label>
 											<select
 												className="form-control"
 												id="customerGender"
@@ -214,7 +216,7 @@ const CustomerEditByAdminScreen = ({ match }) => {
 										</div>
 										<br></br>
 										<Form.Group controlId="customerFormBasicCountry">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Country</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Country</Form.Label>
 											<Form.Control
 												type="textArea"
 												value={country}
@@ -225,7 +227,7 @@ const CustomerEditByAdminScreen = ({ match }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="customerFormBasicEmail">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Email</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Email</Form.Label>
 											<Form.Control
 												type="email"
 												value={email}
@@ -236,7 +238,7 @@ const CustomerEditByAdminScreen = ({ match }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="formBasicPassword">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Password</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Password</Form.Label>
 											<Form.Control
 												type="password"
 												value={password}
@@ -246,7 +248,7 @@ const CustomerEditByAdminScreen = ({ match }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="confirmPassword">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Confirm Password</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Confirm Password</Form.Label>
 											<Form.Control
 												type="password"
 												value={confirmpassword}
@@ -257,7 +259,7 @@ const CustomerEditByAdminScreen = ({ match }) => {
 										<br></br>
 										{picMessage && <ErrorMessage variant="danger">{picMessage}</ErrorMessage>}
 										<Form.Group controlId="pic">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Profile Picture</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Profile Picture</Form.Label>
 											&emsp;
 											<input
 												type="file"
@@ -268,7 +270,7 @@ const CustomerEditByAdminScreen = ({ match }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="customerRegDate">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Registration Date</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Registration Date</Form.Label>
 											<Form.Control type="text" value={regDate} onChange={(e) => setRegDate(e.target.value)} readOnly />
 										</Form.Group>
 										<br></br>

@@ -28,6 +28,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 	const [specialEvents, setSpecialEvents] = useState("");
 	const [specialInstructions, setSpecialInstructions] = useState("");
 	const [picMessage, setPicMessage] = useState(null);
+	const [moreInfoURL, setMoreInfoURL] = useState("");
 
 	const dispatch = useDispatch();
 
@@ -51,6 +52,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 		setRecommendations("");
 		setSpecialEvents("");
 		setSpecialInstructions("");
+		setMoreInfoURL("");
 	};
 
 	const deleteHandler = (id) => {
@@ -129,6 +131,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 				setRecommendations(data.recommendations);
 				setSpecialEvents(data.specialEvents);
 				setSpecialInstructions(data.specialInstructions);
+				setMoreInfoURL(data.moreInfoURL);
 			};
 
 			fetching();
@@ -149,7 +152,8 @@ function SingleSiteForAdminScreen({ match, history }) {
 				description,
 				recommendations,
 				specialEvents,
-				specialInstructions
+				specialInstructions,
+				moreInfoURL
 			)
 		);
 		if (
@@ -162,7 +166,8 @@ function SingleSiteForAdminScreen({ match, history }) {
 			!description ||
 			!recommendations ||
 			!specialEvents ||
-			!specialInstructions
+			!specialInstructions ||
+			!moreInfoURL
 		)
 			return;
 
@@ -223,18 +228,18 @@ function SingleSiteForAdminScreen({ match, history }) {
 										{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 										{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
 										<Form.Group controlId="siteFormBasicSiteName">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Name</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Site Name</Form.Label>
 											<Form.Control
 												type="text"
 												placeholder="Enter Site Name"
 												value={siteName}
 												onChange={(e) => setSiteName(e.target.value)}
-												readOnly
+												required
 											/>
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicSiteCountry">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Located Country</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Located Country</Form.Label>
 											<Form.Control
 												type="text"
 												value={country}
@@ -245,7 +250,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicProvince">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Province or State</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Province or State</Form.Label>
 											<Form.Control
 												type="text"
 												value={province}
@@ -256,7 +261,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicLocation">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Located City</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Site Located City</Form.Label>
 											<Form.Control
 												type="text"
 												value={siteLocation}
@@ -267,7 +272,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicCode">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Code</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Site Code</Form.Label>
 											<Form.Control
 												type="text"
 												value={postalCode}
@@ -278,7 +283,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicDescription">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Description</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Site Description</Form.Label>
 											<textarea
 												style={{
 													width: "100%",
@@ -294,7 +299,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicRecommendations">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Recommendations</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Recommendations</Form.Label>
 											<textarea
 												style={{
 													width: "100%",
@@ -310,7 +315,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormSpecialEvents">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Special Events</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Special Events</Form.Label>
 											<textarea
 												style={{
 													width: "100%",
@@ -326,7 +331,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicInstructions">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Special Instructions</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Special Instructions</Form.Label>
 											<textarea
 												style={{
 													width: "100%",
@@ -341,9 +346,20 @@ function SingleSiteForAdminScreen({ match, history }) {
 											/>
 										</Form.Group>
 										<br></br>
+										<Form.Group controlId="siteFormBasicMoreInfo">
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>More Info</Form.Label>
+											<Form.Control
+												type="text"
+												value={moreInfoURL}
+												placeholder="Enter More Info URL"
+												onChange={(e) => setMoreInfoURL(e.target.value)}
+												required
+											/>
+										</Form.Group>
+										<br></br>
 										{picMessage && <ErrorMessage variant="danger">{picMessage}</ErrorMessage>}
 										<Form.Group controlId="pic">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Picture</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Site Picture</Form.Label>
 											&emsp;
 											<input
 												type="file"

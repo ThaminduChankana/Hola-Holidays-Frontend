@@ -87,7 +87,7 @@ const CustomerViewScreen = ({ history }) => {
 								<Col md={6}>
 									<Form>
 										<Form.Group controlId="customerFirstName">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>First Name</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>First Name</Form.Label>
 											<Form.Control
 												type="name"
 												value={firstName}
@@ -98,7 +98,7 @@ const CustomerViewScreen = ({ history }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="customerLastName">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Last Name</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Last Name</Form.Label>
 											<Form.Control
 												type="name"
 												value={lastName}
@@ -109,7 +109,7 @@ const CustomerViewScreen = ({ history }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="customerFormBasicTelephone">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Telephone</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Telephone</Form.Label>
 											<Form.Control
 												type="text"
 												value={telephone}
@@ -121,7 +121,7 @@ const CustomerViewScreen = ({ history }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="customerFormBasicAddress">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Address</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Address</Form.Label>
 											<Form.Control
 												type="textArea"
 												value={address}
@@ -132,7 +132,7 @@ const CustomerViewScreen = ({ history }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="customerFormBasicGender">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Gender</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Gender</Form.Label>
 											<Form.Control
 												type="textArea"
 												value={gender}
@@ -143,7 +143,7 @@ const CustomerViewScreen = ({ history }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="customerFormBasicCountry">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Country</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Country</Form.Label>
 											<Form.Control
 												type="textArea"
 												value={country}
@@ -154,7 +154,7 @@ const CustomerViewScreen = ({ history }) => {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="customerFormBasicEmail">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Email</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Email</Form.Label>
 											<Form.Control
 												type="email"
 												value={email}

@@ -50,7 +50,7 @@ const CustomerLogin = ({ history }) => {
 						{loading && <Loading />}
 						<Form onSubmit={submitHandler}>
 							<Form.Group controlId="formBasicEmail">
-								<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Email address</Form.Label>
+								<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Email address</Form.Label>
 								<Form.Control
 									type="email"
 									value={email}
@@ -60,7 +60,7 @@ const CustomerLogin = ({ history }) => {
 							</Form.Group>
 							<br></br>
 							<Form.Group controlId="formBasicPassword">
-								<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Password</Form.Label>
+								<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Password</Form.Label>
 								<Form.Control
 									type="password"
 									value={password}

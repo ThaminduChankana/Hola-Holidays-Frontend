@@ -20,6 +20,7 @@ function AddSiteByAdminScreen() {
 	const [recommendations, setRecommendations] = useState("");
 	const [specialEvents, setSpecialEvents] = useState("");
 	const [specialInstructions, setSpecialInstructions] = useState("");
+	const [moreInfoURL, setMoreInfoURL] = useState("");
 	const [message] = useState(null);
 	const [picMessage, setPicMessage] = useState(null);
 
@@ -41,6 +42,7 @@ function AddSiteByAdminScreen() {
 		setRecommendations("");
 		setSpecialEvents("");
 		setSpecialInstructions("");
+		setMoreInfoURL("");
 	};
 
 	const demoHandler = () => {
@@ -61,6 +63,7 @@ function AddSiteByAdminScreen() {
 		setSpecialInstructions(
 			"Be sure to but your ticket before you make the climb, and dress appropriately (although they will provide shawls to cover bare shoulders or knees if you are wearing shorts). You also need to remove your shoes and leave them at a station where the charge is 25 rupees a pair. The ground can get pretty hot, but the is a covered / shaded facade that runs from the second to fifth cave so you’re spare scorched soles."
 		);
+		setMoreInfoURL("https://en.wikipedia.org/wiki/Dambulla_cave_temple");
 	};
 
 	const submitHandler = (e) => {
@@ -76,7 +79,8 @@ function AddSiteByAdminScreen() {
 			!description ||
 			!recommendations ||
 			!specialEvents ||
-			!specialInstructions
+			!specialInstructions ||
+			!moreInfoURL
 		)
 			return;
 		dispatch(
@@ -90,7 +94,8 @@ function AddSiteByAdminScreen() {
 				description,
 				recommendations,
 				specialEvents,
-				specialInstructions
+				specialInstructions,
+				moreInfoURL
 			)
 		);
 
@@ -170,7 +175,7 @@ function AddSiteByAdminScreen() {
 								<Col md={6}>
 									<Form onSubmit={submitHandler}>
 										<Form.Group controlId="siteFormBasicSiteName">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Name</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Site Name</Form.Label>
 											<Form.Control
 												type="text"
 												placeholder="Enter Site Name"
@@ -181,7 +186,7 @@ function AddSiteByAdminScreen() {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicSiteCountry">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Located Country</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Located Country</Form.Label>
 											<Form.Control
 												type="text"
 												value={country}
@@ -192,7 +197,7 @@ function AddSiteByAdminScreen() {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicProvince">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Province or State</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Province or State</Form.Label>
 											<Form.Control
 												type="text"
 												value={province}
@@ -203,7 +208,7 @@ function AddSiteByAdminScreen() {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicLocation">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Located City</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Site Located City</Form.Label>
 											<Form.Control
 												type="text"
 												value={siteLocation}
@@ -214,7 +219,7 @@ function AddSiteByAdminScreen() {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicCode">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Code</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Site Code</Form.Label>
 											<Form.Control
 												type="text"
 												value={postalCode}
@@ -225,7 +230,7 @@ function AddSiteByAdminScreen() {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicDescription">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Description</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Site Description</Form.Label>
 											<textarea
 												style={{
 													width: "100%",
@@ -241,7 +246,7 @@ function AddSiteByAdminScreen() {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicRecommendations">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Recommendations</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Recommendations</Form.Label>
 											<textarea
 												style={{
 													width: "100%",
@@ -257,7 +262,7 @@ function AddSiteByAdminScreen() {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormSpecialEvents">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Special Events</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Special Events</Form.Label>
 											<textarea
 												style={{
 													width: "100%",
@@ -273,7 +278,7 @@ function AddSiteByAdminScreen() {
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicInstructions">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Special Instructions</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Special Instructions</Form.Label>
 											<textarea
 												style={{
 													width: "100%",
@@ -288,9 +293,20 @@ function AddSiteByAdminScreen() {
 											/>
 										</Form.Group>
 										<br></br>
+										<Form.Group controlId="siteFormBasicMoreInfo">
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>More Info</Form.Label>
+											<Form.Control
+												type="text"
+												value={moreInfoURL}
+												placeholder="Enter More Info URL"
+												onChange={(e) => setMoreInfoURL(e.target.value)}
+												required
+											/>
+										</Form.Group>
+										<br></br>
 										{picMessage && <ErrorMessage variant="danger">{picMessage}</ErrorMessage>}
 										<Form.Group controlId="pic">
-											<Form.Label style={{fontWeight:"bold", fontStyle:"italic"}}>Site Picture</Form.Label>
+											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Site Picture</Form.Label>
 											&emsp;
 											<input
 												type="file"

@@ -249,6 +249,9 @@ const SitesListForAdminScreen = () => {
 																<p>
 																	<b>Special Instructions -</b> {adminSiteList.specialInstructions}
 																</p>
+																<p>
+																	<b>More Info URL -</b> {adminSiteList.moreInfoURL}
+																</p>
 																<br></br>
 															</Col>
 															<Col
