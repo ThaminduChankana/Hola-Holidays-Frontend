@@ -205,7 +205,6 @@ export const updateSiteByAdmin =
 				},
 			};
 
-			//call the backend route
 			const { data } = await axios.put(
 				`${API_ENDPOINT}/admin/get/${id}`,
 				{
@@ -252,7 +251,6 @@ export const deleteSiteByAdmin = (id) => async (dispatch, getState) => {
 			},
 		};
 
-		//call the backend route
 		const { data } = await axios.delete(`${API_ENDPOINT}/admin/get/${id}`, config);
 
 		dispatch({
