@@ -65,7 +65,7 @@ function SingleSiteForCustomerScreen({ match, history }) {
 						marginTop: 5,
 						fontSize: 15,
 					}}
-					href="/customer-sites"
+					href="/"
 				>
 					{" "}
 					Back to Sites List

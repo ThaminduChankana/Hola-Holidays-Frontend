@@ -181,7 +181,7 @@ function AddSiteByAdminScreen() {
 												placeholder="Enter Site Name"
 												value={siteName}
 												onChange={(e) => setSiteName(e.target.value)}
-												readOnly
+												required
 											/>
 										</Form.Group>
 										<br></br>
