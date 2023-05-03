@@ -11,3 +11,112 @@
 	background-position: center;
 	background-size: cover;
 }
+
+header.masthead {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+	text-align: center;
+	color: #fff;
+	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url("https://res.cloudinary.com/dfmnpw0yp/image/upload/v1683124882/Hola%20Holidays/assets/tqpsfrmatuu5io75ah50.jpg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: center center;
+	background-size: cover;
+}
+
+header.masthead .masthead-subheading {
+	font-size: 3rem;
+	font-style: italic;
+	line-height: 2.25rem;
+	font-weight: 700;
+	margin-bottom: 4rem;
+	margin-top: 1rem;
+}
+
+header.masthead .masthead-heading {
+	font-size: 6rem;
+	font-weight: 700;
+	line-height: 4.5rem;
+	margin-bottom: 4rem;
+}
+
+#services {
+	margin-top: 50px;
+	margin-bottom: 80px;
+}
+
+#services .text-center h2 {
+	font-size: 2.5rem;
+	font-weight: 700;
+}
+
+#services .text-center h3 {
+	font-size: 1.5rem;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.green-color {
+	color: #4ee44e;
+}
+
+.my-3 {
+	font-weight: 800;
+	font-size: 1.5rem;
+}
+.text-muted {
+	font-size: 1.25rem;
+}
+
+#site .site-item .site-caption .site-caption-heading {
+	font-size: 1.5rem;
+	font-weight: 800;
+	margin-bottom: 0;
+	margin-left: 130px;
+}
+
+.page-section h2.section-heading,
+.page-section .section-heading.h2 {
+	font-size: 2.5rem;
+	margin-top: 0;
+	margin-bottom: 1rem;
+	margin-bottom: 3rem;
+	font-weight: 700;
+}
+
+.page-section h3.section-subheading,
+.page-section .section-subheading.h3 {
+	margin-bottom: 4rem;
+	font-size: 1.5rem;
+	font-weight: 400;
+	font-style: italic;
+}
+.img-fluid {
+	border-radius: 20px;
+	width: 300px;
+}
+
+#site {
+	padding-top: 70px;
+	margin-bottom: 70px;
+}
+
+.aboutContainer {
+	background: #000046;
+	background: -webkit-linear-gradient(to right, #11708a, #000046);
+	background: linear-gradient(to right, #11708a, #000046);
+	border-top: #ff512f 3px solid;
+	border-bottom: #f09819 3px solid;
+	font-size: 20px;
+	padding: 35px 35px 35px 35px;
+	color: white;
+}
+
+.landingbutton {
+	background: #00c9ff;
+	background: -webkit-linear-gradient(to bottom, #92fe9d, #00c9ff);
+	background: linear-gradient(to bottom, #92fe9d, #00c9ff);
+	padding: 10px 20px 10px 20px;
+	font-size: 20px;
+}

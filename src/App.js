@@ -41,7 +41,7 @@ function App() {
 				<Route path="/admin-sites" component={SitesListForAdminScreen} exact />
 				<Route path="/admin-site-edit/:id" component={SingleSiteForAdminScreen} exact />
 
-				<Route path="/customer-sites" component={SitesListForCustomerScreen} exact />
+				<Route path="/" component={SitesListForCustomerScreen} exact />
 				<Route path="/customer-site/:id" component={SingleSiteForCustomerScreen} exact />
 			</main>
 		</BrowserRouter>

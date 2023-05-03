@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import React, { useEffect, useState, useRef } from "react";
+import { Button, Col, Form, Row, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBCardImage } from "mdb-react-ui-kit";
 import MainScreen from "../../../../components/MainScreen";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,12 +20,42 @@ const SitesListForCustomerScreen = () => {
 		setSearch(e.target.value.toLowerCase());
 	};
 
+	const ref = useRef(null);
+
+	const handleClick = () => {
+		ref.current?.scrollIntoView({ behavior: "smooth" });
+	};
+
 	useEffect(() => {
 		dispatch(sitesListForCustomer());
 	}, [dispatch]);
 
 	return (
 		<div className="customerSiteList">
+			<header className="masthead">
+				<div className="container">
+					<div className="masthead-subheading">Welcome To Hola Holidays !</div>
+					<div className="masthead-heading text-uppercase">It's Nice To Meet You!</div>
+					<Link to="/">
+						<Button
+							size="lg"
+							className="landingbutton"
+							style={{
+								width: 250,
+								height: 70,
+								fontSize: 20,
+								fontFamily: "cursive",
+
+								borderRadius: 10,
+								color: "black",
+							}}
+							onClick={handleClick}
+						>
+							Tell Me More
+						</Button>
+					</Link>
+				</div>
+			</header>
 			<br></br>
 			<MainScreen title={`Browse Through The Most Beautiful Places In Sri Lanka ...`}>
 				<center>
@@ -162,7 +193,7 @@ const SitesListForCustomerScreen = () => {
 
 				<br></br>
 
-				<div className="listContainer">
+				<div className="listContainer" ref={ref}>
 					{sites &&
 						sites
 							.filter(
@@ -209,7 +240,7 @@ const SitesListForCustomerScreen = () => {
 														}}
 													/>
 
-													<hr class="my-0" />
+													<hr className="my-0" />
 													<MDBCardBody className="pb-0">
 														<div
 															className="d-flex justify-content-between"
@@ -222,7 +253,7 @@ const SitesListForCustomerScreen = () => {
 															{customerSiteList.siteLocation},<br></br> {customerSiteList.province} province
 														</h6>
 													</MDBCardBody>
-													<hr class="my-0" />
+													<hr className="my-0" />
 													<MDBCardBody className="pb-0">
 														<div className="d-flex justify-content-between align-items-center pb-2 mb-4">
 															<Button
@@ -251,6 +282,41 @@ const SitesListForCustomerScreen = () => {
 
 				<br></br>
 			</MainScreen>
+			<br></br>
+			<div className="aboutContainer" ref={ref}>
+				<Row>
+					<Col style={{ maxWidth: 400 }}>
+						<Image
+							src="https://res.cloudinary.com/dfmnpw0yp/image/upload/v1683126550/Hola%20Holidays/assets/vrlwm6fde2gb5tl8jkpk.png"
+							fluid
+							className="w-100"
+							style={{
+								borderRadius: "10px",
+								width: "auto",
+								height: "auto",
+							}}
+						/>
+					</Col>
+					<Col>
+						<p>
+							Welcome to <b style={{ color: "orange" }}>Hola Holidays!</b> We are a team of experienced travel
+							enthusiasts who are passionate about creating unforgettable holiday experiences for our clients. Our
+							mission is to make travel accessible and hassle-free for everyone. We understand that planning a holiday
+							can be overwhelming, which is why we offer a wide range of services to cater to all your travel needs.
+							Whether you're looking for a romantic getaway, a family vacation, or an adventure-filled trip, we've got
+							you covered. Our team of experts will work with you to tailor a package that suits your budget and
+							preferences. At Hola Holidays, we value the importance of customer satisfaction. We strive to provide you
+							with the best possible service and ensure that your holiday is everything you dreamed of and more. From
+							the moment you book with us, we will be with you every step of the way, providing support and guidance to
+							make your trip as seamless as possible. We believe that travel is not just about visiting new places, but
+							also about immersing yourself in different cultures and creating lasting memories. That's why we offer a
+							range of activities and tours that will help you experience the local culture and traditions of your
+							destination. Thank you for considering Hola Holidays for your next trip. We look forward to working with
+							you and creating the holiday of your dreams!
+						</p>
+					</Col>
+				</Row>
+			</div>
 		</div>
 	);
 };
