@@ -1,8 +1,13 @@
-.adminCustomerEditBg {
-	background: url("https://res.cloudinary.com/dfmnpw0yp/image/upload/v1683095609/Hola%20Holidays/assets/rgdjaxe87z9oskrj6dzd.jpg");
+.siteEditBg {
+	background: url("https://res.cloudinary.com/dfmnpw0yp/image/upload/v1683097608/Hola%20Holidays/assets/rjnmxncvwuyrkntxn837.jpg");
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
+}
+.siteContainer {
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
 }
 .denied {
 	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761809/images/accessDenied_zhvugi.jpg");

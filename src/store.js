@@ -21,6 +21,15 @@ import {
 	customerDeleteByIdReducer,
 } from "./reducers/userManagementReducers/customerReducers";
 
+import {
+	customerSiteListReducer,
+	adminSiteListReducer,
+	locationSiteListReducer,
+	siteCreateReducer,
+	siteUpdateByAdminReducer,
+	siteDeleteByAdminReducer,
+} from "./reducers/siteManagementReducers/siteReducers";
+
 const reducer = combineReducers({
 	admin_Login: adminLoginReducer,
 	adminRegistration: adminRegisterReducer,
@@ -35,6 +44,13 @@ const reducer = combineReducers({
 	customerViewById: customerViewByIdReducer,
 	customerUpdateById: customerUpdateByIdReducer,
 	customerDeleteById: customerDeleteByIdReducer,
+
+	customerSiteList: customerSiteListReducer,
+	adminSiteList: adminSiteListReducer,
+	locationSiteList: locationSiteListReducer,
+	siteCreate: siteCreateReducer,
+	siteUpdateByAdmin: siteUpdateByAdminReducer,
+	siteDeleteByAdmin: siteDeleteByAdminReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;

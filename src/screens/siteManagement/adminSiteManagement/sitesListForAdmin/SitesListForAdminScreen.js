@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Row, Col, Form } from "react-bootstrap";
-import MainScreen from "../../../../components/MainScreen";
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { customerDeleteProfileById, customersList } from "../../../../actions/userManagementActions/customerActions";
-import Loading from "../../../../components/Loading";
 import {
 	Accordion,
 	AccordionItem,
@@ -12,35 +7,34 @@ import {
 	AccordionItemButton,
 	AccordionItemPanel,
 } from "react-accessible-accordion";
+import MainScreen from "../../../../components/MainScreen";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteSiteByAdmin, sitesListForAdmin } from "../../../../actions/siteManagementActions/siteActions";
+import Loading from "../../../../components/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage";
 import swal from "sweetalert";
-import "./userLists.css";
+import "./sitesLists.css";
 
-const CustomerListForAdminScreen = () => {
+const SitesListForAdminScreen = () => {
 	const dispatch = useDispatch();
 
-	const customerList = useSelector((state) => state.customerList);
-	const { loading, customers, error } = customerList;
+	const adminSiteList = useSelector((state) => state.adminSiteList);
+	const { loading, sites, error } = adminSiteList;
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
 
-	const customerUpdate = useSelector((state) => state.customerUpdate);
-	const { success: successUpdate } = customerUpdate;
+	const siteCreate = useSelector((state) => state.siteCreate);
+	const { success: successCreate } = siteCreate;
 
-	const customerDeleteById = useSelector((state) => state.customerDeleteById);
-	const { loading: loadingDelete, error: errorDelete, success: successDelete } = customerDeleteById;
-
-	const history = useHistory();
+	const siteUpdateByAdmin = useSelector((state) => state.siteUpdateByAdmin);
+	const { success: successUpdate } = siteUpdateByAdmin;
 
 	const [search, setSearch] = useState("");
 
-	useEffect(() => {
-		dispatch(customersList());
-		if (!adminInfo) {
-			history.push("/access-denied", { replace: true });
-		}
-	}, [dispatch, history, adminInfo, customerDeleteById, successDelete, successUpdate]);
+	const siteDeleteByAdmin = useSelector((state) => state.siteDeleteByAdmin);
+	const { loading: loadingDelete, error: errorDelete, success: successDelete } = siteDeleteByAdmin;
 
 	const deleteHandler = (id) => {
 		swal({
@@ -51,10 +45,10 @@ const CustomerListForAdminScreen = () => {
 			dangerMode: true,
 		}).then((willDelete) => {
 			if (willDelete) {
-				dispatch(customerDeleteProfileById(id));
+				dispatch(deleteSiteByAdmin(id));
 				swal({
 					title: "Success!",
-					text: "Deleted Account Successfully",
+					text: "Deleted Site Successfully",
 					icon: "success",
 					timer: 2000,
 					button: false,
@@ -62,15 +56,21 @@ const CustomerListForAdminScreen = () => {
 			}
 		});
 	};
-
 	const searchHandler = (e) => {
 		setSearch(e.target.value.toLowerCase());
 	};
 
+	const history = useHistory();
+
+	useEffect(() => {
+		dispatch(sitesListForAdmin());
+		if (!adminInfo) {
+			history.push("/access-denied");
+		}
+	}, [dispatch, successCreate, history, adminInfo, successUpdate, successDelete]);
 	if (adminInfo) {
 		return (
-			<div className="customerList">
-				<br></br>
+			<div className="adminSiteList">
 				<br></br>
 				<MainScreen title={`Welcome Back ${adminInfo && adminInfo.name}..`}>
 					<Row>
@@ -79,12 +79,12 @@ const CustomerListForAdminScreen = () => {
 								style={{
 									display: "flex",
 									marginLeft: "10px",
-									width: "100%",
+									width: "500px",
 									color: "azure",
 									fontStyle: "italic",
 								}}
 							>
-								Customers List
+								Sites List For Admin
 							</h1>
 						</Col>
 						<Col>
@@ -94,7 +94,7 @@ const CustomerListForAdminScreen = () => {
 										type="text"
 										placeholder="Search..."
 										style={{
-											width: "100%",
+											width: 400,
 											height: 40,
 											borderRadius: 50,
 											padding: "10px",
@@ -110,8 +110,11 @@ const CustomerListForAdminScreen = () => {
 					</Row>
 					<br></br>
 
-					<Button variant="success" href="/admin">
+					<Button variant="success" href="/admin" style={{ float: "left", fontSize: "15px" }}>
 						Back to Dashboard
+					</Button>
+					<Button variant="success" href="/admin-site-create" style={{ float: "right", fontSize: "15px" }}>
+						+ Add A New Site
 					</Button>
 
 					<br></br>
@@ -122,20 +125,23 @@ const CustomerListForAdminScreen = () => {
 					<br></br>
 					<div className="listContainer">
 						<Accordion allowZeroExpanded>
-							{customers &&
-								customers
+							{sites &&
+								sites
 									.filter(
-										(filteredCustomers) =>
-											filteredCustomers.firstName.toLowerCase().includes(search.toLowerCase()) ||
-											filteredCustomers.email.includes(search)
+										(filteredSites) =>
+											filteredSites.siteName.toLowerCase().includes(search.toLowerCase()) ||
+											filteredSites.province.toLowerCase().includes(search.toLowerCase())
 									)
+
 									.reverse()
-									.map((customerList) => (
-										<AccordionItem key={customerList._id} className="listContainer">
+									.map((adminSiteList) => (
+										<AccordionItem key={adminSiteList._id} className="listContainer">
 											<Card
 												style={{
 													margin: 10,
 													borderRadius: 25,
+													borderWidth: 1.0,
+													borderColor: "rgb(0,0,0,0.5)",
 													marginTop: 20,
 													paddingInline: 10,
 													background: "rgb(235, 235, 235)",
@@ -150,7 +156,8 @@ const CustomerListForAdminScreen = () => {
 																borderRadius: 25,
 																marginTop: 10,
 																marginBottom: 10,
-																background: "#17BEBB",
+																borderColor: "black",
+																background: "#87a9b1",
 															}}
 														>
 															<span
@@ -164,26 +171,31 @@ const CustomerListForAdminScreen = () => {
 																}}
 															>
 																<label
-																	className="name"
+																	className="siteName"
 																	style={{
 																		paddingInline: 20,
 																		marginTop: 10,
 																		fontSize: 18,
 																	}}
 																>
-																	<b>Customer Name :</b> &emsp;
-																	{customerList.firstName} {customerList.lastName}
+																	<b>Site Name :</b> &emsp;
+																	{adminSiteList.siteName}{" "}
 																</label>{" "}
 																<br></br>
-																<label className="email" style={{ paddingInline: 20, fontSize: 18 }}>
-																	<b>Customer Email :</b> &emsp;
-																	{customerList.email}{" "}
+																<label className="siteCountry" style={{ paddingInline: 20, fontSize: 18 }}>
+																	<b>Country :</b> &emsp;
+																	{adminSiteList.country}
+																</label>{" "}
+																<br></br>
+																<label className="siteProvince" style={{ paddingInline: 20, fontSize: 18 }}>
+																	<b>Province / State :</b> &emsp;
+																	{adminSiteList.province}
 																</label>{" "}
 															</span>
 															<div>
 																<Button
-																	style={{ marginTop: 20, fontSize: 15 }}
-																	href={`/admin-customer-edit/${customerList._id}`}
+																	style={{ marginTop: 40, fontSize: 15 }}
+																	href={`/admin-site-edit/${adminSiteList._id}`}
 																>
 																	Edit
 																</Button>
@@ -191,10 +203,10 @@ const CustomerListForAdminScreen = () => {
 															&emsp;
 															<div>
 																<Button
-																	style={{ marginTop: 20, fontSize: 15 }}
+																	style={{ marginTop: 40, fontSize: 15 }}
 																	variant="danger"
 																	className="mx-2"
-																	onClick={() => deleteHandler(customerList._id)}
+																	onClick={() => deleteHandler(adminSiteList._id)}
 																>
 																	Delete
 																</Button>
@@ -206,32 +218,55 @@ const CustomerListForAdminScreen = () => {
 													<Card.Body>
 														<Row>
 															<Col md={6}>
-																<h5>
-																	Name - {customerList.firstName} {customerList.lastName}{" "}
-																</h5>
-																<h5>Telephone - {customerList.telephone}</h5>
-																<h5>Address - {customerList.address}</h5>
-																<h5>Gender - {customerList.gender}</h5>
-																<h5>Country - {customerList.country}</h5>
-																<h5>Email - {customerList.email}</h5>
+																<p>
+																	<b>Site Name -</b> {adminSiteList.siteName}
+																</p>
+																<p>
+																	<b>Located Country -</b> {adminSiteList.country}
+																</p>
+																<p>
+																	<b>Located Province -</b> {adminSiteList.province}
+																</p>
+																<p>
+																	<b>Site Location -</b> {adminSiteList.siteLocation}
+																</p>
+																<p>
+																	<b>Postal Code -</b> {adminSiteList.postalCode}
+																</p>
+																<p>
+																	<b>Description -</b> {adminSiteList.description}
+																</p>
+																<p>
+																	<b>Recommendations -</b> {adminSiteList.recommendations}
+																</p>
+																<p>
+																	<b>Special Events -</b> {adminSiteList.specialEvents}
+																</p>
+																<p>
+																	<b>Special Instructions -</b> {adminSiteList.specialInstructions}
+																</p>
+																<p>
+																	<b>More Info URL -</b> {adminSiteList.moreInfoURL}
+																</p>
 																<br></br>
 															</Col>
 															<Col
 																style={{
 																	display: "flex",
 																	alignItems: "center",
-																	width: "500px",
+																	width: "100%",
 																	justifyContent: "center",
 																}}
 															>
 																<img
 																	style={{
-																		width: "50%",
-																		height: "100%",
+																		width: "75%",
+																		height: "auto",
+																		borderRadius: 10,
 																	}}
-																	src={customerList.pic}
-																	alt={customerList.name}
-																	className="profilePic"
+																	src={adminSiteList.picURL}
+																	alt={adminSiteList.siteName}
+																	className="sitePic"
 																/>
 															</Col>
 														</Row>
@@ -243,9 +278,7 @@ const CustomerListForAdminScreen = () => {
 																	borderRadius: 20,
 																	background: "white",
 																}}
-															>
-																Registered Date - <cite title="Source Title"> {customerList.regDate}</cite>
-															</Card.Footer>
+															/>
 														</blockquote>
 													</Card.Body>
 												</AccordionItemPanel>
@@ -269,4 +302,4 @@ const CustomerListForAdminScreen = () => {
 	}
 };
 
-export default CustomerListForAdminScreen;
+export default SitesListForAdminScreen;

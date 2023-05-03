@@ -1,13 +1,13 @@
-.loginContainer {
+.siteContainer {
 	display: flex;
 	flex-direction: column;
 	margin: 20px;
 }
-.profileCont {
+.siteCont {
 	background: rgba(196, 201, 201, 0.5);
 }
-.registerBg {
-	background: url("https://res.cloudinary.com/dfmnpw0yp/image/upload/v1683094970/Hola%20Holidays/assets/abapoqkpsh2xkjr5pbps.jpg");
+.siteBg {
+	background: url("https://res.cloudinary.com/dfmnpw0yp/image/upload/v1683097259/Hola%20Holidays/assets/sjyubqtcaq7nwl73j5x8.jpg");
 	background-position: center;
 	background-size: cover;
 }
