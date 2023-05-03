@@ -39,7 +39,7 @@ const SitesListForCustomerScreen = () => {
 					<Link to="/">
 						<Button
 							size="lg"
-							className="landingbutton"
+							className="homeTellMeMoreBtn"
 							style={{
 								width: 250,
 								height: 70,
