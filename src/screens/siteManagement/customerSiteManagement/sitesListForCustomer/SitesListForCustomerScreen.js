@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Row, Col, Form } from "react-bootstrap";
-import {
-	Accordion,
-	AccordionItem,
-	AccordionItemHeading,
-	AccordionItemButton,
-	AccordionItemPanel,
-} from "react-accessible-accordion";
+import { Button, Form } from "react-bootstrap";
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBCardImage } from "mdb-react-ui-kit";
 import MainScreen from "../../../../components/MainScreen";
 import { useDispatch, useSelector } from "react-redux";
 import { sitesListForCustomer } from "../../../../actions/siteManagementActions/siteActions";
+import { Grid } from "@material-ui/core/";
 import "./sitesLists.css";
 
 const SitesListForCustomerScreen = () => {
@@ -31,7 +26,7 @@ const SitesListForCustomerScreen = () => {
 	return (
 		<div className="customerSiteList">
 			<br></br>
-			<MainScreen title={`Browse Through The Most Beautiful Places In Sri Lanka..`}>
+			<MainScreen title={`Browse Through The Most Beautiful Places In Sri Lanka ...`}>
 				<center>
 					<div className="search" style={{ marginTop: 25 }}>
 						<Form>
@@ -57,6 +52,17 @@ const SitesListForCustomerScreen = () => {
 				<div>
 					<center>
 						<Button
+							variant="light"
+							size="lg"
+							onClick={() => {
+								setSearch("");
+							}}
+						>
+							All Provinces
+						</Button>
+						&emsp;
+						<Button
+							variant="dark"
 							size="lg"
 							onClick={() => {
 								setSearch("Southern");
@@ -66,6 +72,7 @@ const SitesListForCustomerScreen = () => {
 						</Button>{" "}
 						&emsp;
 						<Button
+							variant="dark"
 							size="lg"
 							onClick={() => {
 								setSearch("Western");
@@ -75,6 +82,7 @@ const SitesListForCustomerScreen = () => {
 						</Button>{" "}
 						&emsp;
 						<Button
+							variant="dark"
 							size="lg"
 							onClick={() => {
 								setSearch("Northern");
@@ -82,17 +90,12 @@ const SitesListForCustomerScreen = () => {
 						>
 							Northern Province
 						</Button>{" "}
-						&emsp;
+					</center>
+
+					<br></br>
+					<center>
 						<Button
-							size="lg"
-							onClick={() => {
-								setSearch("Central");
-							}}
-						>
-							Central Province
-						</Button>{" "}
-						&emsp;
-						<Button
+							variant="dark"
 							size="lg"
 							onClick={() => {
 								setSearch("Eastern");
@@ -100,11 +103,9 @@ const SitesListForCustomerScreen = () => {
 						>
 							Eastern Province
 						</Button>
-					</center>
-
-					<br></br>
-					<center>
+						&emsp;
 						<Button
+							variant="dark"
 							size="lg"
 							onClick={() => {
 								setSearch("Sabaragamuwa");
@@ -114,6 +115,7 @@ const SitesListForCustomerScreen = () => {
 						</Button>{" "}
 						&emsp;
 						<Button
+							variant="dark"
 							size="lg"
 							onClick={() => {
 								setSearch("Uva");
@@ -121,17 +123,23 @@ const SitesListForCustomerScreen = () => {
 						>
 							Uva Province
 						</Button>{" "}
-						&emsp;
+					</center>
+				</div>
+				<br></br>
+				<div>
+					<center>
 						<Button
+							variant="dark"
 							size="lg"
 							onClick={() => {
-								setSearch("North-Western");
+								setSearch("Central");
 							}}
 						>
-							North-Western Province
+							Central Province
 						</Button>{" "}
 						&emsp;
 						<Button
+							variant="dark"
 							size="lg"
 							onClick={() => {
 								setSearch("North-Central");
@@ -139,154 +147,106 @@ const SitesListForCustomerScreen = () => {
 						>
 							North-Central Province
 						</Button>
+						&emsp;
+						<Button
+							variant="dark"
+							size="lg"
+							onClick={() => {
+								setSearch("North-Western");
+							}}
+						>
+							North-Western Province
+						</Button>{" "}
 					</center>
 				</div>
 
 				<br></br>
 
 				<div className="listContainer">
-					<Accordion allowZeroExpanded>
-						{sites &&
-							sites
-								.filter(
-									(filteredSites) =>
-										filteredSites.siteName.toLowerCase().includes(search.toLowerCase()) ||
-										filteredSites.province.toLowerCase().includes(search.toLowerCase())
-								)
-								.reverse()
-								.map((customerSiteList) => (
-									<AccordionItem key={customerSiteList._id} className="listContainer">
-										<Card
-											style={{
-												margin: 10,
-												borderRadius: 25,
-												borderWidth: 1.0,
-												borderColor: "rgb(0,0,0,0.5)",
-												marginTop: 20,
-												paddingInline: 10,
-												background: "rgb(235, 235, 235)",
-											}}
-										>
-											<AccordionItemHeading>
-												<AccordionItemButton>
-													<Card.Header
+					{sites &&
+						sites
+							.filter(
+								(filteredSites) =>
+									filteredSites.siteName.toLowerCase().includes(search.toLowerCase()) ||
+									filteredSites.province.toLowerCase().includes(search.toLowerCase())
+							)
+							.reverse()
+							.map((customerSiteList) => (
+								<Grid
+									item
+									xs={12}
+									sm={5}
+									md={4}
+									key={sites.indexOf(customerSiteList)}
+									style={{
+										display: "inline-flex",
+										width: "auto",
+									}}
+								>
+									<MDBContainer fluid className="my-5">
+										<MDBRow className="justify-content-center">
+											<MDBCol md="12" lg="6" xl="11">
+												<MDBCard
+													style={{
+														borderRadius: "20px",
+														boxShadow: " 10px 10px 5px #f2f3f4",
+														backgroundColor: "#f0fff0",
+														borderWidth: "5px",
+														borderColor: "#10A19D",
+														height: "550px",
+														width: "340px",
+														padding: "5px",
+													}}
+												>
+													<MDBCardImage
+														src={customerSiteList.picURL}
+														fluid
+														className="w-100"
 														style={{
-															display: "flex",
-															paddingInline: 10,
-															borderRadius: 25,
-															marginTop: 10,
-															marginBottom: 10,
-															borderColor: "black",
-															background: "#87a9b1",
+															borderRadius: "10px",
+															width: "auto",
+															height: "300px",
 														}}
-													>
-														<span
-															style={{
-																color: "black",
-																textDecoration: "none",
-																flex: 1,
-																cursor: "pointer",
-																alignSelf: "center",
-																fontSize: 18,
-															}}
+													/>
+
+													<hr class="my-0" />
+													<MDBCardBody className="pb-0">
+														<div
+															className="d-flex justify-content-between"
+															style={{ borderBottom: "2px solid #4880EC", padding: "10px" }}
 														>
-															<label
-																className="siteName"
+															<h4>{customerSiteList.siteName}</h4>
+														</div>
+														<br></br>
+														<h6>
+															{customerSiteList.siteLocation},<br></br> {customerSiteList.province} province
+														</h6>
+													</MDBCardBody>
+													<hr class="my-0" />
+													<MDBCardBody className="pb-0">
+														<div className="d-flex justify-content-between align-items-center pb-2 mb-4">
+															<Button
+																variant="success"
+																href={`/customer-site/${customerSiteList._id}`}
 																style={{
-																	paddingInline: 20,
-																	marginTop: 10,
-																	fontSize: 18,
+																	width: "auto",
+																	fontSize: "15px",
+																	height: "40px",
+																	borderRadius: "10px",
+																	borderWidth: "5px white",
+																	marginLeft: "225px",
 																}}
 															>
-																<b>Site Name :</b> &emsp;
-																{customerSiteList.siteName}{" "}
-															</label>{" "}
-															<br></br>
-															<label className="siteCountry" style={{ paddingInline: 20, fontSize: 18 }}>
-																<b>Country :</b> &emsp;
-																{customerSiteList.country}
-															</label>{" "}
-															<br></br>
-															<label className="siteProvince" style={{ paddingInline: 20, fontSize: 18 }}>
-																<b>Province / State :</b> &emsp;
-																{customerSiteList.province}
-															</label>{" "}
-														</span>
-													</Card.Header>
-												</AccordionItemButton>
-											</AccordionItemHeading>
-											<AccordionItemPanel>
-												<Card.Body>
-													<Row>
-														<Col md={6}>
-															<p>
-																<b>Site Name -</b> {customerSiteList.siteName}
-															</p>
-															<p>
-																<b>Located Country -</b> {customerSiteList.country}
-															</p>
-															<p>
-																<b>Located Province -</b> {customerSiteList.province}
-															</p>
-															<p>
-																<b>Site Location -</b> {customerSiteList.siteLocation}
-															</p>
-															<p>
-																<b>Postal Code -</b> {customerSiteList.postalCode}
-															</p>
-															<p>
-																<b>Description -</b> {customerSiteList.description}
-															</p>
-															<p>
-																<b>Recommendations -</b> {customerSiteList.recommendations}
-															</p>
-															<p>
-																<b>Special Events -</b> {customerSiteList.specialEvents}
-															</p>
-															<p>
-																<b>Special Instructions -</b> {customerSiteList.specialInstructions}
-															</p>
-															<p>
-																<b>More Info URL -</b> {customerSiteList.moreInfoURL}
-															</p>
-															<br></br>
-														</Col>
-														<Col
-															style={{
-																display: "flex",
-																alignItems: "center",
-																width: "100%",
-																justifyContent: "center",
-															}}
-														>
-															<img
-																style={{
-																	width: "75%",
-																	height: "auto",
-																	borderRadius: 10,
-																}}
-																src={customerSiteList.picURL}
-																alt={customerSiteList.siteName}
-																className="sitePic"
-															/>
-														</Col>
-													</Row>
-													<br></br>
-													<blockquote className="blockquote mb-0">
-														<Card.Footer
-															className="text-muted"
-															style={{
-																borderRadius: 20,
-																background: "white",
-															}}
-														/>
-													</blockquote>
-												</Card.Body>
-											</AccordionItemPanel>
-										</Card>
-									</AccordionItem>
-								))}
-					</Accordion>
+																Info
+															</Button>
+														</div>
+													</MDBCardBody>
+												</MDBCard>
+											</MDBCol>
+										</MDBRow>
+									</MDBContainer>
+								</Grid>
+							))}
 				</div>
 
 				<br></br>

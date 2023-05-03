@@ -1,8 +1,11 @@
 .customerSiteList {
-	background: rgb(148, 148, 148);
+	background: #ff512f;
+	background: -webkit-linear-gradient(to left, #f09819, #ff512f);
+	background: linear-gradient(to left, #f09819, #ff512f);
 	background-repeat: no-repeat;
 	min-height: 100vh;
 }
+
 .denied {
 	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761809/images/accessDenied_zhvugi.jpg");
 	background-position: center;
