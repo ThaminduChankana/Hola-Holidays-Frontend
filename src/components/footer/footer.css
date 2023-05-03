@@ -1,0 +1,17 @@
+.footerBox {
+	background: #000000;
+	background: -webkit-linear-gradient(to top, #434343, #000000);
+	background: linear-gradient(to top, #434343, #000000);
+
+	padding: 35px 35px 35px 35px;
+	color: white;
+}
+
+#listElement {
+	text-decoration: none;
+	color: goldenrod;
+}
+
+#listElement:hover {
+	color: white;
+}

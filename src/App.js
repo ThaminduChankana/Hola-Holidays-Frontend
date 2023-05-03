@@ -18,6 +18,7 @@ import SingleSiteForCustomerScreen from "./screens/siteManagement/customerSiteMa
 import SitesListForCustomerScreen from "./screens/siteManagement/customerSiteManagement/sitesListForCustomer/SitesListForCustomerScreen";
 import CustomerLandingScreen from "./screens/static/landingPages/CustomerLandingScreen";
 import AdminLandingScreen from "./screens/static/landingPages/AdminLandingScreen";
+import Footer from "./components/footer/Footer"
 
 function App() {
 	return (
@@ -44,6 +45,7 @@ function App() {
 				<Route path="/" component={SitesListForCustomerScreen} exact />
 				<Route path="/customer-site/:id" component={SingleSiteForCustomerScreen} exact />
 			</main>
+			<Footer />
 		</BrowserRouter>
 	);
 }
