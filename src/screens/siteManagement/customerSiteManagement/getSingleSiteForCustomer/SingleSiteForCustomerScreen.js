@@ -55,9 +55,9 @@ function SingleSiteForCustomerScreen({ match, history }) {
 	}, [match.params.id, customerInfo]);
 
 	return (
-		<div className="siteEditBg">
+		<div className="siteViewBg">
 			<br></br>
-			<MainScreen title={`View Site ${siteName}`}>
+			<MainScreen title={`View Site - ${siteName}`}>
 				<Button
 					variant="success"
 					style={{

@@ -98,27 +98,19 @@ const CustomerEditScreen = () => {
 			icon: "warning",
 			buttons: true,
 			dangerMode: true,
-		})
-			.then((willDelete) => {
-				if (willDelete) {
-					dispatch(customerDeleteProfile(customerInfo));
+		}).then((willDelete) => {
+			if (willDelete) {
+				dispatch(customerDeleteProfile(customerInfo));
 
-					swal({
-						title: "Success!",
-						text: "Deleted Account Successfully",
-						icon: "success",
-						timer: 2000,
-						button: false,
-					});
-				}
-			})
-			.catch((err) => {
 				swal({
-					title: "Error!",
-					text: "Couldn't Delete Account",
-					type: "error",
+					title: "Success!",
+					text: "Deleted Account Successfully",
+					icon: "success",
+					timer: 2000,
+					button: false,
 				});
-			});
+			}
+		});
 	};
 
 	if (customerInfo) {

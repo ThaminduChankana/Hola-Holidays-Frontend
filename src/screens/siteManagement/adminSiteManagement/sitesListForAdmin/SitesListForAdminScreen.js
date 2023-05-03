@@ -43,26 +43,18 @@ const SitesListForAdminScreen = () => {
 			icon: "warning",
 			buttons: true,
 			dangerMode: true,
-		})
-			.then((willDelete) => {
-				if (willDelete) {
-					dispatch(deleteSiteByAdmin(id));
-					swal({
-						title: "Success!",
-						text: "Deleted Site Successfully",
-						icon: "success",
-						timer: 2000,
-						button: false,
-					});
-				}
-			})
-			.catch((err) => {
+		}).then((willDelete) => {
+			if (willDelete) {
+				dispatch(deleteSiteByAdmin(id));
 				swal({
-					title: "Error!",
-					text: "Couldn't Delete Site",
-					type: "error",
+					title: "Success!",
+					text: "Deleted Site Successfully",
+					icon: "success",
+					timer: 2000,
+					button: false,
 				});
-			});
+			}
+		});
 	};
 	const searchHandler = (e) => {
 		setSearch(e.target.value.toLowerCase());
@@ -120,6 +112,9 @@ const SitesListForAdminScreen = () => {
 
 					<Button variant="success" href="/admin" style={{ float: "left", fontSize: "15px" }}>
 						Back to Dashboard
+					</Button>
+					<Button variant="success" href="/admin-site-create" style={{ float: "right", fontSize: "15px" }}>
+						+ Add A New Site
 					</Button>
 
 					<br></br>

@@ -49,26 +49,18 @@ const CustomerListForAdminScreen = () => {
 			icon: "warning",
 			buttons: true,
 			dangerMode: true,
-		})
-			.then((willDelete) => {
-				if (willDelete) {
-					dispatch(customerDeleteProfileById(id));
-					swal({
-						title: "Success!",
-						text: "Deleted Account Successfully",
-						icon: "success",
-						timer: 2000,
-						button: false,
-					});
-				}
-			})
-			.catch((err) => {
+		}).then((willDelete) => {
+			if (willDelete) {
+				dispatch(customerDeleteProfileById(id));
 				swal({
-					title: "Error!",
-					text: "Couldn't Delete Account",
-					type: "error",
+					title: "Success!",
+					text: "Deleted Account Successfully",
+					icon: "success",
+					timer: 2000,
+					button: false,
 				});
-			});
+			}
+		});
 	};
 
 	const searchHandler = (e) => {
