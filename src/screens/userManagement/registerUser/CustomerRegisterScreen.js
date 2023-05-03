@@ -156,10 +156,9 @@ const CustomerRegisterScreen = () => {
 										<Form.Control
 											type="text"
 											value={telephone}
-											placeholder="Enter Telephone Number"
+											placeholder="Enter Telephone Number With Country Code"
 											onChange={(e) => setTelephone(e.target.value)}
 											required
-											maxLength={10}
 										/>
 									</Form.Group>
 									<br></br>

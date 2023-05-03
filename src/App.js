@@ -16,6 +16,8 @@ import SitesListForAdminScreen from "./screens/siteManagement/adminSiteManagemen
 import SingleSiteForAdminScreen from "./screens/siteManagement/adminSiteManagement/getSingleSiteForAdmin/SingleSiteForAdminScreen";
 import SingleSiteForCustomerScreen from "./screens/siteManagement/customerSiteManagement/getSingleSiteForCustomer/SingleSiteForCustomerScreen";
 import SitesListForCustomerScreen from "./screens/siteManagement/customerSiteManagement/sitesListForCustomer/SitesListForCustomerScreen";
+import CustomerLandingScreen from "./screens/static/landingPages/CustomerLandingScreen";
+import AdminLandingScreen from "./screens/static/landingPages/AdminLandingScreen";
 
 function App() {
 	return (
@@ -24,6 +26,8 @@ function App() {
 				<Route path="/access-denied" component={AccessDenied} />
 				<Route path="/admin-login" component={AdminLogin} />
 				<Route path="/customer-login" component={CustomerLogin} />
+				<Route path="/customer" component={CustomerLandingScreen} />
+				<Route path="/admin" component={AdminLandingScreen} />
 				<Route path="/admin-register" component={AdminRegisterScreen} exact />
 				<Route path="/customer-register" component={CustomerRegisterScreen} exact />
 				<Route path="/admin-view" component={AdminViewScreen} exact />
