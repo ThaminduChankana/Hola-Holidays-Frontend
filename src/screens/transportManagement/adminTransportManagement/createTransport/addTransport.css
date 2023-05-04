@@ -1,0 +1,15 @@
+.containerMain {
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
+}
+.backgroundT {
+	background: url("https://res.cloudinary.com/dfmnpw0yp/image/upload/v1683140074/Hola%20Holidays/assets/t5uwkiteevrxl2rjsab1.jpg");
+	background-position: center;
+	background-size: cover;
+}
+.denied {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761809/images/accessDenied_zhvugi.jpg");
+	background-position: center;
+	background-size: cover;
+}

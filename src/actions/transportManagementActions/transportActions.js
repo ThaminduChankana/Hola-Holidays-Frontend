@@ -17,7 +17,7 @@ import {
 } from '../../constants/transportManagementConstants/transportConstant';
 import axios from "axios";
 import { API_ENDPOINT } from "../../config";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 export function authHeaderForAdmin() {
 	let admin = JSON.parse(localStorage.getItem("adminInfo"));
@@ -35,7 +35,7 @@ export const transportListForCustomer = () => async (dispatch, getState) => {
 			type: TRANSPORT_LIST_FOR_CUSTOMER_REQUEST,
 		});
 
-		const { data } = await axios.get(`${API_ENDPOINT}/transport/get`);
+		const { data } = await axios.get(`${API_ENDPOINT}/transport/`);
 
 		dispatch({
 			type: TRANSPORT_LIST_FOR_CUSTOMER_SUCCESS,
@@ -66,7 +66,7 @@ export const transportListForAdmin = () => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.get(`${API_ENDPOINT}/transport/get`, config);
+		const { data } = await axios.get(`${API_ENDPOINT}/transport/admin/get`, config);
 
 		dispatch({
 			type: TRANSPORT_LIST_FOR_ADMIN_SUCCESS,
@@ -81,7 +81,7 @@ export const transportListForAdmin = () => async (dispatch, getState) => {
 	}
 };
 
-export const transportCreate =
+export const createTransport = 
 	(
 		licensePlate,
 		startingStation,
@@ -112,7 +112,7 @@ export const transportCreate =
 			};
 
 			const { data } = await axios.post(
-				`${API_ENDPOINT}/transport/add`,
+				`${API_ENDPOINT}/transport/admin/add`,
 				{
 					licensePlate,
 					startingStation,
@@ -132,14 +132,14 @@ export const transportCreate =
 				type: TRANSPORT_CREATE_SUCCESS,
 				payload: data,
 			});
-			swal.fire({
+			Swal.fire({
 				title: "Success",
 				text: "Bus entry added successfully",
 				icon: "success",
 				timer: 2000,
 			});
 			setTimeout(function () {
-				window.location.href = "/transport/get";
+				window.location.href = "/admin-transport";
 			}, 2000);
 		} catch (error) {
 			const message = error.response && error.response.data.message ? error.response.data.message : error.message;
@@ -150,7 +150,7 @@ export const transportCreate =
 		}
 	};
 
-export const transportUpdateByAdmin =
+export const UpdateTransport =
 	(
 		id,
 		licensePlate,
@@ -182,7 +182,7 @@ export const transportUpdateByAdmin =
 			};
 
 			const { data } = await axios.put(
-				`${API_ENDPOINT}/transport/get/${id}`,
+				`${API_ENDPOINT}/transport/admin/get/${id}`,
 				{
 					licensePlate,
 					startingStation,
@@ -193,7 +193,7 @@ export const transportUpdateByAdmin =
 					facilities,
 					cityStops,
 					mobileNo,
-					leavingTime
+					leavingTime,
 				},
 				config
 			);
@@ -211,7 +211,7 @@ export const transportUpdateByAdmin =
 		}
 	};
 
-export const transportDeleteByAdmin = (id) => async (dispatch, getState) => {
+export const deleteTranspoterByAdmin = (id) => async (dispatch, getState) => {
 	try {
 		dispatch({
 			type: TRANSPORT_DELETE_BY_ADMIN_REQUEST,
@@ -227,7 +227,7 @@ export const transportDeleteByAdmin = (id) => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.delete(`${API_ENDPOINT}/transport/get/${id}`, config);
+		const { data } = await axios.delete(`${API_ENDPOINT}/transport/admin/get/${id}`, config);
 
 		dispatch({
 			type: TRANSPORT_DELETE_BY_ADMIN_SUCCESS,

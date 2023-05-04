@@ -35,7 +35,7 @@ export const adminTransportListReducer = (state = { transport: [] }, action) => 
 		case TRANSPORT_LIST_FOR_ADMIN_REQUEST:
 			return { loading: true };
 		case TRANSPORT_LIST_FOR_ADMIN_SUCCESS:
-			return { loading: false, transpot: action.payload };
+			return { loading: false, transport: action.payload };
 		case TRANSPORT_LIST_FOR_ADMIN_FAIL:
 			return { loading: false, error: action.payload };
 

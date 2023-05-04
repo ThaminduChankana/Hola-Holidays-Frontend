@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import Loading from "../../../../components/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage";
-import { createTransport } from "../../../../actions/transportManagementActions/transportActions";
-import "./addTransport.css";
+import { UpdateTransport, authHeaderForAdmin } from "../../../../actions/transportManagementActions/transportActions";
+import "./updateTransport.css";
+import swal from "sweetalert";
+import axios from "axios";
+import { API_ENDPOINT } from "../../../../config";
 
-
-function AddTransport(){
+function EditTransport({ match, history }){
     const [licensePlate, setLicensePlate] = useState("");
 	const [startingStation, setStartingStation] = useState("");
 	const [destinationStation, setDestinationStation] = useState("");
@@ -20,70 +22,42 @@ function AddTransport(){
 	const [mobileNo, setMobileNo] = useState("");
 	const [leavingTime, setLeavingTime] = useState("");
 
-    const [message] = useState(null);
-
     const dispatch = useDispatch();
 
-	const transportCreate = useSelector((state) => state.transportCreate);
-	const { loading, error } = transportCreate;
+	const transportUpdateByAdmin = useSelector((state) => state.transportUpdateByAdmin);
+	const { loading, error } = transportUpdateByAdmin;
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
 
-    const resetHandler = () => {
-		setLicensePlate("");
-		setStartingStation("");
-		setDestinationStation("");
-		setTotalTravelTime("");
-		setTotalNumberOfSeats("");
-		setTicketPrice("");
-		setFacilities("");
-		setCityStops("");
-		setMobileNo("");
-		setLeavingTime("");
-	};
+    useEffect(() => {
+        if (adminInfo != null) {
+			const fetching = async () => {
+				const { data } = await axios.get(`${API_ENDPOINT}/transport/admin/get/${match.params.id}`, {
+					headers: authHeaderForAdmin(),
+				});
+				setLicensePlate(data.licensePlate);
+                setStartingStation(data.startingStation);
+                setDestinationStation (data.destinationStation);
+                setTotalTravelTime (data.totalTravelTime);
+                setTotalNumberOfSeats (data.totalNumberOfSeats);
+                setTicketPrice (data.ticketPrice);
+                setFacilities (data.facilities);
+                setCityStops (data.cityStops);
+                setMobileNo (data.mobileNo);
+                setLeavingTime (data.leavingTime);
+			};
 
-    const demoHandler = () => {
-		setLicensePlate("DM2345");
-		setStartingStation("Colombo");
-		setDestinationStation("Kandy");
-		setTotalTravelTime("03:30");
-		setTotalNumberOfSeats(50);
-		setTicketPrice(800);
-		setFacilities(
-            ["air conditioned",
-            "wifi",
-            "TV"]
-		);
-		setCityStops(
-			["Kelaniya",
-            "Nittambuwa",
-            "Kegalle",
-            "Peradeniya",
-            "Kandy"]
-		);
-		setMobileNo("0772345678");
-		setLeavingTime("7AM");
-	};
+			fetching();
+		}
+    }, [match.params.id, adminInfo]);
 
     const submitHandler = (e) => {
 		e.preventDefault();
 
-		if (
-			!licensePlate ||
-			!startingStation ||
-			!destinationStation ||
-			!totalTravelTime ||
-			!totalNumberOfSeats ||
-			!ticketPrice ||
-			!facilities ||
-			!cityStops ||
-			!mobileNo ||
-			!leavingTime
-		)
-			return;
 		dispatch(
-			createTransport( 
+			UpdateTransport( 
+                match.params.id,
 				licensePlate,
                 startingStation,
                 destinationStation,
@@ -97,19 +71,38 @@ function AddTransport(){
 			)
 		);
 
-		resetHandler();
+        if(
+            !licensePlate ||
+			!startingStation ||
+			!destinationStation ||
+			!totalTravelTime ||
+			!totalNumberOfSeats ||
+			!ticketPrice ||
+			!facilities ||
+			!cityStops ||
+			!mobileNo ||
+			!leavingTime
+        )
+        return ;
 
-		setTimeout(function () {
+        swal({
+            title: "Success !!!",
+			text: "Update Successful.",
+			icon: "success",
+			button: false,
+        });
+
+        setTimeout(function () {
 			window.location.href = "/admin-transport";
 		}, 2000)
 	};
 
-    useEffect(() => {}, []);
+    
 	if (adminInfo) {
 		return (
 			<div className="backgroundT">
 				<br></br>
-				<MainScreen title="Add A New Bus Entry">
+				<MainScreen title="Update Bus Entry Details">
 					<Button
 						variant="success"
 						style={{
@@ -140,7 +133,6 @@ function AddTransport(){
 						<div className="containerT">
 							<div>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-								{message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
 								{loading && <Loading />}
 							</div>
 							<br></br>
@@ -151,10 +143,9 @@ function AddTransport(){
 											<Form.Label style={{ fontWeight: "bold"}}>License Plate</Form.Label>
 											<Form.Control
 												type="text"
-												placeholder="Enter License Plate"
 												value={licensePlate}
 												onChange={(e) => setLicensePlate(e.target.value)}
-												required
+												readOnly
 											/>
 										</Form.Group>
 										<br></br>
@@ -163,7 +154,6 @@ function AddTransport(){
 											<Form.Control
 												type="text"
 												value={startingStation}
-												placeholder="Enter Starting Station"
 												onChange={(e) => setStartingStation(e.target.value)}
 												required
 											/>
@@ -174,7 +164,6 @@ function AddTransport(){
 											<Form.Control
 												type="text"
 												value={destinationStation}
-												placeholder="Enter Destination Station"
 												onChange={(e) => setDestinationStation(e.target.value)}
 												required
 											/>
@@ -185,7 +174,6 @@ function AddTransport(){
 											<Form.Control
 												type="text"
 												value={totalTravelTime}
-												placeholder="Enter Total Travel Time"
 												onChange={(e) => setTotalTravelTime(e.target.value)}
 												required
 											/>
@@ -196,7 +184,6 @@ function AddTransport(){
 											<Form.Control
 												type="number"
 												value={totalNumberOfSeats}
-												placeholder="Enter Total Number Of Seats"
 												onChange={(e) => setTotalNumberOfSeats(e.target.value)}
 												required
 											/>
@@ -207,7 +194,6 @@ function AddTransport(){
 											<Form.Control
 												type="number"
 												value={ticketPrice}
-												placeholder="Enter Ticket Price"
 												onChange={(e) => setTicketPrice(e.target.value)}
 												required
 											/>
@@ -218,7 +204,6 @@ function AddTransport(){
 											<Form.Control
 												type="text"
 												value={facilities}
-												placeholder="Enter Facilities"
 												onChange={(e) => setFacilities(e.target.value)}
 												required
 												rows={3}
@@ -230,7 +215,6 @@ function AddTransport(){
 											<Form.Control
 												type="text"
 												value={cityStops}
-												placeholder="Enter City Stops"
 												onChange={(e) => setCityStops(e.target.value)}
 												required
 												rows={3}
@@ -242,7 +226,6 @@ function AddTransport(){
 											<Form.Control
 												type="text"
 												value={mobileNo}
-												placeholder="Enter Mobile Number"
 												onChange={(e) => setMobileNo(e.target.value)}
 												required
 											/>
@@ -253,7 +236,6 @@ function AddTransport(){
 											<Form.Control
 												type="text"
 												value={leavingTime}
-												placeholder="Enter Leaving Time"
 												onChange={(e) => setLeavingTime(e.target.value)}
 												required
 											/>
@@ -267,30 +249,9 @@ function AddTransport(){
 												marginTop: 10,
 											}}
 										>
-											Add Bus Entry
+											Update Bus Entry
 										</Button>
 										&emsp;
-										<Button
-											variant="danger"
-											onClick={resetHandler}
-											style={{
-												fontSize: 15,
-												marginTop: 10,
-											}}
-										>
-											Reset Form
-										</Button>
-										&emsp;
-										<Button
-											variant="info"
-											onClick={demoHandler}
-											style={{
-												fontSize: 15,
-												marginTop: 10,
-											}}
-										>
-											Demo
-										</Button>
 									</Form>
 								</Col>
 								<Col
@@ -320,4 +281,4 @@ function AddTransport(){
 
 }
 
-export default AddTransport;
+export default EditTransport;
