@@ -21,6 +21,7 @@ import AdminLandingScreen from "./screens/static/landingPages/AdminLandingScreen
 import AddTransport from "./screens/transportManagement/adminTransportManagement/createTransport/addTransport";
 import TransportListForAdmin from "./screens/transportManagement/adminTransportManagement/getAllTransport/getAllTransport";
 import EditTransport from "./screens/transportManagement/adminTransportManagement/updateTransport/updateTransport";
+import Footer from "./components/footer/Footer";
 
 function App() {
 	return (
@@ -44,13 +45,14 @@ function App() {
 				<Route path="/admin-sites" component={SitesListForAdminScreen} exact />
 				<Route path="/admin-site-edit/:id" component={SingleSiteForAdminScreen} exact />
 
-				<Route path="/customer-sites" component={SitesListForCustomerScreen} exact />
+				<Route path="/" component={SitesListForCustomerScreen} exact />
 				<Route path="/customer-site/:id" component={SingleSiteForCustomerScreen} exact />
 
 				<Route path="/admin-transport" component={TransportListForAdmin} exact />
 				<Route path="/admin-transport-add" component={AddTransport} exact /> 
 				<Route path="/admin-transport-edit/:id" component={EditTransport} exact /> 
 			</main>
+			<Footer />
 		</BrowserRouter>
 	);
 }
