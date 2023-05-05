@@ -26,3 +26,20 @@ button:hover {
 .Navbar.rightSide.a:hover {
 	color: #a9a9a9;
 }
+.direct {
+	text-decoration: none;
+}
+.customSwalBtn {
+	background-color: rgba(214, 130, 47, 1);
+	border-left-color: rgba(214, 130, 47, 1);
+	border-right-color: rgba(214, 130, 47, 1);
+	border: 0;
+	border-radius: 3px;
+	box-shadow: none;
+	color: #fff;
+	cursor: pointer;
+	font-size: 17px;
+	font-weight: 500;
+	margin: 30px 5px 0px 5px;
+	padding: 10px 32px;
+}

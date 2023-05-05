@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import MainScreen from "../../../../components/MainScreen";
 import axios from "axios";
 import { Button, Card, Form, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
 import "./singleSite.css";
 import { API_ENDPOINT } from "../../../../config";
 
@@ -21,9 +20,6 @@ function SingleSiteForCustomerScreen({ match, history }) {
 	const [specialInstructions, setSpecialInstructions] = useState("");
 	const [moreInfoURL, setMoreInfoURL] = useState("");
 
-	const customer_Login = useSelector((state) => state.customer_Login);
-	const { customerInfo } = customer_Login;
-
 	const openInNewTab = (url) => {
 		const newWindow = window.open(url, "_blank", "noopener,noreferrer");
 		if (newWindow) newWindow.opener = null;
@@ -34,25 +30,23 @@ function SingleSiteForCustomerScreen({ match, history }) {
 	};
 
 	useEffect(() => {
-		if (customerInfo != null) {
-			const fetching = async () => {
-				const { data } = await axios.get(`${API_ENDPOINT}/sites/get/${match.params.id}`);
-				setSiteName(data.siteName);
-				setCountry(data.country);
-				setProvince(data.province);
-				setSiteLocation(data.siteLocation);
-				setPostalCode(data.postalCode);
-				setDescription(data.description);
-				setPicUrl(data.picURL);
-				setRecommendations(data.recommendations);
-				setSpecialEvents(data.specialEvents);
-				setSpecialInstructions(data.specialInstructions);
-				setMoreInfoURL(data.moreInfoURL);
-			};
+		const fetching = async () => {
+			const { data } = await axios.get(`${API_ENDPOINT}/sites/get/${match.params.id}`);
+			setSiteName(data.siteName);
+			setCountry(data.country);
+			setProvince(data.province);
+			setSiteLocation(data.siteLocation);
+			setPostalCode(data.postalCode);
+			setDescription(data.description);
+			setPicUrl(data.picURL);
+			setRecommendations(data.recommendations);
+			setSpecialEvents(data.specialEvents);
+			setSpecialInstructions(data.specialInstructions);
+			setMoreInfoURL(data.moreInfoURL);
+		};
 
-			fetching();
-		}
-	}, [match.params.id, customerInfo]);
+		fetching();
+	}, [match.params.id]);
 
 	return (
 		<div className="siteViewBg">
