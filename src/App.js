@@ -22,6 +22,7 @@ import AddTransport from "./screens/transportManagement/adminTransportManagement
 import TransportListForAdmin from "./screens/transportManagement/adminTransportManagement/getAllTransport/getAllTransport";
 import EditTransport from "./screens/transportManagement/adminTransportManagement/updateTransport/updateTransport";
 import Footer from "./components/footer/Footer";
+import TransportListForCustomers from "./screens/transportManagement/customerTransportManagement/transportListForCustomer/transportListForCustomer";
 
 function App() {
 	return (
@@ -51,6 +52,8 @@ function App() {
 				<Route path="/admin-transport" component={TransportListForAdmin} exact />
 				<Route path="/admin-transport-add" component={AddTransport} exact /> 
 				<Route path="/admin-transport-edit/:id" component={EditTransport} exact /> 
+				<Route path="/customer-transport" component={TransportListForCustomers} exact />
+				
 			</main>
 			<Footer />
 		</BrowserRouter>
