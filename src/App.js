@@ -1,5 +1,6 @@
 import { BrowserRouter, Route } from "react-router-dom";
 import React from "react";
+import Header from "./components/header/Header";
 import AccessDenied from "./components/AccessDenied";
 import AdminRegisterScreen from "./screens/userManagement/registerUser/AdminRegisterScreen";
 import CustomerRegisterScreen from "./screens/userManagement/registerUser/CustomerRegisterScreen";
@@ -23,7 +24,7 @@ import TransportListForAdmin from "./screens/transportManagement/adminTransportM
 import EditTransport from "./screens/transportManagement/adminTransportManagement/updateTransport/updateTransport";
 import Footer from "./components/footer/Footer";
 import TransportListForCustomers from "./screens/transportManagement/customerTransportManagement/transportListForCustomer/transportListForCustomer";;
-import Header from "./components/header/Header";
+
 
 function App() {
 	return (
