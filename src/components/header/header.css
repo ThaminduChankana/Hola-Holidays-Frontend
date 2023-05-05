@@ -1,0 +1,28 @@
+button:hover {
+	cursor: pointer;
+}
+
+.Navbar {
+	width: 100%;
+	height: 200px;
+	font-family: Arial, Helvetica, sans-serif;
+	display: flex;
+	background: #000000;
+	background: -webkit-linear-gradient(to top, #434343, #000000);
+	background: linear-gradient(to top, #434343, #000000);
+}
+
+.Navbar .leftSide {
+	flex: 15%;
+}
+
+.Navbar .rightSide {
+	flex: 80%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.Navbar.rightSide.a:hover {
+	color: #a9a9a9;
+}

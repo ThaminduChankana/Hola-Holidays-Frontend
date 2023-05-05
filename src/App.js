@@ -18,11 +18,13 @@ import SingleSiteForCustomerScreen from "./screens/siteManagement/customerSiteMa
 import SitesListForCustomerScreen from "./screens/siteManagement/customerSiteManagement/sitesListForCustomer/SitesListForCustomerScreen";
 import CustomerLandingScreen from "./screens/static/landingPages/CustomerLandingScreen";
 import AdminLandingScreen from "./screens/static/landingPages/AdminLandingScreen";
-import Footer from "./components/footer/Footer"
+import Footer from "./components/footer/Footer";
+import Header from "./components/header/Header";
 
 function App() {
 	return (
 		<BrowserRouter>
+			<Header />
 			<main>
 				<Route path="/access-denied" component={AccessDenied} />
 				<Route path="/admin-login" component={AdminLogin} />
