@@ -3,6 +3,7 @@ import "./header.css";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Header({ setSearch }) {
 	const admin_Login = useSelector((state) => state.admin_Login);
@@ -10,6 +11,21 @@ function Header({ setSearch }) {
 
 	const customer_Login = useSelector((state) => state.customer_Login);
 	const { customerInfo } = customer_Login;
+
+	const handleClick = () => {
+		Swal.fire({
+			icon: "info",
+			title: "What do you want to do? ",
+			html: `Login or Sign up ? <br/><br/>
+		
+			<a href="/customer-login" style="text-decoration:none"><button class="SwalBtn1 customSwalBtn">Login</button></a> &emsp;
+			
+			<a href="/customer-register" style="text-decoration:none, color:white"><button class="SwalBtn1 customSwalBtn">Sign up</button></a> <br/>`,
+
+			showCancelButton: false,
+			showConfirmButton: false,
+		});
+	};
 
 	return (
 		<div className="Navbar">
@@ -76,6 +92,7 @@ function Header({ setSearch }) {
 							}}
 							variant="primary"
 							className="logoutBtn"
+							onClick={handleClick}
 						>
 							Sign In / Sign Up
 						</Button>

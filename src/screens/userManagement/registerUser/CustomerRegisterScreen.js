@@ -91,19 +91,6 @@ const CustomerRegisterScreen = () => {
 		<div className="registerBg">
 			<br></br>
 			<MainScreen title="REGISTER - CUSTOMER">
-				<Button
-					variant="success"
-					style={{
-						float: "left",
-						marginTop: 5,
-						fontSize: 15,
-					}}
-					href="/customer"
-				>
-					{" "}
-					Back to Dashboard
-				</Button>
-				<br></br>
 				<br></br>
 				<br></br>
 				<Card
