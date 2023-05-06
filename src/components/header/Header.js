@@ -43,7 +43,11 @@ function Header({ setSearch }) {
 							HOME
 						</Button>
 
-						<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }} href="/">
+						<Button
+							variant=""
+							style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}
+							href="/tour-guide-customer-list"
+						>
 							TOUR GUIDE
 						</Button>
 
