@@ -6,19 +6,15 @@
   }
   
   .bus-detail-box {
-    margin: 20px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    width: 900px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    width: 850px;
+    height: 230px;
     border: 1px solid #ccc;
-    margin-left: 200px;
     background-color: #d6e2eb;
+    margin-left: 200px;
   }
   
   .bus-detail-box h3 {
@@ -32,9 +28,98 @@
     margin-bottom: 5px;
   }
 
-  h1 {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    font-family: Arial, sans-serif;
+
+
+  .mainD {
+    padding: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
   }
+  
+  @media screen and (max-width: 768px) {
+    .mainD {
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 24px;
+      text-align: center;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+    }
+  
+    .form-control {
+      font-size: 14px;
+      padding: 12px 16px;
+      border-radius: 20px;
+    }
+  
+    .bus-detail-box {
+      margin-bottom: 30px;
+    }
+  
+    .column-left,
+    .column-right {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    .mainD {
+      padding: 30px;
+    }
+  
+    h1 {
+      font-size: 28px;
+    }
+  
+    .form-control {
+      font-size: 16px;
+      padding: 14px 18px;
+      border-radius: 20px;
+    }
+  
+    .bus-detail-box {
+      margin-bottom: 40px;
+    }
+  
+    .column-left,
+    .column-right {
+      width: 50%;
+      display: inline-block;
+      vertical-align: top;
+    }
+  
+    .column-right {
+      float: right;
+    }
+  }
+  
+  @media screen and (min-width: 993px) {
+    h1 {
+      font-size: 36px;
+    }
+  
+    .form-control {
+      font-size: 18px;
+      padding: 16px 20px;
+      border-radius: 20px;
+    }
+  
+    .bus-detail-box {
+      margin-bottom: 50px;
+    }
+  
+    .column-left,
+    .column-right {
+      width: 50%;
+      display: inline-block;
+      vertical-align: top;
+    }
+  
+    .column-right {
+      float: right;
+    }
+  }
+  

@@ -82,6 +82,19 @@ const TransportListForAdmin = () => {
 					</Row>
 					<br></br>
 
+					<Button
+						variant="success"
+						style={{
+							float: "left",
+							marginTop: 5,
+							fontSize: 15,
+						}}
+						href="/admin"
+					>
+						{" "}
+						Back to Admin Main Page
+					</Button>
+
 					<Button variant="success" href="/admin-transport-add" style={{ float: "right", fontSize: "15px" }}>
 						Add A New Bus Entry
 					</Button>

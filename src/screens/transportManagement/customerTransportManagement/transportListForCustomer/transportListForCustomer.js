@@ -30,9 +30,9 @@ function TransportListForCustomers() {
     });
 
     return(
-        <div style={{backgroundColor: "#F8F8F8"}}>
+        <div className="mainD">
             <br/><br/>
-            <h1 style={{ marginLeft: '70px' }}>Public Transportation - Bus </h1> <hr/>
+            <h1 style={{marginLeft: '70px', fontSize: '36px', fontWeight: 'bold', fontFamily: 'Arial'}}>Public Transportation - Bus</h1> <hr/>
             <div className="d-flex justify-content-between align-items-center">
                 <div className="col-md-5" style={{ marginLeft: '200px' }}>
                     <div className="form-group">
@@ -43,7 +43,7 @@ function TransportListForCustomers() {
                 </div>
                 <div className="form-group" style={{marginRight: '300px'}}>
                     <select className="form-control rounded-pill" id="leavingTime" 
-                    value={selectedLeavingTime} onChange={handleLeavingTimeChange}>
+                    value={selectedLeavingTime} onChange={handleLeavingTimeChange}style={{width:'250px'}}>
                     <option value="">Select Bus Leaving Time</option>
                     <option value="5AM">5AM</option>
                     <option value="6AM">6AM</option>
