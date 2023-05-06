@@ -20,6 +20,10 @@ import CustomerLandingScreen from "./screens/static/landingPages/CustomerLanding
 import AdminLandingScreen from "./screens/static/landingPages/AdminLandingScreen";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
+import TourGuideAdd from "./screens/tourguideManagement/TourGuideAdd";
+import TourGuideViewList from "./screens/tourguideManagement/TourGuideViewList";
+import TourGuideUpdate from "./screens/tourguideManagement/TourGuideUpdate";
+import TourGuideCustomerViewList from "./screens/tourguideManagement/TourGuideCustomerList";
 
 function App() {
 	return (
@@ -46,6 +50,12 @@ function App() {
 
 				<Route path="/" component={SitesListForCustomerScreen} exact />
 				<Route path="/customer-site/:id" component={SingleSiteForCustomerScreen} exact />
+				
+				<Route path="/tour-guide-add" component={TourGuideAdd} exact />
+				<Route path="/tour-guide-list" component={TourGuideViewList} exact />
+				<Route path="/tour-guide-customer-list" component={TourGuideCustomerViewList} exact />
+				<Route path="/tour-guide-update/:id" component={TourGuideUpdate} exact />
+
 			</main>
 			<Footer />
 		</BrowserRouter>
