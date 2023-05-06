@@ -94,6 +94,20 @@ const AdminLandingScreen = ({ history }) => {
 											Site Management
 										</Button>
 									</Link>
+									<br></br>
+									<br></br>
+									<br></br>
+									<Link to="/tour-guide-list">
+										<Button
+											id="landingBtn"
+											variant="success"
+											size="lg"
+											className="landingbutton"
+											style={{ width: 350, height: 75 }}
+										>
+											Tour Guide Management
+										</Button>
+									</Link>
 								</div>
 								<br></br>
 							</div>
