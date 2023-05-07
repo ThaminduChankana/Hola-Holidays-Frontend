@@ -29,6 +29,7 @@ import RoomDetails from "./screens/hotelManagement/rooms/RoomDetails";
 import CreateRoom from "./screens/hotelManagement/rooms/CreateRoom";
 import UpdateRoom from "./screens/hotelManagement/rooms/UpdateRoom";
 import CreateReservation from "./screens/hotelManagement/reservations/CreateReservation";
+import ReservationList from "./screens/hotelManagement/reservations/ReservationList";
 
 function App() {
 	return (
@@ -67,6 +68,7 @@ function App() {
 				<Route path="/room-update/:id" component={UpdateRoom} exact />
 
 				<Route path="/create-reservation/:id" component={CreateReservation} exact />
+				<Route path="/reservations" component={ReservationList} exact />
 			</main>
 			<Footer />
 		</BrowserRouter>
