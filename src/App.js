@@ -22,6 +22,7 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import AdminHotelList from "./screens/hotelManagement/hotels/AdminHotelList";
 import CustomerHotelView from "./screens/hotelManagement/hotels/CustomerHotelView";
+import CreateHotel from "./screens/hotelManagement/hotels/CreateHotel";
 
 function App() {
 	return (
@@ -51,6 +52,7 @@ function App() {
 
 				<Route path="/hotels-admin-view" component={AdminHotelList} exact />
 				<Route path="/hotels" component={CustomerHotelView} exact />
+				<Route path="/admin-hotel-create" component={CreateHotel} exact />
 			</main>
 			<Footer />
 		</BrowserRouter>
