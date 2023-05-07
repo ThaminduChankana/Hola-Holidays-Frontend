@@ -124,7 +124,7 @@ export const CustomerGuideListAction = () => async (dispatch, getState) => {
 
         
 		const { data } = await axios.get(`${API_ENDPOINT}/guide/customer/get`);
-  
+      console.log(data);
 		dispatch({
 			type: TOUR_GUIDE_CUSTOMER_VIEW_SUCCESS,
 			payload: data,

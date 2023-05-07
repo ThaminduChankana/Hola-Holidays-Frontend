@@ -14,7 +14,7 @@ export default function TourGuideCustomerViewList() {
 	const customer_list_Guide = useSelector((state) => state.customer_list_Guide);
 	const { loading, Guides, error } = customer_list_Guide;
 
-	console.log(customer_list_Guide);
+	console.log(Guides);
 
 	const [search, setSearch] = useState("");
 

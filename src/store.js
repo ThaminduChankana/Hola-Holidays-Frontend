@@ -37,6 +37,37 @@ import {
 	GuideDeleteReducer,
 	CustomerGuideViewListReducer,
 } from "./reducers/TourGuideReducers/TourGuideReducers";
+import{
+	customerTransportListReducer,
+	adminTransportListReducer,
+	transportCreateReducer,
+	transportUpdateByAdminReducer,
+	transportDeleteByAdminReducer,
+} from "./reducers/transportManagementReducers/transportReducer";
+
+import {
+	hotelListAdminReducer,
+	hotelListCustomerReducer,
+	hotelCreateReducer,
+	hotelUpdateReducer,
+	hotelDeleteReducer,
+} from "./reducers/hotelManagementReducers/hotelReducer";
+
+import {
+	roomListAdminReducer,
+	roomListCustomerReducer,
+	roomCreateReducer,
+	roomUpdateReducer,
+	roomDeleteReducer,
+} from "./reducers/roomManagementReducers/roomReducer";
+
+import {
+	reservationListReducer,
+	reservationCreateReducer,
+	reservationUpdateReducer,
+	reservationDeleteReducer,
+	hotelReservationListReducer,
+} from "./reducers/reservationManagementReducers/reservationReducer";
 
 const reducer = combineReducers({
 	admin_Login: adminLoginReducer,
@@ -65,6 +96,29 @@ const reducer = combineReducers({
 	Guide_Update: GuideUpdateReducer,
 	Guide_Delete: GuideDeleteReducer,
 	customer_list_Guide: CustomerGuideViewListReducer,
+	hotelListAdmin: hotelListAdminReducer,
+	hotelListCustomer: hotelListCustomerReducer,
+	hotelCreate: hotelCreateReducer,
+	hotelUpdate: hotelUpdateReducer,
+	hotelDelete: hotelDeleteReducer,
+
+	roomListAdmin: roomListAdminReducer,
+	roomListCustomer: roomListCustomerReducer,
+	roomCreate: roomCreateReducer,
+	roomUpdate: roomUpdateReducer,
+	roomDelete: roomDeleteReducer,
+
+	reservationList: reservationListReducer,
+	reservationCreate: reservationCreateReducer,
+	reservationUpdate: reservationUpdateReducer,
+	reservationDelete: reservationDeleteReducer,
+	hotelReservationList: hotelReservationListReducer,
+
+	customerTransportList: customerTransportListReducer,
+	adminTransportList: adminTransportListReducer,
+	transportCreate: transportCreateReducer,
+	transportUpdateByAdmin: transportUpdateByAdminReducer,
+	transportDeleteByAdmin: transportDeleteByAdminReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;
