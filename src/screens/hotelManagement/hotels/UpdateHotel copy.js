@@ -1,50 +1,50 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { createHotelAction } from "../../../actions/hotelManagementActions/hotelAction";
-import Loading from "../../../components/Loading";
-import ErrorMessage from "../../../components/ErrorMessage";
-import MainScreen from "../../../components/MainScreen";
+import { updateHotelAction } from "../../actions/hotelManagementActions/hotelAction";
+import Loading from "../../components/Loading";
+import ErrorMessage from "../../components/ErrorMessage";
+import MainScreen from "../../components/MainScreen";
+import { hotelListReservation } from "../../actions/reservationManagementActions/reservationAction";
+import Table from "react-bootstrap/Table";
+import axios from "axios";
 import "./hotelManagement.css";
+import { authHeader } from "../../actions/userManagementActions/adminActions";
+import { API_ENDPOINT } from "../../config";
 
-const CreateHotel = () => {
+export default function UpdateHotel({ match, history }) {
 	const [hotelName, setHotelName] = useState("");
 	const [address, setAddress] = useState("");
 	const [location, setLocation] = useState("");
 	const [description, setDescription] = useState("");
 	const [facilities, setFacilities] = useState("");
 	const [rules, setRules] = useState("");
-	const [pic, setPic] = useState("");
+	const [pic, setPic] = useState("https://wallpapercave.com/wp/wp3598835.jpg");
 	const [picMessage, setPicMessage] = useState(null);
 
 	const dispatch = useDispatch();
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
 
-	const hotelCreate = useSelector((state) => state.hotelCreate);
-	const { loading, error } = hotelCreate;
+	const hotelUpdate = useSelector((state) => state.hotelUpdate);
+	const { loading, error } = hotelUpdate;
 
-	const resetHandler = () => {
-		setHotelName("");
-		setAddress("");
-		setLocation("");
-		setDescription("");
-		setFacilities("");
-		setRules("");
-	};
-	const demoHandler = async (e) => {
-		e.preventDefault();
-		setHotelName("Granbell Hotel Colombo");
-		setAddress("282/5, Kollupitiya Road, Kollupitiya, 00300 Colombo, Sri Lanka");
-		setLocation("Colombo");
-		setDescription(
-			"Located in Colombo, a few steps from Kollupitiya Beach, Granbell Hotel Colombo has accommodations with an outdoor swimming pool, free private parking, a fitness center and a terrace. Offering a restaurant, the property also has a bar, as well as a sauna and a hot tub. The property provides room service, a 24-hour front desk and currency exchange for guests. The hotel will provide guests with air-conditioned rooms offering a desk, an electric tea pot, a fridge, a safety deposit box, a flat-screen TV and a private bathroom with a shower. Free WiFi is accessible to all guests, while certain rooms also offer a balcony. At Granbell Hotel Colombo the rooms are equipped with bed linen and towels. The accommodation offers an à la carte or continental breakfast. Popular points of interest near Granbell Hotel Colombo include Bambalapitiya Beach, Galle Face Beach and Bambalapitiya Railway Station. The nearest airport is Ratmalana International Airport, 12.1 km from the hotel. Couples in particular like the location – they rated it 9.1 for a two-person trip."
-		);
-		setFacilities("Outdoor swimming pool, Free WiFi , Spa");
-		setRules(
-			"Check-in between 2pm to 11.30 pm , Check-out between 7am to 12.00 pm, Cancellation and prepayment policies vary according to accommodations type"
-		);
-	};
+	useEffect(() => {
+		const fetching = async () => {
+			const { data } = await axios.get(`${API_ENDPOINT}/hotels/hotel/${match.params.id}`, {
+				headers: authHeader(),
+			});
+			setHotelName(data.hotelName);
+			setAddress(data.address);
+			setLocation(data.location);
+			setDescription(data.description);
+			setFacilities(data.facilities);
+			setRules(data.rules);
+			setPic(data.pic);
+		};
+
+		fetching();
+	}, [match.params.id, dispatch]);
 
 	const postDetails = (pics) => {
 		if (!pics) {
@@ -75,10 +75,9 @@ const CreateHotel = () => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 
-		dispatch(createHotelAction(hotelName, address, location, description, facilities, rules, pic));
+		dispatch(updateHotelAction(match.params.id, hotelName, address, location, description, facilities, rules, pic));
 	};
 
-	useEffect(() => {}, []);
 	if (adminInfo) {
 		return (
 			<div>
@@ -86,14 +85,42 @@ const CreateHotel = () => {
 				<MainScreen title="">
 					<br></br>
 					<br></br>
+					<div className="row">
+						<span style={{ display: "flex" }}>
+							{/* <h1
+								style={{
+									fontSize: "45px",
+									fontWeight: "bold",
+									marginLeft: "125px",
+									color: "black",
+								}}
+							>
+								Edit Hotel
+							</h1> */}
+							<Button
+								href={`/room-details/${match.params.id}`}
+								style={{ marginLeft: "900px", width: "50px", height: "50px", fontSize: "20px" }}
+							>
+								<i class="fa fa-bed" aria-hidden="true"></i>
+							</Button>
+
+							<Button
+								href={`/hotel-reservations/${match.params.id}`}
+								style={{ marginLeft: "30px", width: "50px", height: "50px", fontSize: "20px" }}
+							>
+								<i class="fa fa-calendar" aria-hidden="true"></i>
+							</Button>
+						</span>
+					</div>
+					<br></br>
+					<br></br>
 					<Card
 						style={{
 							width: "80%",
 							borderWidth: 0,
-							outline: "none",
+							border: "2px solid black",
 							marginLeft: 110,
 							borderRadius: 0,
-							border: "2px solid black",
 						}}
 					>
 						<div
@@ -108,7 +135,6 @@ const CreateHotel = () => {
 							{" "}
 							<img
 								src="http://travelji.com/wp-content/uploads/Hotel-Tips.jpg"
-								alt=""
 								style={{
 									width: "100%",
 									height: "250px",
@@ -116,7 +142,7 @@ const CreateHotel = () => {
 								}}
 							></img>
 							<div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
-								Add Hotel
+								Update Hotel
 							</div>
 						</div>
 						<Card.Body style={{ marginLeft: "10%", marginRight: "10%", marginTop: "50px", marginBottom: "50px" }}>
@@ -171,7 +197,7 @@ const CreateHotel = () => {
 								<Form.Group controlId="description">
 									<Form.Control
 										style={{
-											height: 60,
+											height: 80,
 											fontSize: 18,
 											padding: "20px",
 										}}
@@ -187,7 +213,7 @@ const CreateHotel = () => {
 								<Form.Group controlId="facilities">
 									<Form.Control
 										style={{
-											height: 60,
+											height: 80,
 											fontSize: 18,
 											padding: "20px",
 										}}
@@ -203,7 +229,7 @@ const CreateHotel = () => {
 								<Form.Group controlId="rules">
 									<Form.Control
 										style={{
-											height: 60,
+											height: 80,
 											fontSize: 18,
 											padding: "20px",
 										}}
@@ -216,7 +242,6 @@ const CreateHotel = () => {
 									/>
 								</Form.Group>
 								<br></br>
-								{picMessage && <ErrorMessage variant="danger">{picMessage}</ErrorMessage>}
 								<Form.Group controlId="pic">
 									<input
 										style={{
@@ -233,24 +258,6 @@ const CreateHotel = () => {
 								{loading && <Loading size={50} />}
 								<Button style={{ fontSize: 20, marginTop: 10 }} type="submit" variant="primary">
 									Submit
-								</Button>
-								<Button
-									style={{ fontSize: 20, marginTop: 10 }}
-									className="mx-2"
-									onClick={resetHandler}
-									variant="danger"
-								>
-									Reset
-								</Button>
-								<Button
-									variant="info"
-									onClick={demoHandler}
-									style={{
-										fontSize: 20,
-										marginTop: 10,
-									}}
-								>
-									Demo
 								</Button>
 							</Form>
 						</Card.Body>
@@ -269,6 +276,4 @@ const CreateHotel = () => {
 			</div>
 		);
 	}
-};
-
-export default CreateHotel;
+}
