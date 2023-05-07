@@ -23,7 +23,6 @@ import AddTransport from "./screens/transportManagement/adminTransportManagement
 import TransportListForAdmin from "./screens/transportManagement/adminTransportManagement/getAllTransport/getAllTransport";
 import EditTransport from "./screens/transportManagement/adminTransportManagement/updateTransport/updateTransport";
 import Footer from "./components/footer/Footer";
-import Header from "./components/header/Header";
 import TourGuideAdd from "./screens/tourguideManagement/TourGuideAdd";
 import TourGuideViewList from "./screens/tourguideManagement/TourGuideViewList";
 import TourGuideUpdate from "./screens/tourguideManagement/TourGuideUpdate";
