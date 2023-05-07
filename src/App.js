@@ -21,6 +21,7 @@ import AdminLandingScreen from "./screens/static/landingPages/AdminLandingScreen
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import AdminHotelList from "./screens/hotelManagement/hotels/AdminHotelList";
+import CustomerHotelView from "./screens/hotelManagement/hotels/CustomerHotelView";
 
 function App() {
 	return (
@@ -47,7 +48,9 @@ function App() {
 
 				<Route path="/" component={SitesListForCustomerScreen} exact />
 				<Route path="/customer-site/:id" component={SingleSiteForCustomerScreen} exact />
+
 				<Route path="/hotels-admin-view" component={AdminHotelList} exact />
+				<Route path="/hotels" component={CustomerHotelView} exact />
 			</main>
 			<Footer />
 		</BrowserRouter>
