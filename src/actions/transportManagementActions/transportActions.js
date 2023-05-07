@@ -1,20 +1,20 @@
 import {
-    TRANSPORT_LIST_FOR_CUSTOMER_REQUEST,
-    TRANSPORT_LIST_FOR_CUSTOMER_SUCCESS,
-    TRANSPORT_LIST_FOR_CUSTOMER_FAIL,
-    TRANSPORT_LIST_FOR_ADMIN_REQUEST,
-    TRANSPORT_LIST_FOR_ADMIN_SUCCESS,
-    TRANSPORT_LIST_FOR_ADMIN_FAIL,
-    TRANSPORT_CREATE_REQUEST,
-    TRANSPORT_CREATE_SUCCESS,
-    TRANSPORT_CREATE_FAIL,
-    TRANSPORT_UPDATE_BY_ADMIN_REQUEST,
-    TRANSPORT_UPDATE_BY_ADMIN_SUCCESS,
-    TRANSPORT_UPDATE_BY_ADMIN_FAIL,
-    TRANSPORT_DELETE_BY_ADMIN_REQUEST,
-    TRANSPORT_DELETE_BY_ADMIN_SUCCESS, 
-    TRANSPORT_DELETE_BY_ADMIN_FAIL
-} from '../../constants/transportManagementConstants/transportConstant';
+	TRANSPORT_LIST_FOR_CUSTOMER_REQUEST,
+	TRANSPORT_LIST_FOR_CUSTOMER_SUCCESS,
+	TRANSPORT_LIST_FOR_CUSTOMER_FAIL,
+	TRANSPORT_LIST_FOR_ADMIN_REQUEST,
+	TRANSPORT_LIST_FOR_ADMIN_SUCCESS,
+	TRANSPORT_LIST_FOR_ADMIN_FAIL,
+	TRANSPORT_CREATE_REQUEST,
+	TRANSPORT_CREATE_SUCCESS,
+	TRANSPORT_CREATE_FAIL,
+	TRANSPORT_UPDATE_BY_ADMIN_REQUEST,
+	TRANSPORT_UPDATE_BY_ADMIN_SUCCESS,
+	TRANSPORT_UPDATE_BY_ADMIN_FAIL,
+	TRANSPORT_DELETE_BY_ADMIN_REQUEST,
+	TRANSPORT_DELETE_BY_ADMIN_SUCCESS,
+	TRANSPORT_DELETE_BY_ADMIN_FAIL,
+} from "../../constants/transportManagementConstants/transportConstant";
 import axios from "axios";
 import { API_ENDPOINT } from "../../config";
 import Swal from "sweetalert2";
@@ -81,7 +81,7 @@ export const transportListForAdmin = () => async (dispatch, getState) => {
 	}
 };
 
-export const createTransport = 
+export const createTransport =
 	(
 		licensePlate,
 		startingStation,
@@ -123,7 +123,7 @@ export const createTransport =
 					facilities,
 					cityStops,
 					mobileNo,
-					leavingTime
+					leavingTime,
 				},
 				config
 			);

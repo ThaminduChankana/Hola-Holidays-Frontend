@@ -31,6 +31,13 @@ import {
 } from "./reducers/siteManagementReducers/siteReducers";
 
 import {
+	GuideAddReducer,
+	GuideViewListReducer,
+	GuideUpdateReducer,
+	GuideDeleteReducer,
+	CustomerGuideViewListReducer,
+} from "./reducers/TourGuideReducers/TourGuideReducers";
+import {
 	customerTransportListReducer,
 	adminTransportListReducer,
 	transportCreateReducer,
@@ -84,6 +91,11 @@ const reducer = combineReducers({
 	siteUpdateByAdmin: siteUpdateByAdminReducer,
 	siteDeleteByAdmin: siteDeleteByAdminReducer,
 
+	Guide_Details_Create: GuideAddReducer,
+	list_Guide: GuideViewListReducer,
+	Guide_Update: GuideUpdateReducer,
+	Guide_Delete: GuideDeleteReducer,
+	customer_list_Guide: CustomerGuideViewListReducer,
 	hotelListAdmin: hotelListAdminReducer,
 	hotelListCustomer: hotelListCustomerReducer,
 	hotelCreate: hotelCreateReducer,
