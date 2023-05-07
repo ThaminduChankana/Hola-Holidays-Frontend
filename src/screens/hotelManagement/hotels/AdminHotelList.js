@@ -7,6 +7,7 @@ import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
 import swal from "sweetalert";
 import MainScreen from "../../../components/MainScreen";
+import "./hotel-view.css";
 
 export default function AdminHotelList() {
 	const dispatch = useDispatch();

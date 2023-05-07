@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { listHotelCustomer } from "../../../actions/hotelManagementActions/hotelAction";
 import { Grid } from "@material-ui/core/";
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBCardImage, MDBBtn, MDBRipple } from "mdb-react-ui-kit";
+import "./hotel-view.css";
+import "./hotel-home.css";
 
 const CustomerHotelView = () => {
 	const dispatch = useDispatch();

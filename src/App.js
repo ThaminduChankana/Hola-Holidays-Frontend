@@ -26,6 +26,7 @@ import CreateHotel from "./screens/hotelManagement/hotels/CreateHotel";
 import UpdateHotel from "./screens/hotelManagement/hotels/UpdateHotel";
 import SingleHotelView from "./screens/hotelManagement/hotels/SingleHotelView";
 import RoomDetails from "./screens/hotelManagement/rooms/RoomDetails";
+import CreateRoom from "./screens/hotelManagement/rooms/CreateRoom";
 
 function App() {
 	return (
@@ -60,6 +61,7 @@ function App() {
 				<Route path="/hotel-customer-view/:id" component={SingleHotelView} exact />
 
 				<Route path="/room-details/:id" component={RoomDetails} exact />
+				<Route path="/room-create/:id" component={CreateRoom} exact />
 			</main>
 			<Footer />
 		</BrowserRouter>
