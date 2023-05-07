@@ -31,6 +31,14 @@ import {
 } from "./reducers/siteManagementReducers/siteReducers";
 
 import {
+	customerTransportListReducer,
+	adminTransportListReducer,
+	transportCreateReducer,
+	transportUpdateByAdminReducer,
+	transportDeleteByAdminReducer,
+} from "./reducers/transportManagementReducers/transportReducer";
+
+import {
 	hotelListAdminReducer,
 	hotelListCustomerReducer,
 	hotelCreateReducer,
@@ -93,6 +101,12 @@ const reducer = combineReducers({
 	reservationUpdate: reservationUpdateReducer,
 	reservationDelete: reservationDeleteReducer,
 	hotelReservationList: hotelReservationListReducer,
+
+	customerTransportList: customerTransportListReducer,
+	adminTransportList: adminTransportListReducer,
+	transportCreate: transportCreateReducer,
+	transportUpdateByAdmin: transportUpdateByAdminReducer,
+	transportDeleteByAdmin: transportDeleteByAdminReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;

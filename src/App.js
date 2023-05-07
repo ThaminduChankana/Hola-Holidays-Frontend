@@ -1,5 +1,6 @@
 import { BrowserRouter, Route } from "react-router-dom";
 import React from "react";
+import Header from "./components/header/Header";
 import AccessDenied from "./components/AccessDenied";
 import AdminRegisterScreen from "./screens/userManagement/registerUser/AdminRegisterScreen";
 import CustomerRegisterScreen from "./screens/userManagement/registerUser/CustomerRegisterScreen";
@@ -18,8 +19,11 @@ import SingleSiteForCustomerScreen from "./screens/siteManagement/customerSiteMa
 import SitesListForCustomerScreen from "./screens/siteManagement/customerSiteManagement/sitesListForCustomer/SitesListForCustomerScreen";
 import CustomerLandingScreen from "./screens/static/landingPages/CustomerLandingScreen";
 import AdminLandingScreen from "./screens/static/landingPages/AdminLandingScreen";
+import AddTransport from "./screens/transportManagement/adminTransportManagement/createTransport/addTransport";
+import TransportListForAdmin from "./screens/transportManagement/adminTransportManagement/getAllTransport/getAllTransport";
+import EditTransport from "./screens/transportManagement/adminTransportManagement/updateTransport/updateTransport";
 import Footer from "./components/footer/Footer";
-import Header from "./components/header/Header";
+import TransportListForCustomers from "./screens/transportManagement/customerTransportManagement/transportListForCustomer/transportListForCustomer";
 import AdminHotelList from "./screens/hotelManagement/hotels/AdminHotelList";
 import CustomerHotelView from "./screens/hotelManagement/hotels/CustomerHotelView";
 import CreateHotel from "./screens/hotelManagement/hotels/CreateHotel";
@@ -71,6 +75,12 @@ function App() {
 				<Route path="/create-reservation/:id" component={CreateReservation} exact />
 				<Route path="/reservations" component={ReservationList} exact />
 				<Route path="/hotel-reservations/:id" component={HotelReservation} exact />
+
+				<Route path="/admin-transport" component={TransportListForAdmin} exact />
+				<Route path="/admin-transport-add" component={AddTransport} exact /> 
+				<Route path="/admin-transport-edit/:id" component={EditTransport} exact /> 
+				<Route path="/customer-transport" component={TransportListForCustomers} exact />
+				
 			</main>
 			<Footer />
 		</BrowserRouter>
