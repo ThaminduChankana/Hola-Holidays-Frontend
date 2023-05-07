@@ -88,8 +88,6 @@ export default function CreateRoom({ match, history }) {
 				pic
 			)
 		);
-
-		resetHandler();
 	};
 
 	useEffect(() => {}, []);
