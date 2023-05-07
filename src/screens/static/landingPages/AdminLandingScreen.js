@@ -136,17 +136,7 @@ const AdminLandingScreen = ({ history }) => {
 								</div>
 								<br></br>
 								<div>
-									<Link to="/admin-tourguide">
-										<Button
-											id="landingBtn"
-											variant="success"
-											size="lg"
-											className="landingbutton"
-											style={{ width: 350, height: 75 }}
-										>
-											Tour Guide Management
-										</Button>
-									</Link>
+						
 								</div>
 							</div>
 							<br></br>
