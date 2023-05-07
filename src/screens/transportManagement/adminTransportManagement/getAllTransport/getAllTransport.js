@@ -6,12 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../../components/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage";
 import MainScreen from "../../../../components/MainScreen";
-import { deleteTranspoterByAdmin, transportListForAdmin } from "../../../../actions/transportManagementActions/transportActions";
+import {
+	deleteTranspoterByAdmin,
+	transportListForAdmin,
+} from "../../../../actions/transportManagementActions/transportActions";
 import swal from "sweetalert";
 import "./transportList.css";
 
 const TransportListForAdmin = () => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
 	const adminTransportList = useSelector((state) => state.adminTransportList);
 	const { loading, transport, error } = adminTransportList;
@@ -30,7 +33,7 @@ const TransportListForAdmin = () => {
 	const transportUpdateByAdmin = useSelector((state) => state.transportUpdateByAdmin);
 	const { success: successUpdate } = transportUpdateByAdmin;
 
-  	const deleteHandler = (id) => {
+	const deleteHandler = (id) => {
 		swal({
 			title: "Are you sure?",
 			text: "You won't be able to recover these data",
@@ -53,13 +56,13 @@ const TransportListForAdmin = () => {
 
 	const history = useHistory();
 
-  	useEffect(() => {
+	useEffect(() => {
 		dispatch(transportListForAdmin());
 		if (!adminInfo) {
 			history.push("/access-denied");
 		}
 	}, [dispatch, successCreate, history, adminInfo, successUpdate, successDelete]);
-  
+
 	if (adminInfo) {
 		return (
 			<div className="adminTransportList">
@@ -107,28 +110,28 @@ const TransportListForAdmin = () => {
 							marginBottom: "100px",
 						}}
 					>
-					{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-					{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
-					{loading && <Loading />}
-					{loadingDelete && <Loading />}
-					<Table style={{ background: "white", marginTop: 50, borderRadius: 10 }}>
+						{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+						{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
+						{loading && <Loading />}
+						{loadingDelete && <Loading />}
+						<Table style={{ background: "white", marginTop: 50, borderRadius: 10 }}>
 							<thead>
 								<tr>
-								<th>LicenseNo</th>
-								<th>Starting</th>
-								<th>Destination</th>
-								<th>Travel-Time</th>
-								<th>Seats</th>
-								<th>Price (Rs.)</th>
-								<th>MobileNo</th>
-								<th>Leaving</th>
-								<th>Edit</th>
-								<th>Delete</th>
+									<th>LicenseNo</th>
+									<th>Starting</th>
+									<th>Destination</th>
+									<th>Travel-Time</th>
+									<th>Seats</th>
+									<th>Price (Rs.)</th>
+									<th>MobileNo</th>
+									<th>Leaving</th>
+									<th>Edit</th>
+									<th>Delete</th>
 								</tr>
-								</thead>
-								<tbody>
-									{transport && transport.map((adminTransportList) => (
-										
+							</thead>
+							<tbody>
+								{transport &&
+									transport.map((adminTransportList) => (
 										<tr
 											key={adminTransportList._id}
 											style={{
@@ -178,7 +181,7 @@ const TransportListForAdmin = () => {
 											>
 												{adminTransportList.ticketPrice}
 											</td>
-											
+
 											<td
 												style={{
 													fontSize: 20,
@@ -203,33 +206,31 @@ const TransportListForAdmin = () => {
 														borderRadius: 0,
 														border: "3px solid white",
 													}}
-										
-												> Edit
+												>
+													{" "}
+													Edit
 												</Button>
 											</td>
 											<td>
-											<Button
-													onClick={()=> deleteHandler(adminTransportList._id)}
+												<Button
+													onClick={() => deleteHandler(adminTransportList._id)}
 													style={{
 														fontSize: 15,
 														backgroundColor: "red",
 														borderRadius: 0,
 														border: "3px solid white",
 													}}
-										
-												> Delete
+												>
+													{" "}
+													Delete
 												</Button>
 											</td>
 										</tr>
-										
 									))}
-								</tbody>
-							
+							</tbody>
 						</Table>
 
-					
-
-					<br></br>
+						<br></br>
 					</div>
 				</MainScreen>
 			</div>
@@ -242,6 +243,6 @@ const TransportListForAdmin = () => {
 			</div>
 		);
 	}
-}
+};
 
-export default TransportListForAdmin
+export default TransportListForAdmin;

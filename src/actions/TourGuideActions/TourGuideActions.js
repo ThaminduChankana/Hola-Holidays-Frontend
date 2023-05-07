@@ -13,7 +13,7 @@ import {
 	TOUR_GUIDE_DELETE_FAIL,
 	TOUR_GUIDE_CUSTOMER_VIEW_REQUEST,
 	TOUR_GUIDE_CUSTOMER_VIEW_SUCCESS,
-    TOUR_GUIDE_CUSTOMER_VIEW_FAIL,
+	TOUR_GUIDE_CUSTOMER_VIEW_FAIL,
 } from "../../constants/TourGuideConstants/TourGuideConstants";
 import axios from "axios";
 import swal from "sweetalert";
@@ -92,15 +92,15 @@ export const GuideListAction = () => async (dispatch, getState) => {
 			type: TOUR_GUIDE_VIEW_REQUEST,
 		});
 
-			const {
-				admin_Login: { adminInfo },
-			} = getState();
+		const {
+			admin_Login: { adminInfo },
+		} = getState();
 
-			const config = {
-				headers: {
-					Authorization: `Bearer ${adminInfo.token}`,
-				},
-			};
+		const config = {
+			headers: {
+				Authorization: `Bearer ${adminInfo.token}`,
+			},
+		};
 		const { data } = await axios.get(`${API_ENDPOINT}/guide/admin/get`, config);
 
 		dispatch({
@@ -122,9 +122,8 @@ export const CustomerGuideListAction = () => async (dispatch, getState) => {
 			type: TOUR_GUIDE_CUSTOMER_VIEW_REQUEST,
 		});
 
-        
 		const { data } = await axios.get(`${API_ENDPOINT}/guide/customer/get`);
-      console.log(data);
+		console.log(data);
 		dispatch({
 			type: TOUR_GUIDE_CUSTOMER_VIEW_SUCCESS,
 			payload: data,

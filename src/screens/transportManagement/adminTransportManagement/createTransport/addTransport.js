@@ -7,9 +7,8 @@ import ErrorMessage from "../../../../components/ErrorMessage";
 import { createTransport } from "../../../../actions/transportManagementActions/transportActions";
 import "./addTransport.css";
 
-
-function AddTransport(){
-    const [licensePlate, setLicensePlate] = useState("");
+function AddTransport() {
+	const [licensePlate, setLicensePlate] = useState("");
 	const [startingStation, setStartingStation] = useState("");
 	const [destinationStation, setDestinationStation] = useState("");
 	const [totalTravelTime, setTotalTravelTime] = useState("");
@@ -20,9 +19,9 @@ function AddTransport(){
 	const [mobileNo, setMobileNo] = useState("");
 	const [leavingTime, setLeavingTime] = useState("");
 
-    const [message] = useState(null);
+	const [message] = useState(null);
 
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
 	const transportCreate = useSelector((state) => state.transportCreate);
 	const { loading, error } = transportCreate;
@@ -30,7 +29,7 @@ function AddTransport(){
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
 
-    const resetHandler = () => {
+	const resetHandler = () => {
 		setLicensePlate("");
 		setStartingStation("");
 		setDestinationStation("");
@@ -43,30 +42,20 @@ function AddTransport(){
 		setLeavingTime("");
 	};
 
-    const demoHandler = () => {
+	const demoHandler = () => {
 		setLicensePlate("DM2345");
 		setStartingStation("Colombo");
 		setDestinationStation("Kandy");
 		setTotalTravelTime("03:30");
 		setTotalNumberOfSeats(50);
 		setTicketPrice(800);
-		setFacilities(
-            ["air conditioned",
-            "wifi",
-            "TV"]
-		);
-		setCityStops(
-			["Kelaniya",
-            "Nittambuwa",
-            "Kegalle",
-            "Peradeniya",
-            "Kandy"]
-		);
+		setFacilities(["air conditioned", "wifi", "TV"]);
+		setCityStops(["Kelaniya", "Nittambuwa", "Kegalle", "Peradeniya", "Kandy"]);
 		setMobileNo("0772345678");
 		setLeavingTime("7AM");
 	};
 
-    const submitHandler = (e) => {
+	const submitHandler = (e) => {
 		e.preventDefault();
 
 		if (
@@ -83,17 +72,17 @@ function AddTransport(){
 		)
 			return;
 		dispatch(
-			createTransport( 
+			createTransport(
 				licensePlate,
-                startingStation,
-                destinationStation,
-                totalTravelTime,
-                totalNumberOfSeats,
-                ticketPrice,
-                facilities,
-                cityStops,
-                mobileNo,
-                leavingTime
+				startingStation,
+				destinationStation,
+				totalTravelTime,
+				totalNumberOfSeats,
+				ticketPrice,
+				facilities,
+				cityStops,
+				mobileNo,
+				leavingTime
 			)
 		);
 
@@ -101,10 +90,10 @@ function AddTransport(){
 
 		setTimeout(function () {
 			window.location.href = "/admin-transport";
-		}, 2000)
+		}, 2000);
 	};
 
-    useEffect(() => {}, []);
+	useEffect(() => {}, []);
 	if (adminInfo) {
 		return (
 			<div className="backgroundT">
@@ -148,7 +137,7 @@ function AddTransport(){
 								<Col md={6}>
 									<Form onSubmit={submitHandler}>
 										<Form.Group controlId="siteFormBasicLicensePlate">
-											<Form.Label style={{ fontWeight: "bold"}}>License Plate</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>License Plate</Form.Label>
 											<Form.Control
 												type="text"
 												placeholder="Enter License Plate"
@@ -159,7 +148,7 @@ function AddTransport(){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicStartingStation">
-											<Form.Label style={{ fontWeight: "bold"}}>Starting Station</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Starting Station</Form.Label>
 											<Form.Control
 												type="text"
 												value={startingStation}
@@ -170,7 +159,7 @@ function AddTransport(){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicDestinationStation">
-											<Form.Label style={{ fontWeight: "bold"}}>Destination Station</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Destination Station</Form.Label>
 											<Form.Control
 												type="text"
 												value={destinationStation}
@@ -181,7 +170,7 @@ function AddTransport(){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicTotalTravelTime">
-											<Form.Label style={{ fontWeight: "bold"}}>Total Travel Time</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Total Travel Time</Form.Label>
 											<Form.Control
 												type="text"
 												value={totalTravelTime}
@@ -192,7 +181,7 @@ function AddTransport(){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicTotalNumberOfSeats">
-											<Form.Label style={{ fontWeight: "bold"}}>Total Number Of Seats</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Total Number Of Seats</Form.Label>
 											<Form.Control
 												type="number"
 												value={totalNumberOfSeats}
@@ -203,7 +192,7 @@ function AddTransport(){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicTicketPrice">
-											<Form.Label style={{ fontWeight: "bold"}}>Ticket Price</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Ticket Price</Form.Label>
 											<Form.Control
 												type="number"
 												value={ticketPrice}
@@ -214,7 +203,7 @@ function AddTransport(){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicFacilities">
-											<Form.Label style={{ fontWeight: "bold"}}>Facilities</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Facilities</Form.Label>
 											<Form.Control
 												type="text"
 												value={facilities}
@@ -226,7 +215,7 @@ function AddTransport(){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicCityStops">
-											<Form.Label style={{ fontWeight: "bold"}}>City Stops</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>City Stops</Form.Label>
 											<Form.Control
 												type="text"
 												value={cityStops}
@@ -238,7 +227,7 @@ function AddTransport(){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicMobileNo">
-											<Form.Label style={{ fontWeight: "bold"}}>Mobile Number</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Mobile Number</Form.Label>
 											<Form.Control
 												type="text"
 												value={mobileNo}
@@ -249,7 +238,7 @@ function AddTransport(){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicLeavingTime">
-											<Form.Label style={{ fontWeight: "bold"}}>Leaving Time</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Leaving Time</Form.Label>
 											<Form.Control
 												type="text"
 												value={leavingTime}
@@ -299,8 +288,7 @@ function AddTransport(){
 										alignItems: "center",
 										justifyContent: "center",
 									}}
-								>
-								</Col>
+								></Col>
 							</Row>
 						</div>
 						<br></br>
@@ -317,7 +305,6 @@ function AddTransport(){
 			</div>
 		);
 	}
-
 }
 
 export default AddTransport;

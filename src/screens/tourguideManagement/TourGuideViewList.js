@@ -17,8 +17,8 @@ export default function TourGuideViewList() {
 	const list_Guide = useSelector((state) => state.list_Guide);
 	const { loading, Guides, error } = list_Guide;
 
-    const Guide_Update = useSelector((state) => state.Guide_Update);
-    const { success: successUpdate } = Guide_Update; 
+	const Guide_Update = useSelector((state) => state.Guide_Update);
+	const { success: successUpdate } = Guide_Update;
 
 	const Guide_Delete = useSelector((state) => state.Guide_Delete);
 	const { loading: loadingDelete, error: errorDelete, success: successDelete } = Guide_Delete;
@@ -62,7 +62,7 @@ export default function TourGuideViewList() {
 	const history = useHistory();
 	useEffect(() => {
 		dispatch(GuideListAction());
-	}, [dispatch, adminInfo,successUpdate, successDelete, history]);
+	}, [dispatch, adminInfo, successUpdate, successDelete, history]);
 	if (adminInfo) {
 		return (
 			<div className="GuideBackgroundView">

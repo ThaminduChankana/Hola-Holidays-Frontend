@@ -2,8 +2,8 @@
 	background-repeat: no-repeat;
 	min-height: 100vh;
 	background: url("https://res.cloudinary.com/dfmnpw0yp/image/upload/v1683393428/ubgg9igpmpohcenmzrvx.jpg");
-		background-position: center;
-		background-size: cover;
+	background-position: center;
+	background-size: cover;
 }
 .denied {
 	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761809/images/accessDenied_zhvugi.jpg");

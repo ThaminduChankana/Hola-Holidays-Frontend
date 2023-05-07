@@ -98,8 +98,6 @@ export default function TourGuideUpdate({ match, history }) {
 									<Form.Control type="guidename" value={name} onChange={(e) => setName(e.target.value)} />
 								</Form.Group>
 
-						
-
 								<Form.Group controlId="gender">
 									<Form.Label style={{ paddingTop: 10 }}>Gender</Form.Label>
 									<div>
@@ -121,9 +119,6 @@ export default function TourGuideUpdate({ match, history }) {
 										/>
 									</div>
 								</Form.Group>
-
-
-						
 
 								<Form.Group controlId="language">
 									<Form.Label style={{ paddingTop: 10 }}>Language:</Form.Label>

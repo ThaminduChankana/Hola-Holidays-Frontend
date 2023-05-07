@@ -37,7 +37,7 @@ import {
 	GuideDeleteReducer,
 	CustomerGuideViewListReducer,
 } from "./reducers/TourGuideReducers/TourGuideReducers";
-import{
+import {
 	customerTransportListReducer,
 	adminTransportListReducer,
 	transportCreateReducer,

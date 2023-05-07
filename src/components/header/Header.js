@@ -55,7 +55,11 @@ function Header({ setSearch }) {
 							HOTELS
 						</Button>
 
-						<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }} href="/customer-transport">
+						<Button
+							variant=""
+							style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}
+							href="/customer-transport"
+						>
 							TRANSPORT
 						</Button>
 						{customerInfo ? (

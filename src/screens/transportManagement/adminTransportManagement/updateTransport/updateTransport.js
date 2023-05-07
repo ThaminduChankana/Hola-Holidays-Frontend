@@ -10,8 +10,8 @@ import swal from "sweetalert";
 import axios from "axios";
 import { API_ENDPOINT } from "../../../../config";
 
-function EditTransport({ match, history }){
-    const [licensePlate, setLicensePlate] = useState("");
+function EditTransport({ match, history }) {
+	const [licensePlate, setLicensePlate] = useState("");
 	const [startingStation, setStartingStation] = useState("");
 	const [destinationStation, setDestinationStation] = useState("");
 	const [totalTravelTime, setTotalTravelTime] = useState("");
@@ -22,7 +22,7 @@ function EditTransport({ match, history }){
 	const [mobileNo, setMobileNo] = useState("");
 	const [leavingTime, setLeavingTime] = useState("");
 
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
 	const transportUpdateByAdmin = useSelector((state) => state.transportUpdateByAdmin);
 	const { loading, error } = transportUpdateByAdmin;
@@ -30,49 +30,49 @@ function EditTransport({ match, history }){
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
 
-    useEffect(() => {
-        if (adminInfo != null) {
+	useEffect(() => {
+		if (adminInfo != null) {
 			const fetching = async () => {
 				const { data } = await axios.get(`${API_ENDPOINT}/transport/admin/get/${match.params.id}`, {
 					headers: authHeaderForAdmin(),
 				});
 				setLicensePlate(data.licensePlate);
-                setStartingStation(data.startingStation);
-                setDestinationStation (data.destinationStation);
-                setTotalTravelTime (data.totalTravelTime);
-                setTotalNumberOfSeats (data.totalNumberOfSeats);
-                setTicketPrice (data.ticketPrice);
-                setFacilities (data.facilities);
-                setCityStops (data.cityStops);
-                setMobileNo (data.mobileNo);
-                setLeavingTime (data.leavingTime);
+				setStartingStation(data.startingStation);
+				setDestinationStation(data.destinationStation);
+				setTotalTravelTime(data.totalTravelTime);
+				setTotalNumberOfSeats(data.totalNumberOfSeats);
+				setTicketPrice(data.ticketPrice);
+				setFacilities(data.facilities);
+				setCityStops(data.cityStops);
+				setMobileNo(data.mobileNo);
+				setLeavingTime(data.leavingTime);
 			};
 
 			fetching();
 		}
-    }, [match.params.id, adminInfo]);
+	}, [match.params.id, adminInfo]);
 
-    const submitHandler = (e) => {
+	const submitHandler = (e) => {
 		e.preventDefault();
 
 		dispatch(
-			UpdateTransport( 
-                match.params.id,
+			UpdateTransport(
+				match.params.id,
 				licensePlate,
-                startingStation,
-                destinationStation,
-                totalTravelTime,
-                totalNumberOfSeats,
-                ticketPrice,
-                facilities,
-                cityStops,
-                mobileNo,
-                leavingTime
+				startingStation,
+				destinationStation,
+				totalTravelTime,
+				totalNumberOfSeats,
+				ticketPrice,
+				facilities,
+				cityStops,
+				mobileNo,
+				leavingTime
 			)
 		);
 
-        if(
-            !licensePlate ||
+		if (
+			!licensePlate ||
 			!startingStation ||
 			!destinationStation ||
 			!totalTravelTime ||
@@ -82,22 +82,21 @@ function EditTransport({ match, history }){
 			!cityStops ||
 			!mobileNo ||
 			!leavingTime
-        )
-        return ;
+		)
+			return;
 
-        swal({
-            title: "Success !!!",
+		swal({
+			title: "Success !!!",
 			text: "Update Successful.",
 			icon: "success",
 			button: false,
-        });
+		});
 
-        setTimeout(function () {
+		setTimeout(function () {
 			window.location.href = "/admin-transport";
-		}, 2000)
+		}, 2000);
 	};
 
-    
 	if (adminInfo) {
 		return (
 			<div className="backgroundT">
@@ -140,7 +139,7 @@ function EditTransport({ match, history }){
 								<Col md={6}>
 									<Form onSubmit={submitHandler}>
 										<Form.Group controlId="siteFormBasicLicensePlate">
-											<Form.Label style={{ fontWeight: "bold"}}>License Plate</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>License Plate</Form.Label>
 											<Form.Control
 												type="text"
 												value={licensePlate}
@@ -150,7 +149,7 @@ function EditTransport({ match, history }){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicStartingStation">
-											<Form.Label style={{ fontWeight: "bold"}}>Starting Station</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Starting Station</Form.Label>
 											<Form.Control
 												type="text"
 												value={startingStation}
@@ -160,7 +159,7 @@ function EditTransport({ match, history }){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicDestinationStation">
-											<Form.Label style={{ fontWeight: "bold"}}>Destination Station</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Destination Station</Form.Label>
 											<Form.Control
 												type="text"
 												value={destinationStation}
@@ -170,7 +169,7 @@ function EditTransport({ match, history }){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicTotalTravelTime">
-											<Form.Label style={{ fontWeight: "bold"}}>Total Travel Time</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Total Travel Time</Form.Label>
 											<Form.Control
 												type="text"
 												value={totalTravelTime}
@@ -180,7 +179,7 @@ function EditTransport({ match, history }){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicTotalNumberOfSeats">
-											<Form.Label style={{ fontWeight: "bold"}}>Total Number Of Seats</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Total Number Of Seats</Form.Label>
 											<Form.Control
 												type="number"
 												value={totalNumberOfSeats}
@@ -190,7 +189,7 @@ function EditTransport({ match, history }){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicTicketPrice">
-											<Form.Label style={{ fontWeight: "bold"}}>Ticket Price</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Ticket Price</Form.Label>
 											<Form.Control
 												type="number"
 												value={ticketPrice}
@@ -200,7 +199,7 @@ function EditTransport({ match, history }){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicFacilities">
-											<Form.Label style={{ fontWeight: "bold"}}>Facilities</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Facilities</Form.Label>
 											<Form.Control
 												type="text"
 												value={facilities}
@@ -211,7 +210,7 @@ function EditTransport({ match, history }){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicCityStops">
-											<Form.Label style={{ fontWeight: "bold"}}>City Stops</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>City Stops</Form.Label>
 											<Form.Control
 												type="text"
 												value={cityStops}
@@ -222,7 +221,7 @@ function EditTransport({ match, history }){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicMobileNo">
-											<Form.Label style={{ fontWeight: "bold"}}>Mobile Number</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Mobile Number</Form.Label>
 											<Form.Control
 												type="text"
 												value={mobileNo}
@@ -232,7 +231,7 @@ function EditTransport({ match, history }){
 										</Form.Group>
 										<br></br>
 										<Form.Group controlId="siteFormBasicLeavingTime">
-											<Form.Label style={{ fontWeight: "bold"}}>Leaving Time</Form.Label>
+											<Form.Label style={{ fontWeight: "bold" }}>Leaving Time</Form.Label>
 											<Form.Control
 												type="text"
 												value={leavingTime}
@@ -260,8 +259,7 @@ function EditTransport({ match, history }){
 										alignItems: "center",
 										justifyContent: "center",
 									}}
-								>
-								</Col>
+								></Col>
 							</Row>
 						</div>
 						<br></br>
@@ -278,7 +276,6 @@ function EditTransport({ match, history }){
 			</div>
 		);
 	}
-
 }
 
 export default EditTransport;

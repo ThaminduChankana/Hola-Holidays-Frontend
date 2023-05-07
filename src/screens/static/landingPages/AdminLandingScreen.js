@@ -135,9 +135,7 @@ const AdminLandingScreen = ({ history }) => {
 									</Link>
 								</div>
 								<br></br>
-								<div>
-						
-								</div>
+								<div></div>
 							</div>
 							<br></br>
 						</Card>

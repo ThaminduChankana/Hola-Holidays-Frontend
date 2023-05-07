@@ -13,9 +13,8 @@ export default function TourGuideAdd({ match }) {
 	const [language, setLanguage] = useState("");
 	const [location, setLocation] = useState("");
 	const [description, setDescription] = useState("");
-    const [fee, setFee] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-
+	const [fee, setFee] = useState("");
+	const [phoneNumber, setPhoneNumber] = useState("");
 
 	const dispatch = useDispatch();
 	const admin_Login = useSelector((state) => state.admin_Login);
@@ -24,23 +23,22 @@ export default function TourGuideAdd({ match }) {
 	const Guide_Details_Create = useSelector((state) => state.Guide_Details_Create);
 	const { loading, error } = Guide_Details_Create;
 
-
 	const resetHandler = () => {
 		setName("");
 		setGender("");
 		setLocation("");
 		setDescription("");
 		setLanguage("");
-        setFee("");
-        setPhoneNumber("");
+		setFee("");
+		setPhoneNumber("");
 	};
 	const submitHandler = (e) => {
 		e.preventDefault();
 
-		const sendingData = { name, gender,language, location, description, fee, phoneNumber };
-		console.log(sendingData)
+		const sendingData = { name, gender, language, location, description, fee, phoneNumber };
+		console.log(sendingData);
 
-		dispatch(GuideAddAction(name, gender,language, location, description, fee, phoneNumber));
+		dispatch(GuideAddAction(name, gender, language, location, description, fee, phoneNumber));
 
 		resetHandler();
 	};

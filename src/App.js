@@ -65,12 +65,11 @@ function App() {
 
 				<Route path="/" component={SitesListForCustomerScreen} exact />
 				<Route path="/customer-site/:id" component={SingleSiteForCustomerScreen} exact />
-				
+
 				<Route path="/tour-guide-add" component={TourGuideAdd} exact />
 				<Route path="/tour-guide-list" component={TourGuideViewList} exact />
 				<Route path="/tour-guide-customer-list" component={TourGuideCustomerViewList} exact />
 				<Route path="/tour-guide-update/:id" component={TourGuideUpdate} exact />
-
 
 				<Route path="/hotels-admin-view" component={AdminHotelList} exact />
 				<Route path="/hotels" component={CustomerHotelView} exact />
@@ -87,10 +86,9 @@ function App() {
 				<Route path="/hotel-reservations/:id" component={HotelReservation} exact />
 
 				<Route path="/admin-transport" component={TransportListForAdmin} exact />
-				<Route path="/admin-transport-add" component={AddTransport} exact /> 
-				<Route path="/admin-transport-edit/:id" component={EditTransport} exact /> 
+				<Route path="/admin-transport-add" component={AddTransport} exact />
+				<Route path="/admin-transport-edit/:id" component={EditTransport} exact />
 				<Route path="/customer-transport" component={TransportListForCustomers} exact />
-				
 			</main>
 			<Footer />
 		</BrowserRouter>
