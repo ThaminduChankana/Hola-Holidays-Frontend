@@ -30,6 +30,30 @@ import {
 	siteDeleteByAdminReducer,
 } from "./reducers/siteManagementReducers/siteReducers";
 
+import {
+	hotelListAdminReducer,
+	hotelListCustomerReducer,
+	hotelCreateReducer,
+	hotelUpdateReducer,
+	hotelDeleteReducer,
+} from "./reducers/hotelManagementReducers/hotelReducer";
+
+import {
+	roomListAdminReducer,
+	roomListCustomerReducer,
+	roomCreateReducer,
+	roomUpdateReducer,
+	roomDeleteReducer,
+} from "./reducers/roomManagementReducers/roomReducer";
+
+import {
+	reservationListReducer,
+	reservationCreateReducer,
+	reservationUpdateReducer,
+	reservationDeleteReducer,
+	hotelReservationListReducer,
+} from "./reducers/reservationManagementReducers/reservationReducer";
+
 const reducer = combineReducers({
 	admin_Login: adminLoginReducer,
 	adminRegistration: adminRegisterReducer,
@@ -51,6 +75,24 @@ const reducer = combineReducers({
 	siteCreate: siteCreateReducer,
 	siteUpdateByAdmin: siteUpdateByAdminReducer,
 	siteDeleteByAdmin: siteDeleteByAdminReducer,
+
+	hotelListAdmin: hotelListAdminReducer,
+	hotelListCustomer: hotelListCustomerReducer,
+	hotelCreate: hotelCreateReducer,
+	hotelUpdate: hotelUpdateReducer,
+	hotelDelete: hotelDeleteReducer,
+
+	roomListAdmin: roomListAdminReducer,
+	roomListCustomer: roomListCustomerReducer,
+	roomCreate: roomCreateReducer,
+	roomUpdate: roomUpdateReducer,
+	roomDelete: roomDeleteReducer,
+
+	reservationList: reservationListReducer,
+	reservationCreate: reservationCreateReducer,
+	reservationUpdate: reservationUpdateReducer,
+	reservationDelete: reservationDeleteReducer,
+	hotelReservationList: hotelReservationListReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;

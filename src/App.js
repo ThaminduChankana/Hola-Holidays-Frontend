@@ -20,6 +20,17 @@ import CustomerLandingScreen from "./screens/static/landingPages/CustomerLanding
 import AdminLandingScreen from "./screens/static/landingPages/AdminLandingScreen";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
+import AdminHotelList from "./screens/hotelManagement/hotels/AdminHotelList";
+import CustomerHotelView from "./screens/hotelManagement/hotels/CustomerHotelView";
+import CreateHotel from "./screens/hotelManagement/hotels/CreateHotel";
+import UpdateHotel from "./screens/hotelManagement/hotels/UpdateHotel";
+import SingleHotelView from "./screens/hotelManagement/hotels/SingleHotelView";
+import RoomDetails from "./screens/hotelManagement/rooms/RoomDetails";
+import CreateRoom from "./screens/hotelManagement/rooms/CreateRoom";
+import UpdateRoom from "./screens/hotelManagement/rooms/UpdateRoom";
+import CreateReservation from "./screens/hotelManagement/reservations/CreateReservation";
+import ReservationList from "./screens/hotelManagement/reservations/ReservationList";
+import HotelReservation from "./screens/hotelManagement/reservations/HotelReservation";
 
 function App() {
 	return (
@@ -46,6 +57,20 @@ function App() {
 
 				<Route path="/" component={SitesListForCustomerScreen} exact />
 				<Route path="/customer-site/:id" component={SingleSiteForCustomerScreen} exact />
+
+				<Route path="/hotels-admin-view" component={AdminHotelList} exact />
+				<Route path="/hotels" component={CustomerHotelView} exact />
+				<Route path="/admin-hotel-create" component={CreateHotel} exact />
+				<Route path="/hotel-update/:id" component={UpdateHotel} exact />
+				<Route path="/hotel-customer-view/:id" component={SingleHotelView} exact />
+
+				<Route path="/room-details/:id" component={RoomDetails} exact />
+				<Route path="/room-create/:id" component={CreateRoom} exact />
+				<Route path="/room-update/:id" component={UpdateRoom} exact />
+
+				<Route path="/create-reservation/:id" component={CreateReservation} exact />
+				<Route path="/reservations" component={ReservationList} exact />
+				<Route path="/hotel-reservations/:id" component={HotelReservation} exact />
 			</main>
 			<Footer />
 		</BrowserRouter>

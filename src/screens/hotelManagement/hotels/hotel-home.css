@@ -1,0 +1,89 @@
+header.masthead-hotel {
+	padding-top: 30rem;
+	padding-bottom: 12.5rem;
+	text-align: center;
+	color: #fff;
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url("https://www.discoveryloyalty.com/var/ezwebin_site/storage/images/files/gha-images/brands/kempinski/kempinski-seychelles-resort/kempinskiseychelles_exterior01/4993658-1-eng-GB/KempinskiSeychelles_Exterior01_property_banner.jpg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: center center;
+	background-size: cover;
+	height: 300px;
+}
+
+header.masthead-hotel .masthead-subheading {
+	font-size: 3rem;
+	font-style: italic;
+	line-height: 2.25rem;
+	font-weight: 700;
+	margin-top: -10rem;
+}
+
+header.masthead-hotel .masthead-heading {
+	font-size: 6rem;
+	font-weight: 700;
+	line-height: 4.5rem;
+	margin-top: 4rem;
+}
+
+#services {
+	margin-top: 50px;
+	margin-bottom: 80px;
+}
+
+#services .text-center h2 {
+	font-size: 2.5rem;
+	font-weight: 700;
+}
+
+#services .text-center h3 {
+	font-size: 1.5rem;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.green-color {
+	color: #4ee44e;
+}
+
+.my-3 {
+	font-weight: 800;
+	font-size: 1.5rem;
+}
+.text-muted {
+	font-size: 1.25rem;
+}
+
+#product .product-item .product-caption .product-caption-heading {
+	font-size: 1.5rem;
+	font-weight: 800;
+	margin-bottom: 0;
+	margin-left: 130px;
+}
+
+.page-section h2.section-heading,
+.page-section .section-heading.h2 {
+	font-size: 2.5rem;
+	margin-top: 0;
+	margin-bottom: 1rem;
+	margin-bottom: 3rem;
+	font-weight: 700;
+}
+
+.page-section h3.section-subheading,
+.page-section .section-subheading.h3 {
+	margin-bottom: 4rem;
+	font-size: 1.5rem;
+	font-weight: 400;
+	font-style: italic;
+}
+.img-fluid {
+	border-radius: 20px;
+	width: 300px;
+}
+
+#product {
+	padding-top: 70px;
+	margin-bottom: 70px;
+}
