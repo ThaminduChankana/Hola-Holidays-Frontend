@@ -23,8 +23,7 @@ import AddTransport from "./screens/transportManagement/adminTransportManagement
 import TransportListForAdmin from "./screens/transportManagement/adminTransportManagement/getAllTransport/getAllTransport";
 import EditTransport from "./screens/transportManagement/adminTransportManagement/updateTransport/updateTransport";
 import Footer from "./components/footer/Footer";
-import TransportListForCustomers from "./screens/transportManagement/customerTransportManagement/transportListForCustomer/transportListForCustomer";;
-
+import TransportListForCustomers from "./screens/transportManagement/customerTransportManagement/transportListForCustomer/transportListForCustomer";
 import AdminHotelList from "./screens/hotelManagement/hotels/AdminHotelList";
 import CustomerHotelView from "./screens/hotelManagement/hotels/CustomerHotelView";
 import CreateHotel from "./screens/hotelManagement/hotels/CreateHotel";
