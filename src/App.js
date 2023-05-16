@@ -39,7 +39,7 @@ import UpdateRoom from "./screens/hotelManagement/rooms/UpdateRoom";
 import CreateReservation from "./screens/hotelManagement/reservations/CreateReservation";
 import ReservationList from "./screens/hotelManagement/reservations/ReservationList";
 import HotelReservation from "./screens/hotelManagement/reservations/HotelReservation";
-import Map from "./screens/static/landingPages/map/Map";
+import Map from "./screens/static/map/Map";
 
 function App() {
 	return (

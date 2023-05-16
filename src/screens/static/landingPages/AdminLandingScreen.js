@@ -110,7 +110,7 @@ const AdminLandingScreen = ({ history }) => {
 								</div>
 								<br></br>
 								<div>
-									<Link to="/admin-hotels">
+									<Link to="/hotels-admin-view">
 										<Button
 											id="landingBtn"
 											variant="success"
