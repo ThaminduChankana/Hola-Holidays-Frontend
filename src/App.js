@@ -39,12 +39,14 @@ import UpdateRoom from "./screens/hotelManagement/rooms/UpdateRoom";
 import CreateReservation from "./screens/hotelManagement/reservations/CreateReservation";
 import ReservationList from "./screens/hotelManagement/reservations/ReservationList";
 import HotelReservation from "./screens/hotelManagement/reservations/HotelReservation";
+import Map from "./screens/static/landingPages/map/Map";
 
 function App() {
 	return (
 		<BrowserRouter>
 			<Header />
 			<main>
+				<Route path="/map" component={Map} />
 				<Route path="/access-denied" component={AccessDenied} />
 				<Route path="/admin-login" component={AdminLogin} />
 				<Route path="/customer-login" component={CustomerLogin} />

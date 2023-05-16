@@ -43,6 +43,10 @@ function Header({ setSearch }) {
 							HOME
 						</Button>
 
+						<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }} href="/map">
+							MAPS
+						</Button>
+
 						<Button
 							variant=""
 							style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}

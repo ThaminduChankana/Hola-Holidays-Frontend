@@ -28,8 +28,8 @@ const Footer = () => {
 							About Us
 						</a>
 						<br></br>
-						<a href="/" id="listElement">
-							Products
+						<a href="/map" id="listElement">
+							Map
 						</a>
 						<br></br>
 					</li>
