@@ -1,6 +1,6 @@
 import { Box, Button, ButtonGroup, Flex, HStack, IconButton, Input, SkeletonText, Text } from "@chakra-ui/react";
 import { FaLocationArrow, FaTimes } from "react-icons/fa";
-
+import Swal from "sweetalert2";
 import { useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer } from "@react-google-maps/api";
 import { useRef, useState } from "react";
 
@@ -20,13 +20,16 @@ const Map = () => {
 
 	const [lat, setLat] = useState(null);
 	const [lng, setLng] = useState(null);
-	const [error, setError] = useState("");
 
 	const geolocationAPI = navigator.geolocation;
 
 	const getUserCoordinates = () => {
 		if (!geolocationAPI) {
-			setError("Geolocation API is not available in your browser!");
+			Swal.fire({
+				icon: "error",
+				title: "Oops...",
+				text: "Your browser does not support geolocation!",
+			});
 		} else {
 			geolocationAPI.getCurrentPosition(
 				(position) => {
@@ -36,15 +39,18 @@ const Map = () => {
 					setCenter({ lat: lat, lng: lng });
 				},
 				(error) => {
-					setError("Something went wrong getting your position!");
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Something went wrong while getting your position!",
+					});
 				}
 			);
 		}
 	};
 
-	/** @type React.MutableRefObject<HTMLInputElement> */
 	const originRef = useRef();
-	/** @type React.MutableRefObject<HTMLInputElement> */
+
 	const destiantionRef = useRef();
 
 	if (!isLoaded) {
@@ -78,7 +84,6 @@ const Map = () => {
 
 	return (
 		<div>
-			{error}
 			<Flex position="relative" flexDirection="column" alignItems="center" h="100vh">
 				<Box position="absolute" left={0} top={0} h="100%" w="100%">
 					<GoogleMap

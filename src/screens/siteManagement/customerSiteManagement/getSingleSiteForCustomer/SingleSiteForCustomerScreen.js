@@ -172,6 +172,7 @@ function SingleSiteForCustomerScreen({ match, history }) {
 											width: "100%",
 											fontSize: "16px",
 											borderRadius: "5px",
+											padding: "10px",
 										}}
 										value={description}
 										placeholder="Enter Site Description"
@@ -188,6 +189,7 @@ function SingleSiteForCustomerScreen({ match, history }) {
 											width: "100%",
 											fontSize: "16px",
 											borderRadius: "5px",
+											padding: "10px",
 										}}
 										value={recommendations}
 										placeholder="Enter Recommendations"
@@ -204,6 +206,7 @@ function SingleSiteForCustomerScreen({ match, history }) {
 											width: "100%",
 											fontSize: "16px",
 											borderRadius: "5px",
+											padding: "10px",
 										}}
 										value={specialEvents}
 										placeholder="Enter Special Events"
@@ -220,6 +223,7 @@ function SingleSiteForCustomerScreen({ match, history }) {
 											width: "100%",
 											fontSize: "16px",
 											borderRadius: "5px",
+											padding: "10px",
 										}}
 										value={specialInstructions}
 										placeholder="Enter Special Instructions"
