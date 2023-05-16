@@ -3,6 +3,7 @@ import { FaLocationArrow, FaTimes } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer } from "@react-google-maps/api";
 import { useRef, useState } from "react";
+import { Row, Col } from "react-bootstrap";
 
 const cent = { lat: 6.9271, lng: 79.8612 };
 
@@ -116,19 +117,32 @@ const Map = () => {
 							<IconButton aria-label="center back" icon={<FaTimes />} onClick={clearRoute} />
 						</ButtonGroup>
 					</HStack>
-					<HStack spacing={4} mt={4} justifyContent="space-between">
-						<Text>Distance: {distance} </Text>
-						<Text>Duration: {duration} </Text>
-						<IconButton
-							aria-label="center back"
-							icon={<FaLocationArrow />}
-							isRound
-							onClick={() => {
-								map.setZoom(15);
-								getUserCoordinates();
-							}}
-						/>
-					</HStack>
+
+<br></br>
+					<Row>
+						<Col>
+						<center>
+							<Text>Distance: <br></br><b>{distance}</b> </Text></center>
+						</Col>
+						<Col>
+						<center>
+							<Text>Duration By Car: <br></br> <b>{duration}</b> </Text></center>
+						</Col>
+
+						<Col>
+						<center>
+							<IconButton
+								aria-label="center back"
+								icon={<FaLocationArrow />}
+								isRound
+								style={{ backgroundColor: "#38A169", color: "white", marginTop: "10px" }}
+								onClick={() => {
+									map.setZoom(15);
+									getUserCoordinates();
+								}}
+							/></center>
+						</Col>
+					</Row>
 				</Box>
 			</Flex>
 		</div>
