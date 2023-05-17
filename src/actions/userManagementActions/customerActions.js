@@ -59,7 +59,7 @@ export const customerLogin = (email, password) => async (dispatch) => {
 			button: false,
 		});
 		setTimeout(function () {
-			window.location.href = "/customer";
+			history.push ("/customer");
 		}, 2000);
 		localStorage.setItem("customerInfo", JSON.stringify(data));
 	} catch (error) {
@@ -125,7 +125,7 @@ export const customerRegister =
 				button: false,
 			});
 			setTimeout(function () {
-				window.location.href = "/customer-login";
+				history.push("/customer-login");
 			}, 2000);
 		} catch (error) {
 			dispatch({
@@ -194,7 +194,7 @@ export const customerUpdateProfile = (customer) => async (dispatch, getState) =>
 			button: false,
 		});
 		setTimeout(function () {
-			window.location.href = "/customer-view";
+			history.push("/customer-view");
 		}, 2000);
 		dispatch({ type: CUSTOMER_LOGIN_SUCCESS, payload: data });
 
@@ -228,7 +228,7 @@ export const customerDeleteProfile = () => async (dispatch, getState) => {
 
 		dispatch({ type: CUSTOMER_DELETE_SUCCESS, payload: data });
 
-		window.location.href = "/";
+		history.push("/");
 		dispatch({ type: CUSTOMER_LOGOUT });
 		localStorage.removeItem("customerInfo");
 	} catch (error) {
@@ -372,7 +372,7 @@ export const customerUpdateProfileById =
 				button: false,
 			});
 			setTimeout(function () {
-				window.location.href = "/admin-customers";
+				history.push("/admin-customers");
 			}, 2000);
 		} catch (error) {
 			const message = "Customer Update Failed !!!";
