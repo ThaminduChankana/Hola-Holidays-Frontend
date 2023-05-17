@@ -3,6 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import { customerLogout } from "../../../actions/userManagementActions/customerActions";
 import "./landingScreen.css";
 import MainScreen from "../../../components/MainScreen";
+import { Link } from "react-router-dom";
 
 const CustomerLandingScreen = ({ history }) => {
 	const customer_Login = useSelector((state) => state.customer_Login);
@@ -46,11 +47,11 @@ const CustomerLandingScreen = ({ history }) => {
 							<div className="intro-text">
 								<br></br>
 								<br></br>
-								<a href="/customer-view">
+								<Link to="/customer-view">
 									<Button id="landingBtn" variant="success" size="lg" style={{ width: 350, height: 75 }}>
 										My Account
 									</Button>
-								</a>
+								</Link>
 								<br></br>
 								<br></br>
 							</div>
