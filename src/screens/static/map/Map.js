@@ -118,29 +118,37 @@ const Map = () => {
 						</ButtonGroup>
 					</HStack>
 
-<br></br>
+					<br></br>
 					<Row>
 						<Col>
-						<center>
-							<Text>Distance: <br></br><b>{distance}</b> </Text></center>
+							<center>
+								<Text>
+									Distance: <br></br>
+									<b>{distance}</b>{" "}
+								</Text>
+							</center>
 						</Col>
 						<Col>
-						<center>
-							<Text>Duration By Car: <br></br> <b>{duration}</b> </Text></center>
+							<center>
+								<Text>
+									Duration By Car: <br></br> <b>{duration}</b>{" "}
+								</Text>
+							</center>
 						</Col>
 
 						<Col>
-						<center>
-							<IconButton
-								aria-label="center back"
-								icon={<FaLocationArrow />}
-								isRound
-								style={{ backgroundColor: "#38A169", color: "white", marginTop: "10px" }}
-								onClick={() => {
-									map.setZoom(15);
-									getUserCoordinates();
-								}}
-							/></center>
+							<center>
+								<IconButton
+									aria-label="center back"
+									icon={<FaLocationArrow />}
+									isRound
+									style={{ backgroundColor: "#38A169", color: "white", marginTop: "10px" }}
+									onClick={() => {
+										map.setZoom(15);
+										getUserCoordinates();
+									}}
+								/>
+							</center>
 						</Col>
 					</Row>
 				</Box>

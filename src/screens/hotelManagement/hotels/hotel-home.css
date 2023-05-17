@@ -1,3 +1,87 @@
+.hotel-customer-view {
+	background: rgb(22, 21, 20);
+	background: linear-gradient(0deg, rgba(22, 21, 20, 1) 0%, rgba(10, 56, 109, 1) 100%);
+}
+
+.singleHotelView {
+	background-color: #aee1f9;
+	background-image: linear-gradient(315deg, #aee1f9 0%, #f6ebe6 74%);
+}
+.reservationList {
+	background: rgb(8, 8, 9);
+	background: linear-gradient(0deg, rgba(8, 8, 9, 1) 0%, rgba(245, 156, 6, 0.7114495456385679) 100%);
+}
+
+.reservation {
+	background: rgb(8, 8, 9);
+	background: linear-gradient(0deg, rgba(8, 8, 9, 1) 0%, rgba(245, 156, 6, 0.7114495456385679) 100%);
+}
+
+.reservationCreate {
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url("http://media.architecturaldigest.com/photos/57e42deafe422b3e29b7e790/master/pass/JW_LosCabos_2015_MainExterior.jpg");
+	background-size: cover;
+	background-position: center;
+}
+
+.createHotel {
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url("https://holidayturn.com/wp-content/uploads/2017/12/Safari-Court-Hotel-Pool.jpg");
+	background-size: cover;
+	background-position: center;
+}
+
+.updateHotel {
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url("https://15pictures.com/wp-content/gallery/15-pictures-hotels/hotels-9.jpg");
+	background-size: cover;
+	background-position: center;
+}
+
+.createRoom {
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url("https://static.pexels.com/photos/919/night-dark-hotel-luxury.jpg");
+	background-size: cover;
+	background-position: center;
+}
+
+.updateRoom {
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url("https://g.foolcdn.com/editorial/images/476262/luxury-hotel-lobby.jpg");
+	background-size: cover;
+	background-position: center;
+}
+
+.adminHoteList {
+	background: #d38312;
+	background: -webkit-linear-gradient(to top, #a83279, #d38312);
+	background: linear-gradient(to top, #a83279, #d38312);
+}
+.roomDetails {
+	background: #f46b45;
+	background: -webkit-linear-gradient(to top, #eea849, #f46b45);
+	background: linear-gradient(to top, #eea849, #f46b45);
+}
 header.masthead-hotel {
 	padding-top: 30rem;
 	padding-bottom: 12.5rem;

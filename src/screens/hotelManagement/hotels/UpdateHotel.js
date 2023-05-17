@@ -78,23 +78,13 @@ export default function UpdateHotel({ match, history }) {
 
 	if (adminInfo) {
 		return (
-			<div>
+			<div className="updateHotel">
 				<br></br>
 				<MainScreen title="">
 					<br></br>
 					<br></br>
 					<div className="row">
 						<span style={{ display: "flex" }}>
-							{/* <h1
-								style={{
-									fontSize: "45px",
-									fontWeight: "bold",
-									marginLeft: "125px",
-									color: "black",
-								}}
-							>
-								Edit Hotel
-							</h1> */}
 							<Button
 								href={`/room-details/${match.params.id}`}
 								style={{ marginLeft: "900px", width: "50px", height: "50px", fontSize: "20px" }}
@@ -118,7 +108,7 @@ export default function UpdateHotel({ match, history }) {
 							borderWidth: 0,
 							border: "2px solid black",
 							marginLeft: 110,
-							borderRadius: 0,
+							borderRadius: "20px",
 						}}
 					>
 						<div
@@ -138,6 +128,7 @@ export default function UpdateHotel({ match, history }) {
 									width: "100%",
 									height: "250px",
 									background: "linear - gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))",
+									borderRadius: "15px 15px 0px 0px",
 								}}
 							></img>
 							<div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>

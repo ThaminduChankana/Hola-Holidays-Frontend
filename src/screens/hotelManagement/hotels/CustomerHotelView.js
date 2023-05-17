@@ -26,7 +26,7 @@ const CustomerHotelView = () => {
 	}, [dispatch, history.push]);
 
 	return (
-		<div style={{ minHeight: 700 }}>
+		<div className="hotel-customer-view" style={{ minHeight: 700 }}>
 			<header className="masthead-hotel">
 				<div className="container">
 					<div className="masthead-subheading">Welcome To Hola Holidays!</div>
@@ -48,7 +48,8 @@ const CustomerHotelView = () => {
 									paddingInline: "30px",
 									paddingLeft: "15px",
 									fontSize: 18,
-									border: "none",
+									border: "2px",
+									borderWidth: "5px",
 								}}
 								onChange={searchHandler}
 							/>
@@ -70,7 +71,7 @@ const CustomerHotelView = () => {
 						</Button>
 						&emsp;
 						<Button
-							variant="dark"
+							variant="info"
 							size="lg"
 							onClick={() => {
 								setSearch("Nuwara Eliya");
@@ -80,7 +81,7 @@ const CustomerHotelView = () => {
 						</Button>{" "}
 						&emsp;
 						<Button
-							variant="dark"
+							variant="info"
 							size="lg"
 							onClick={() => {
 								setSearch("Colombo");
@@ -90,7 +91,7 @@ const CustomerHotelView = () => {
 						</Button>{" "}
 						&emsp;
 						<Button
-							variant="dark"
+							variant="info"
 							size="lg"
 							onClick={() => {
 								setSearch("Kandy");
@@ -103,7 +104,7 @@ const CustomerHotelView = () => {
 					<br></br>
 					<center>
 						<Button
-							variant="dark"
+							variant="info"
 							size="lg"
 							onClick={() => {
 								setSearch("Galle");
@@ -113,7 +114,7 @@ const CustomerHotelView = () => {
 						</Button>
 						&emsp;
 						<Button
-							variant="dark"
+							variant="info"
 							size="lg"
 							onClick={() => {
 								setSearch("Matara");
@@ -123,7 +124,7 @@ const CustomerHotelView = () => {
 						</Button>{" "}
 						&emsp;
 						<Button
-							variant="dark"
+							variant="info"
 							size="lg"
 							onClick={() => {
 								setSearch("Negombo");
@@ -132,7 +133,7 @@ const CustomerHotelView = () => {
 							Negombo
 						</Button>{" "}
 						<Button
-							variant="dark"
+							variant="info"
 							size="lg"
 							onClick={() => {
 								setSearch("Anuradhapura");
@@ -142,7 +143,7 @@ const CustomerHotelView = () => {
 						</Button>{" "}
 						&emsp;
 						<Button
-							variant="dark"
+							variant="info"
 							size="lg"
 							onClick={() => {
 								setSearch("Badulla");
@@ -156,7 +157,7 @@ const CustomerHotelView = () => {
 				<div>
 					<center>
 						<Button
-							variant="dark"
+							variant="info"
 							size="lg"
 							onClick={() => {
 								setSearch("Hambantota");
@@ -166,7 +167,7 @@ const CustomerHotelView = () => {
 						</Button>{" "}
 						&emsp;
 						<Button
-							variant="dark"
+							variant="info"
 							size="lg"
 							onClick={() => {
 								setSearch("Trincomalee");
@@ -176,7 +177,7 @@ const CustomerHotelView = () => {
 						</Button>{" "}
 						&emsp;
 						<Button
-							variant="dark"
+							variant="info"
 							size="lg"
 							onClick={() => {
 								setSearch("Jaffna");
@@ -186,7 +187,7 @@ const CustomerHotelView = () => {
 						</Button>
 						&emsp;
 						<Button
-							variant="dark"
+							variant="info"
 							size="lg"
 							onClick={() => {
 								setSearch("Batticaloa");
@@ -222,11 +223,10 @@ const CustomerHotelView = () => {
 										<MDBCol md="12" lg="6" xl="11">
 											<MDBCard
 												style={{
-													borderRadius: "0px",
-													boxShadow: " 10px 10px 5px #f2f3f4",
+													borderRadius: "20px 20px 20px 20px",
 													backgroundColor: "#black",
 													borderWidth: "5px",
-													borderColor: "black",
+													borderColor: "goldenrod",
 													height: "600px",
 													width: "340px",
 												}}
@@ -237,7 +237,7 @@ const CustomerHotelView = () => {
 														fluid
 														className="w-100"
 														style={{
-															borderRadius: "0px",
+															borderRadius: "15px 15px 0px 0px",
 															width: "100px",
 															height: "300px",
 														}}

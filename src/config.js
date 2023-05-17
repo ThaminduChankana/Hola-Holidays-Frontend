@@ -1,1 +1,1 @@
-export const API_ENDPOINT = "http://localhost:5001";
+export const API_ENDPOINT = "https://hola-holidays-backend.onrender.com";

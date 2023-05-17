@@ -31,7 +31,7 @@ const CreateReservation = ({ match, history }) => {
 	useEffect(() => {}, []);
 	if (customerInfo) {
 		return (
-			<div>
+			<div className="reservationCreate">
 				<br></br>
 				<MainScreen title="">
 					<br></br>
@@ -43,7 +43,7 @@ const CreateReservation = ({ match, history }) => {
 							borderWidth: 0,
 							outline: "none",
 							marginLeft: 110,
-							borderRadius: 0,
+							borderRadius: "20px",
 							border: "2px solid black",
 						}}
 					>
@@ -64,6 +64,7 @@ const CreateReservation = ({ match, history }) => {
 									width: "100%",
 									height: "250px",
 									background: "linear - gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))",
+									borderRadius: "15px 15px 0px 0px",
 								}}
 							></img>
 							<div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
