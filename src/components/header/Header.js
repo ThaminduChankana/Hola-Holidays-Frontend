@@ -18,9 +18,9 @@ function Header({ setSearch }) {
 			title: "What do you want to do? ",
 			html: `Login or Sign up ? <br/><br/>
 		
-			<Link to="/customer-login" style="text-decoration:none"><button class="SwalBtn1 customSwalBtn">Login</button></Link> &emsp;
+			<a href="/customer-login" style="text-decoration:none"><button class="SwalBtn1 customSwalBtn">Login</button></a> &emsp;
 			
-			<Link to="/customer-register" style="text-decoration:none, color:white"><button class="SwalBtn1 customSwalBtn">Sign up</button></Link> <br/>`,
+			<a href="/customer-register" style="text-decoration:none, color:white"><button class="SwalBtn1 customSwalBtn">Sign up</button></=> <br/>`,
 
 			showCancelButton: false,
 			showConfirmButton: false,
