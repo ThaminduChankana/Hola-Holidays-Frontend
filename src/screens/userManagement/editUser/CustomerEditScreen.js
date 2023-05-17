@@ -7,7 +7,7 @@ import MainScreen from "../../../components/MainScreen";
 import { customerUpdateProfile, customerDeleteProfile } from "../../../actions/userManagementActions/customerActions";
 import swal from "sweetalert";
 import "./EditScreen.css";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const CustomerEditScreen = () => {
 	const [firstName, setFirstName] = useState("");
@@ -135,6 +135,7 @@ const CustomerEditScreen = () => {
 		return (
 			<div className="editBg">
 				<MainScreen title="EDIT - CUSTOMER">
+					<Link to="/customer">
 					<Button
 						variant="success"
 						style={{
@@ -142,11 +143,12 @@ const CustomerEditScreen = () => {
 							marginTop: 5,
 							fontSize: 15,
 						}}
-						href="/customer"
+						
 					>
 						{" "}
 						Back to Dashboard
 					</Button>
+					</Link>
 					<br></br>
 					<br></br>
 					<br></br>
