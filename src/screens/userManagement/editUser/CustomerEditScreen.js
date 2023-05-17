@@ -126,7 +126,7 @@ const CustomerEditScreen = () => {
 
 				setTimeout(function () {
 					history.push("/");
-				}, 2000);
+				}, 1500);
 			}
 		});
 	};
@@ -170,7 +170,7 @@ const CustomerEditScreen = () => {
 								{loading && <Loading />}
 								{successUpdate &&
 									setTimeout(function () {
-										window.location.href = "/customer-view";
+										history.push("/customer-view")
 									}, 2000)}
 							</div>
 							<br></br>

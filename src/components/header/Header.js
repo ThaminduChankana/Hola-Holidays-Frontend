@@ -18,9 +18,11 @@ function Header({ setSearch }) {
 			title: "What do you want to do? ",
 			html: `Login or Sign up ? <br/><br/>
 		
-			<a href="/customer-login" style="text-decoration:none"><button class="SwalBtn1 customSwalBtn">Login</button></a> &emsp;
 			
-			<a href="/customer-register" style="text-decoration:none, color:white"><button class="SwalBtn1 customSwalBtn">Sign up</button></a> <br/>`,
+			<button class="SwalBtn1 customSwalBtn">{history.push("/customer-login")}Login</button>&emsp;
+			
+			
+			<button class="SwalBtn1 customSwalBtn"{history.push("/customer-register")}>Sign up</button><br/>`,
 
 			showCancelButton: false,
 			showConfirmButton: false,

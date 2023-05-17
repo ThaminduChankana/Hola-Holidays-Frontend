@@ -7,6 +7,7 @@ import ErrorMessage from "../../../components/ErrorMessage";
 import { customerRegister } from "../../../actions/userManagementActions/customerActions";
 import MainScreen from "../../../components/MainScreen";
 import "./RegisterScreen.css";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const CustomerRegisterScreen = () => {
 	const [firstName, setFirstName] = useState("");
@@ -21,6 +22,8 @@ const CustomerRegisterScreen = () => {
 	const [confirmpassword, setConfirmPassword] = useState("");
 	const [message, setMessage] = useState(null);
 	const [picMessage, setPicMessage] = useState(null);
+
+	const history = useHistory();
 
 	const dispatch = useDispatch();
 	const customerRegistration = useSelector((state) => state.customerRegistration);
@@ -126,7 +129,7 @@ const CustomerRegisterScreen = () => {
 							{loading && <Loading />}
 							{success &&
 								setTimeout(function () {
-									window.location.href = "/customer-login";
+									history.push("/customer-login");
 								}, 2000)}
 						</div>
 						<br></br>
