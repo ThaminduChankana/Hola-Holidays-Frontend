@@ -43,7 +43,7 @@ const CustomerEditScreen = () => {
 		setCountry(customerInfo.country);
 		setEmail(customerInfo.email);
 		setPic(customerInfo.pic);
-	}, [customerInfo, customerDelete, successDelete, loadingDelete, errorDelete]);
+	}, [customerInfo, customerDelete, successDelete, loadingDelete, errorDelete, successUpdate]);
 
 	const postDetails = (pics) => {
 		if (pics === "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg") {
@@ -125,7 +125,7 @@ const CustomerEditScreen = () => {
 				});
 
 				setTimeout(function () {
-					history.push("/");
+					window.location.href = "/";
 				}, 1500);
 			}
 		});
