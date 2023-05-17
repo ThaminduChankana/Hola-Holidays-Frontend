@@ -73,22 +73,14 @@
 }
 
 .adminHoteList {
-	background: #d38312; /* fallback for old browsers */
-	background: -webkit-linear-gradient(to top, #a83279, #d38312); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(
-		to top,
-		#a83279,
-		#d38312
-	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #d38312;
+	background: -webkit-linear-gradient(to top, #a83279, #d38312);
+	background: linear-gradient(to top, #a83279, #d38312);
 }
 .roomDetails {
-	background: #f46b45; /* fallback for old browsers */
-	background: -webkit-linear-gradient(to top, #eea849, #f46b45); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(
-		to top,
-		#eea849,
-		#f46b45
-	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #f46b45;
+	background: -webkit-linear-gradient(to top, #eea849, #f46b45);
+	background: linear-gradient(to top, #eea849, #f46b45);
 }
 header.masthead-hotel {
 	padding-top: 30rem;
