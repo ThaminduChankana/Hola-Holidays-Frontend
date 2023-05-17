@@ -18,9 +18,9 @@ function Header({ setSearch }) {
 			title: "What do you want to do? ",
 			html: `Login or Sign up ? <br/><br/>
 		
-			<a href="/customer-login" style="text-decoration:none"><button class="SwalBtn1 customSwalBtn">Login</button></a> &emsp;
+			<Link to="/customer-login" style="text-decoration:none"><button class="SwalBtn1 customSwalBtn">Login</button></Link> &emsp;
 			
-			<a href="/customer-register" style="text-decoration:none, color:white"><button class="SwalBtn1 customSwalBtn">Sign up</button></a> <br/>`,
+			<Link to="/customer-register" style="text-decoration:none, color:white"><button class="SwalBtn1 customSwalBtn">Sign up</button></Link> <br/>`,
 
 			showCancelButton: false,
 			showConfirmButton: false,
@@ -39,46 +39,53 @@ function Header({ setSearch }) {
 			<div className="rightSide">
 				<div className="links">
 					<ButtonGroup className="mb-2" size="lg" style={{ width: "100%", marginTop: "2%" }}>
-						<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }} href="/">
-							HOME
-						</Button>
-
-						<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }} href="/map">
-							MAPS
-						</Button>
-
-						<Button
-							variant=""
-							style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}
-							href="/tour-guide-customer-list"
-						>
-							TOUR GUIDE
-						</Button>
-
-						<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }} href="/hotels">
-							HOTELS
-						</Button>
-
-						<Button
-							variant=""
-							style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}
-							href="/customer-transport"
-						>
-							TRANSPORT
-						</Button>
+						<Link to="/">
+							<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}>
+								HOME
+							</Button>
+						</Link>
+						<Link to="/map">
+							<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}>
+								MAPS
+							</Button>
+						</Link>
+						<Link to="/tour-guide-customer-list">
+							<Button
+								variant=""
+								style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}
+								href="/tour-guide-customer-list"
+							>
+								TOUR GUIDES
+							</Button>
+						</Link>
+						<Link to="/hotels">
+							<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}>
+								HOTELS
+							</Button>
+						</Link>
+						<Link to="/customer-transport">
+							<Button
+								variant=""
+								style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}
+								href="/customer-transport"
+							>
+								TRANSPORT
+							</Button>
+						</Link>
 						{customerInfo ? (
 							<div>
-								<Button
-									variant=""
-									style={{
-										color: "white",
-										fontSize: "20px",
-										marginLeft: "35px",
-									}}
-									href="/reservations"
-								>
-									BOOKINGS
-								</Button>
+								<Link to="/reservations">
+									<Button
+										variant=""
+										style={{
+											color: "white",
+											fontSize: "20px",
+											marginLeft: "35px",
+										}}
+									>
+										BOOKINGS
+									</Button>
+								</Link>
 							</div>
 						) : (
 							<></>
