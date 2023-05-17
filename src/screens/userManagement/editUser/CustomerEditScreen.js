@@ -89,6 +89,11 @@ const CustomerEditScreen = () => {
 				pic,
 			};
 			dispatch(customerUpdateProfile(customerUpdatedInfo));
+
+			setTimeout(function () {
+				history.push("/customer-view")
+			}, 2000)}
+
 			setFirstName("");
 			setLastName("");
 			setTelephone("");
