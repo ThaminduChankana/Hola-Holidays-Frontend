@@ -1,6 +1,5 @@
 import React from "react";
 import "./footer.css";
-import {Link} from "react-router-dom";
 import { Row, Col, Image } from "react-bootstrap";
 
 const Footer = () => {
@@ -21,38 +20,38 @@ const Footer = () => {
 				<Col>
 					<h4>QUICK LINKS</h4>
 					<li className="list-unstyled">
-						<Link to="/" id="listElement">
+						<a href="/" id="listElement">
 							Home
-						</Link>
+						</a>
 						<br></br>
-						<Link to="/aboutus" id="listElement">
+						<a href="/aboutus" id="listElement">
 							About Us
-						</Link>
+						</a>
 						<br></br>
-						<Link to="/map" id="listElement">
+						<a href="/map" id="listElement">
 							Map
-						</Link>
+						</a>
 						<br></br>
 					</li>
 				</Col>
 				<Col>
 					<h4>POPULAR LINKS</h4>
 					<li className="list-unstyled">
-						<Link to="/contactus" id="listElement">
+						<a href="/contactus" id="listElement">
 							Contact Us
-						</Link>
+						</a>
 						<br></br>
-						<Link to="/customer-register" id="listElement">
+						<a href="/customer-register" id="listElement">
 							Sign Up
-						</Link>
+						</a>
 						<br></br>
-						<Link to="/customer-login" id="listElement">
+						<a href="/customer-login" id="listElement">
 							Sign In
-						</Link>
+						</a>
 						<br></br>
-						<Link to="/" id="listElement">
+						<a href="/" id="listElement">
 							Terms And Conditions
-						</Link>
+						</a>
 					</li>
 				</Col>
 				<Col>
