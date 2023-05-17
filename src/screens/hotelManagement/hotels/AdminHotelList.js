@@ -56,7 +56,7 @@ export default function AdminHotelList() {
 	}, [dispatch, history, successDelete]);
 	if (adminInfo) {
 		return (
-			<div style={{ minHeight: 900 }}>
+			<div className="adminHoteList" style={{ minHeight: 900 }}>
 				<br></br>
 				<br></br>
 				<MainScreen title="">
@@ -70,7 +70,7 @@ export default function AdminHotelList() {
 									fontSize: "45px",
 									fontWeight: "bold",
 									marginLeft: "80px",
-									color: "black",
+									color: "white",
 								}}
 							>
 								View Hotel

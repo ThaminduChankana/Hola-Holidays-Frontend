@@ -19,7 +19,7 @@ export default function HotelReservation({ match, history }) {
 
 	if (adminInfo) {
 		return (
-			<div>
+			<div className="reservation">
 				<br></br>
 				<MainScreen title="">
 					<br></br>
@@ -29,7 +29,7 @@ export default function HotelReservation({ match, history }) {
 							fontSize: "45px",
 							fontWeight: "bold",
 							marginLeft: "120px",
-							color: "black",
+							color: "white",
 						}}
 					>
 						Reservations

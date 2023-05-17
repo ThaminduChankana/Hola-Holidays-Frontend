@@ -46,7 +46,7 @@ export default function ReservationList() {
 
 	if (customerInfo) {
 		return (
-			<div style={{ minHeight: 700 }}>
+			<div style={{ minHeight: 700 }} className="reservationList">
 				<div
 					style={{
 						marginLeft: "20%",
@@ -56,7 +56,7 @@ export default function ReservationList() {
 				>
 					<br></br>
 					<br></br>
-					<h1 style={{ fontWeight: "400", fontSize: "50px", color: "black" }}>Reservations</h1>
+					<h1 style={{ fontWeight: "400", fontSize: "50px", color: "white" }}>Reservations</h1>
 					<br></br>
 					{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
 					{loadingDelete && <Loading />}

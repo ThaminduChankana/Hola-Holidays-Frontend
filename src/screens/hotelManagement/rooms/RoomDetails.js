@@ -55,7 +55,7 @@ export default function RoomDetails({ match, history }) {
 
 	if (adminInfo) {
 		return (
-			<div>
+			<div className="roomDetails">
 				<br></br>
 				<MainScreen title="">
 					<br></br>
@@ -67,7 +67,7 @@ export default function RoomDetails({ match, history }) {
 									fontSize: "45px",
 									fontWeight: "bold",
 									marginLeft: "120px",
-									color: "black",
+									color: "white",
 								}}
 							>
 								View Room
@@ -87,7 +87,7 @@ export default function RoomDetails({ match, history }) {
 					{adminRooms?.map((room) => (
 						<div
 							className="product-card-update"
-							style={{ marginBottom: "50px", border: "2px solid black", marginLeft: "110px" }}
+							style={{ marginBottom: "50px", border: "2px solid black", marginLeft: "110px", borderRadius: "20px" }}
 						>
 							<div className="details">
 								<div className="big-img">

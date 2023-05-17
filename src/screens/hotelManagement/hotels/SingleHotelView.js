@@ -59,6 +59,8 @@ export default function SingleHotelView({ match, history }) {
 							width: "1140px",
 							height: "600px",
 							borderRadius: "18px",
+							borderWidth: "5px",
+							border: "5px solid  #2b2b5c",
 						}}
 					></img>
 					<br></br>
@@ -83,7 +85,10 @@ export default function SingleHotelView({ match, history }) {
 							boxShadow: "0 0 5px #ccc",
 						}}
 					>
-						<div className="details" style={{ borderRadius: "15px", border: "2px solid" }}>
+						<div
+							className="details"
+							style={{ borderRadius: "15px", border: "3px solid  #2b2b5c", backgroundColor: "azure" }}
+						>
 							<div className="big-img">
 								<img
 									src={room.pic}

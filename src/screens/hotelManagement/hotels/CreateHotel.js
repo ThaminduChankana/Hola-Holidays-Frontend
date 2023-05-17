@@ -81,7 +81,7 @@ const CreateHotel = () => {
 	useEffect(() => {}, []);
 	if (adminInfo) {
 		return (
-			<div>
+			<div className="createHotel">
 				<br></br>
 				<MainScreen title="">
 					<br></br>
@@ -92,7 +92,7 @@ const CreateHotel = () => {
 							borderWidth: 0,
 							outline: "none",
 							marginLeft: 110,
-							borderRadius: 0,
+							borderRadius: "20px",
 							border: "2px solid black",
 						}}
 					>
@@ -113,6 +113,7 @@ const CreateHotel = () => {
 									width: "100%",
 									height: "250px",
 									background: "linear - gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))",
+									borderRadius: "15px 15px 0px 0px",
 								}}
 							></img>
 							<div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
