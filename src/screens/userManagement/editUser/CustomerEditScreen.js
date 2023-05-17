@@ -92,7 +92,7 @@ const CustomerEditScreen = () => {
 
 			setTimeout(function () {
 				history.push("/customer-view")
-			}, 2000)}
+			}, 2000)
 
 			setFirstName("");
 			setLastName("");
