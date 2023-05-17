@@ -168,7 +168,7 @@ const CustomerViewScreen = ({ history }) => {
 									<br></br>
 									<Button
 										variant="primary"
-										onClick={() => history.push("/customer/editprofile")}
+										onClick={() => history.push("/customer-edit")}
 										style={{
 											fontSize: 15,
 										}}
