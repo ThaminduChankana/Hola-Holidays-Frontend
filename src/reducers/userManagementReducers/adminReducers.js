@@ -19,7 +19,7 @@ export const adminLoginReducer = (state = {}, action) => {
 		case ADMIN_LOGIN_REQUEST:
 			return { loading: true };
 		case ADMIN_LOGIN_SUCCESS:
-			return { loading: false, adminInfo: action.payload };
+			return { loading: false, adminInfo: action.payload, success: true };
 		case ADMIN_LOGIN_FAIL:
 			return { loading: false, error: action.payload };
 		case ADMIN_LOGOUT:
@@ -35,7 +35,7 @@ export const adminRegisterReducer = (state = {}, action) => {
 		case ADMIN_REGISTER_REQUEST:
 			return { loading: true };
 		case ADMIN_REGISTER_SUCCESS:
-			return { loading: false, adminInfo: action.payload };
+			return { loading: false, adminInfo: action.payload, success: true };
 		case ADMIN_REGISTER_FAIL:
 			return { loading: false, error: action.payload };
 		default:
@@ -48,7 +48,7 @@ export const adminViewReducer = (state = {}, action) => {
 		case ADMIN_VIEW_REQUEST:
 			return { loading: true };
 		case ADMIN_VIEW_SUCCESS:
-			return { loading: false, adminInfo: action.payload };
+			return { loading: false, adminInfo: action.payload, success: true };
 		case ADMIN_VIEW_FAIL:
 			return { loading: false, error: action.payload };
 		default:

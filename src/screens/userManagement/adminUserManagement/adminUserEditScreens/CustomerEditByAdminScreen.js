@@ -9,6 +9,7 @@ import MainScreen from "../../../../components/MainScreen";
 import { authHeader } from "../../../../actions/userManagementActions/adminActions";
 import { API_ENDPOINT } from "../../../../config";
 import "./adminUserEdit.css";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const CustomerEditByAdminScreen = ({ match }) => {
 	const [firstName, setFirstName] = useState("");
@@ -31,7 +32,9 @@ const CustomerEditByAdminScreen = ({ match }) => {
 	const { adminInfo } = admin_Login;
 
 	const customerUpdateById = useSelector((state) => state.customerUpdateById);
-	const { loading, error } = customerUpdateById;
+	const { loading, error, success } = customerUpdateById;
+
+	const history = useHistory();
 
 	const postDetails = (pics) => {
 		if (pics === "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg") {
@@ -108,18 +111,19 @@ const CustomerEditByAdminScreen = ({ match }) => {
 			<div className="adminCustomerEditBg">
 				<br></br>
 				<MainScreen title="EDIT - CUSTOMER">
-					<Button
-						variant="success"
-						style={{
-							float: "left",
-							marginTop: 5,
-							fontSize: 15,
-						}}
-						href="/admin-customers"
-					>
-						{" "}
-						Back to Customers List
-					</Button>
+					<Link to="/admin-customers">
+						<Button
+							variant="success"
+							style={{
+								float: "left",
+								marginTop: 5,
+								fontSize: 15,
+							}}
+						>
+							{" "}
+							Back to Customers List
+						</Button>
+					</Link>
 					<br></br>
 
 					<br></br>
@@ -141,6 +145,10 @@ const CustomerEditByAdminScreen = ({ match }) => {
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 								{message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
 								{loading && <Loading />}
+								{success &&
+									setTimeout(function () {
+										history.push("/admin-customers");
+									}, 2000)}
 							</div>
 							<br></br>
 							<Row className="customerProfileContainer">

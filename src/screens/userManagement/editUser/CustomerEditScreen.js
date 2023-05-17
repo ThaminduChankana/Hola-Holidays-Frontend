@@ -7,6 +7,7 @@ import MainScreen from "../../../components/MainScreen";
 import { customerUpdateProfile, customerDeleteProfile } from "../../../actions/userManagementActions/customerActions";
 import swal from "sweetalert";
 import "./EditScreen.css";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const CustomerEditScreen = () => {
 	const [firstName, setFirstName] = useState("");
@@ -28,7 +29,7 @@ const CustomerEditScreen = () => {
 	const { customerInfo } = customer_Login;
 
 	const customerUpdate = useSelector((state) => state.customerUpdate);
-	const { loading, error } = customerUpdate;
+	const { loading, error, successUpdate } = customerUpdate;
 
 	const customerDelete = useSelector((state) => state.customerDelete);
 	const { loading: loadingDelete, error: errorDelete, success: successDelete } = customerDelete;
@@ -88,8 +89,21 @@ const CustomerEditScreen = () => {
 				pic,
 			};
 			dispatch(customerUpdateProfile(customerUpdatedInfo));
+			setFirstName("");
+			setLastName("");
+			setTelephone("");
+			setAddress("");
+			setGender("");
+			setCountry("");
+			setEmail("");
+			setPassword("");
+			setConfirmPassword("");
+			setPic("");
+			setMessage(null);
 		}
 	};
+
+	const history = useHistory();
 
 	const deleteHandler = (customerInfo) => {
 		swal({
@@ -109,6 +123,10 @@ const CustomerEditScreen = () => {
 					timer: 2000,
 					button: false,
 				});
+
+				setTimeout(function () {
+					history.push("/");
+				}, 2000);
 			}
 		});
 	};
@@ -150,6 +168,10 @@ const CustomerEditScreen = () => {
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 								{message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
 								{loading && <Loading />}
+								{successUpdate &&
+									setTimeout(function () {
+										window.location.href = "/customer-view";
+									}, 2000)}
 							</div>
 							<br></br>
 							<Row className="CustomerProfileContainer">

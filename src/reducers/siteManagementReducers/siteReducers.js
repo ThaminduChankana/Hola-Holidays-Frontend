@@ -24,9 +24,9 @@ export const customerSiteListReducer = (state = { sites: [] }, action) => {
 		case SITES_LIST_FOR_CUSTOMER_REQUEST:
 			return { loading: true };
 		case SITES_LIST_FOR_CUSTOMER_SUCCESS:
-			return { loading: false, sites: action.payload };
+			return { loading: false, sites: action.payload, success: true };
 		case SITES_LIST_FOR_CUSTOMER_FAIL:
-			return { loading: false, error: action.payload };
+			return { loading: false, error: action.payload, success: false };
 
 		default:
 			return state;
@@ -38,9 +38,9 @@ export const adminSiteListReducer = (state = { sites: [] }, action) => {
 		case SITES_LIST_FOR_ADMIN_REQUEST:
 			return { loading: true };
 		case SITES_LIST_FOR_ADMIN_SUCCESS:
-			return { loading: false, sites: action.payload };
+			return { loading: false, sites: action.payload, success: true };
 		case SITES_LIST_FOR_ADMIN_FAIL:
-			return { loading: false, error: action.payload };
+			return { loading: false, error: action.payload, success: false };
 
 		default:
 			return state;
@@ -52,9 +52,9 @@ export const locationSiteListReducer = (state = { sites: [] }, action) => {
 		case SITES_LIST_FOR_EACH_LOCATION_REQUEST:
 			return { loading: true };
 		case SITES_LIST_FOR_EACH_LOCATION_SUCCESS:
-			return { loading: false, sites: action.payload };
+			return { loading: false, sites: action.payload, success: true };
 		case SITES_LIST_FOR_EACH_LOCATION_FAIL:
-			return { loading: false, error: action.payload };
+			return { loading: false, error: action.payload, success: false };
 
 		default:
 			return state;
@@ -68,7 +68,7 @@ export const siteCreateReducer = (state = {}, action) => {
 		case SITES_CREATE_SUCCESS:
 			return { loading: false, success: true };
 		case SITES_CREATE_FAIL:
-			return { loading: false, error: action.payload };
+			return { loading: false, error: action.payload, success: false };
 
 		default:
 			return state;

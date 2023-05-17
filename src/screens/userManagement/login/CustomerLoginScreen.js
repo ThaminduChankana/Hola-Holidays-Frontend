@@ -14,17 +14,20 @@ const CustomerLogin = ({ history }) => {
 	const dispatch = useDispatch();
 
 	const customer_Login = useSelector((state) => state.customer_Login);
-	const { loading, error, customerInfo } = customer_Login;
+	const { loading, error, customerInfo, success } = customer_Login;
 
 	useEffect(() => {
 		if (customerInfo) {
 			window.history.pushState({}, "", "/customer");
 		}
-	}, [history, customerInfo]);
+	}, [history, customerInfo, success]);
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
 		dispatch(customerLogin(email, password));
+
+		setEmail("");
+		setPassword("");
 	};
 
 	return (
@@ -48,6 +51,10 @@ const CustomerLogin = ({ history }) => {
 					<div className="loginContainer">
 						{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 						{loading && <Loading />}
+						{success &&
+							setTimeout(function () {
+								history.push("/customer");
+							}, 2000)}
 						<Form onSubmit={submitHandler}>
 							<Form.Group controlId="formBasicEmail">
 								<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Email address</Form.Label>

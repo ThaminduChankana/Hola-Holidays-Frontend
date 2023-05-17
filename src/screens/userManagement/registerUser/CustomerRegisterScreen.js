@@ -24,7 +24,7 @@ const CustomerRegisterScreen = () => {
 
 	const dispatch = useDispatch();
 	const customerRegistration = useSelector((state) => state.customerRegistration);
-	const { loading, error } = customerRegistration;
+	const { loading, error, success } = customerRegistration;
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
@@ -33,6 +33,19 @@ const CustomerRegisterScreen = () => {
 			setMessage("Passwords do not match");
 		} else {
 			dispatch(customerRegister(firstName, lastName, telephone, address, gender, country, email, password, pic));
+
+			setFirstName("");
+			setLastName("");
+			setTelephone("");
+			setAddress("");
+			setGender("");
+			setCountry("");
+			setEmail("");
+			setPassword("");
+			setConfirmPassword("");
+			setPic("https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg");
+			setMessage(null);
+			setPicMessage(null);
 		}
 	};
 
@@ -111,6 +124,10 @@ const CustomerRegisterScreen = () => {
 							{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 							{message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
 							{loading && <Loading />}
+							{success &&
+								setTimeout(function () {
+									window.location.href = "/customer-login";
+								}, 2000)}
 						</div>
 						<br></br>
 						<Row className="CustomerProfileContainer">
