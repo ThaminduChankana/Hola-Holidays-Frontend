@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
 import { adminLogin } from "../../../actions/userManagementActions/adminActions";
-import { ADMIN_LOGIN_AFTER_SUCCESS } from "../../../constants/userManagementConstants/adminConstants";
 
 const AdminLogin = ({ history }) => {
 	const [email, setEmail] = useState("");
@@ -27,7 +26,6 @@ const AdminLogin = ({ history }) => {
 		e.preventDefault();
 		await dispatch(adminLogin(email, password));
 
-		await dispatch({ type: ADMIN_LOGIN_AFTER_SUCCESS, payload: null });
 		setEmail("");
 		setPassword("");
 	};
