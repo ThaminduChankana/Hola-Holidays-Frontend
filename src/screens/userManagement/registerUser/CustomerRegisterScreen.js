@@ -37,18 +37,7 @@ const CustomerRegisterScreen = () => {
 		} else {
 			dispatch(customerRegister(firstName, lastName, telephone, address, gender, country, email, password, pic));
 
-			setFirstName("");
-			setLastName("");
-			setTelephone("");
-			setAddress("");
-			setGender("");
-			setCountry("");
-			setEmail("");
-			setPassword("");
-			setConfirmPassword("");
-			setPic("https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg");
-			setMessage(null);
-			setPicMessage(null);
+			resetHandler(e);
 		}
 	};
 
@@ -76,6 +65,11 @@ const CustomerRegisterScreen = () => {
 		setGender("");
 		setCountry("");
 		setEmail("");
+		setPassword("");
+		setConfirmPassword("");
+		setPic("https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg");
+		setMessage(null);
+		setPicMessage(null);
 	};
 
 	const postDetails = (pics) => {

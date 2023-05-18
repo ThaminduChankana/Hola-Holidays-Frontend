@@ -15,6 +15,7 @@ import Loading from "../../../../components/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage";
 import swal from "sweetalert";
 import "./sitesLists.css";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 const SitesListForAdminScreen = () => {
 	const dispatch = useDispatch();
@@ -109,14 +110,16 @@ const SitesListForAdminScreen = () => {
 						</Col>
 					</Row>
 					<br></br>
-
-					<Button variant="success" href="/admin" style={{ float: "left", fontSize: "15px" }}>
-						Back to Dashboard
-					</Button>
-					<Button variant="success" href="/admin-site-create" style={{ float: "right", fontSize: "15px" }}>
-						+ Add A New Site
-					</Button>
-
+					<Link to="/admin">
+						<Button variant="success" style={{ float: "left", fontSize: "15px" }}>
+							Back to Dashboard
+						</Button>
+					</Link>
+					<Link to="/admin-site-create">
+						<Button variant="success" style={{ float: "right", fontSize: "15px" }}>
+							+ Add A New Site
+						</Button>
+					</Link>
 					<br></br>
 					{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 					{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
@@ -193,12 +196,9 @@ const SitesListForAdminScreen = () => {
 																</label>{" "}
 															</span>
 															<div>
-																<Button
-																	style={{ marginTop: 40, fontSize: 15 }}
-																	href={`/admin-site-edit/${adminSiteList._id}`}
-																>
-																	Edit
-																</Button>
+																<Link to={`/admin-site-edit/${adminSiteList._id}`}>
+																	<Button style={{ marginTop: 40, fontSize: 15 }}>Edit</Button>
+																</Link>
 															</div>
 															&emsp;
 															<div>

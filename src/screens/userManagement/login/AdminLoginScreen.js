@@ -14,7 +14,7 @@ const AdminLogin = ({ history }) => {
 	const dispatch = useDispatch();
 
 	const admin_Login = useSelector((state) => state.admin_Login);
-	const { loading, error, adminInfo } = admin_Login;
+	const { loading, error, adminInfo, success } = admin_Login;
 
 	useEffect(() => {
 		if (adminInfo) {
@@ -25,6 +25,9 @@ const AdminLogin = ({ history }) => {
 	const submitHandler = async (e) => {
 		e.preventDefault();
 		dispatch(adminLogin(email, password));
+
+		setEmail("");
+		setPassword("");
 	};
 
 	return (
@@ -48,6 +51,10 @@ const AdminLogin = ({ history }) => {
 					<div className="loginContainer">
 						{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 						{loading && <Loading />}
+						{success &&
+							setTimeout(function () {
+								history.push("/admin");
+							}, 2000)}
 						<Form onSubmit={submitHandler}>
 							<Form.Group controlId="formBasicEmail">
 								<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Email address</Form.Label>

@@ -6,6 +6,7 @@ import ErrorMessage from "../../../components/ErrorMessage";
 import MainScreen from "../../../components/MainScreen";
 import { adminUpdateProfile } from "../../../actions/userManagementActions/adminActions";
 import "./EditScreen.css";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const AdminEditScreen = () => {
 	const [name, setName] = useState("");
@@ -19,12 +20,13 @@ const AdminEditScreen = () => {
 	const [picMessage, setPicMessage] = useState(null);
 
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
 
 	const adminUpdate = useSelector((state) => state.adminUpdate);
-	const { loading, error } = adminUpdate;
+	const { loading, error, success } = adminUpdate;
 
 	useEffect(() => {
 		setName(adminInfo.name);
@@ -41,6 +43,11 @@ const AdminEditScreen = () => {
 		setTelephone("");
 		setAddress("");
 		setEmail("");
+		setPassword("");
+		setConfirmPassword("");
+		setMessage(null);
+		setPic("https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg");
+		setPicMessage(null);
 	};
 
 	const postDetails = (pics) => {
@@ -84,6 +91,11 @@ const AdminEditScreen = () => {
 				password,
 			};
 			dispatch(adminUpdateProfile(adminUpdatedInfo));
+			setTimeout(function () {
+				history.push("/admin-view");
+			}, 2000);
+
+			resetHandler();
 		}
 	};
 
@@ -91,18 +103,19 @@ const AdminEditScreen = () => {
 		return (
 			<div className="editBg">
 				<MainScreen title="EDIT - ADMIN">
-					<Button
-						variant="success"
-						style={{
-							float: "left",
-							marginTop: 5,
-							fontSize: 15,
-						}}
-						href="/admin"
-					>
-						{" "}
-						Back to Dashboard
-					</Button>
+					<Link to="/admin">
+						<Button
+							variant="success"
+							style={{
+								float: "left",
+								marginTop: 5,
+								fontSize: 15,
+							}}
+						>
+							{" "}
+							Back to Dashboard
+						</Button>
+					</Link>
 					<br></br>
 					<br></br>
 					<br></br>
@@ -124,6 +137,10 @@ const AdminEditScreen = () => {
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 								{message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
 								{loading && <Loading />}
+								{success &&
+									setTimeout(function () {
+										history.push("/admin-view");
+									}, 2000)}
 							</div>
 							<br></br>
 							<Row className="AdminProfileContainer">

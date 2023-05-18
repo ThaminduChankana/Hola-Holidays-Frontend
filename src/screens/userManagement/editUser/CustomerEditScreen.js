@@ -91,8 +91,8 @@ const CustomerEditScreen = () => {
 			dispatch(customerUpdateProfile(customerUpdatedInfo));
 
 			setTimeout(function () {
-				history.push("/customer-view")
-			}, 2000)
+				history.push("/customer-view");
+			}, 2000);
 
 			setFirstName("");
 			setLastName("");
@@ -141,18 +141,17 @@ const CustomerEditScreen = () => {
 			<div className="editBg">
 				<MainScreen title="EDIT - CUSTOMER">
 					<Link to="/customer">
-					<Button
-						variant="success"
-						style={{
-							float: "left",
-							marginTop: 5,
-							fontSize: 15,
-						}}
-						
-					>
-						{" "}
-						Back to Dashboard
-					</Button>
+						<Button
+							variant="success"
+							style={{
+								float: "left",
+								marginTop: 5,
+								fontSize: 15,
+							}}
+						>
+							{" "}
+							Back to Dashboard
+						</Button>
 					</Link>
 					<br></br>
 					<br></br>
@@ -177,7 +176,7 @@ const CustomerEditScreen = () => {
 								{loading && <Loading />}
 								{successUpdate &&
 									setTimeout(function () {
-										history.push("/customer-view")
+										history.push("/customer-view");
 									}, 2000)}
 							</div>
 							<br></br>

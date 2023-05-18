@@ -13,6 +13,7 @@ import Loading from "../../../../components/Loading";
 import swal from "sweetalert";
 import "./singleSite.css";
 import { API_ENDPOINT } from "../../../../config";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 function SingleSiteForAdminScreen({ match, history }) {
 	const [siteName, setSiteName] = useState("");
@@ -53,6 +54,10 @@ function SingleSiteForAdminScreen({ match, history }) {
 		setSpecialEvents("");
 		setSpecialInstructions("");
 		setMoreInfoURL("");
+		setPicUrl(
+			"https://res.cloudinary.com/dfmnpw0yp/image/upload/v1682779898/Hola%20Holidays/assets/zsa4281sbunh7hq1kuys.jpg"
+		);
+		setPicMessage(null);
 	};
 
 	const deleteHandler = (id) => {
@@ -181,7 +186,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 			button: false,
 		});
 		setTimeout(function () {
-			window.location.href = "/admin-sites";
+			history.push("/admin-sites");
 		}, 2000);
 	};
 	if (adminInfo) {
@@ -189,18 +194,19 @@ function SingleSiteForAdminScreen({ match, history }) {
 			<div className="siteEditBg">
 				<br></br>
 				<MainScreen title={`Edit Site ${siteName}`}>
-					<Button
-						variant="success"
-						style={{
-							float: "left",
-							marginTop: 5,
-							fontSize: 15,
-						}}
-						href="/admin-sites"
-					>
-						{" "}
-						Back to Sites List
-					</Button>
+					<Link to="/admin-sites">
+						<Button
+							variant="success"
+							style={{
+								float: "left",
+								marginTop: 5,
+								fontSize: 15,
+							}}
+						>
+							{" "}
+							Back to Sites List
+						</Button>
+					</Link>
 					<br></br>
 					<br></br>
 					<br></br>
