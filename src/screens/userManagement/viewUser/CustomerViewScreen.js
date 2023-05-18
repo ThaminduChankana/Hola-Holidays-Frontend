@@ -49,7 +49,7 @@ const CustomerViewScreen = ({ history }) => {
 							fontSize: 15,
 							marginLeft: 10,
 						}}
-						href="/customer"
+						onClick={() => history.push("/customer")}
 					>
 						{" "}
 						Back to Dashboard
@@ -168,7 +168,7 @@ const CustomerViewScreen = ({ history }) => {
 									<br></br>
 									<Button
 										variant="primary"
-										href="/customer-edit"
+										onClick={() => history.push("/customer-edit")}
 										style={{
 											fontSize: 15,
 										}}

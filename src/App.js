@@ -40,6 +40,7 @@ import CreateReservation from "./screens/hotelManagement/reservations/CreateRese
 import ReservationList from "./screens/hotelManagement/reservations/ReservationList";
 import HotelReservation from "./screens/hotelManagement/reservations/HotelReservation";
 import Map from "./screens/static/map/Map";
+import LoginSignUpScreen from "./screens/static/loginSignUp/LoginSignUpScreen";
 
 function App() {
 	return (
@@ -48,6 +49,7 @@ function App() {
 			<main>
 				<Route path="/map" component={Map} />
 				<Route path="/access-denied" component={AccessDenied} />
+				<Route path="/login-signup" component={LoginSignUpScreen} />
 				<Route path="/admin-login" component={AdminLogin} />
 				<Route path="/customer-login" component={CustomerLogin} />
 				<Route path="/customer" component={CustomerLandingScreen} />

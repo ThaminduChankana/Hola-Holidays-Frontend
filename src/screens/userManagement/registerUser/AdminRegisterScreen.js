@@ -6,6 +6,7 @@ import ErrorMessage from "../../../components/ErrorMessage";
 import { adminRegister } from "../../../actions/userManagementActions/adminActions";
 import MainScreen from "../../../components/MainScreen";
 import "./RegisterScreen.css";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const AdminRegisterScreen = () => {
 	const [name, setName] = useState("");
@@ -20,7 +21,9 @@ const AdminRegisterScreen = () => {
 
 	const dispatch = useDispatch();
 	const adminRegistration = useSelector((state) => state.adminRegistration);
-	const { loading, error } = adminRegistration;
+	const { loading, error, success } = adminRegistration;
+
+	const history = useHistory();
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
@@ -29,6 +32,7 @@ const AdminRegisterScreen = () => {
 			setMessage("Passwords do not match");
 		} else {
 			dispatch(adminRegister(name, telephone, address, email, password, pic));
+			resetHandler();
 		}
 	};
 
@@ -50,6 +54,11 @@ const AdminRegisterScreen = () => {
 		setTelephone("");
 		setAddress("");
 		setEmail("");
+		setPassword("");
+		setConfirmPassword("");
+		setMessage(null);
+		setPic("https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg");
+		setPicMessage(null);
 	};
 
 	const postDetails = (pics) => {
@@ -81,18 +90,19 @@ const AdminRegisterScreen = () => {
 		<div className="registerBg">
 			<br></br>
 			<MainScreen title="REGISTER - ADMIN">
-				<Button
-					variant="success"
-					style={{
-						float: "left",
-						marginTop: 5,
-						fontSize: 15,
-					}}
-					href="/admin"
-				>
-					{" "}
-					Back to Dashboard
-				</Button>
+				<Link to="/admin">
+					<Button
+						variant="success"
+						style={{
+							float: "left",
+							marginTop: 5,
+							fontSize: 15,
+						}}
+					>
+						{" "}
+						Back to Dashboard
+					</Button>
+				</Link>
 				<br></br>
 				<br></br>
 				<br></br>
@@ -114,6 +124,10 @@ const AdminRegisterScreen = () => {
 							{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 							{message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
 							{loading && <Loading />}
+							{success &&
+								setTimeout(function () {
+									history.push("/admin-login");
+								}, 2000)}
 						</div>
 						<br></br>
 						<Row className="AdminProfileContainer">

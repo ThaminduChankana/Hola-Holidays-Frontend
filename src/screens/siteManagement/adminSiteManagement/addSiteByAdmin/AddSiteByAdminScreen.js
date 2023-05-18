@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MainScreen from "../../../../components/MainScreen";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
@@ -6,6 +6,7 @@ import { createSite } from "../../../../actions/siteManagementActions/siteAction
 import Loading from "../../../../components/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage";
 import "./addSite.css";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 
 function AddSiteByAdminScreen() {
 	const [siteName, setSiteName] = useState("");
@@ -27,7 +28,9 @@ function AddSiteByAdminScreen() {
 	const dispatch = useDispatch();
 
 	const siteCreate = useSelector((state) => state.siteCreate);
-	const { loading, error } = siteCreate;
+	const { loading, error, success } = siteCreate;
+
+	const history = useHistory();
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
@@ -43,6 +46,10 @@ function AddSiteByAdminScreen() {
 		setSpecialEvents("");
 		setSpecialInstructions("");
 		setMoreInfoURL("");
+		setPicUrl(
+			"https://res.cloudinary.com/dfmnpw0yp/image/upload/v1682779898/Hola%20Holidays/assets/zsa4281sbunh7hq1kuys.jpg"
+		);
+		setPicMessage(null);
 	};
 
 	const demoHandler = () => {
@@ -131,24 +138,24 @@ function AddSiteByAdminScreen() {
 		}
 	};
 
-	useEffect(() => {}, []);
 	if (adminInfo) {
 		return (
 			<div className="siteBg">
 				<br></br>
 				<MainScreen title="Add a New Site">
-					<Button
-						variant="success"
-						style={{
-							float: "left",
-							marginTop: 5,
-							fontSize: 15,
-						}}
-						href="/admin-sites"
-					>
-						{" "}
-						Back to Sites List
-					</Button>
+					<Link to="/admin-sites">
+						<Button
+							variant="success"
+							style={{
+								float: "left",
+								marginTop: 5,
+								fontSize: 15,
+							}}
+						>
+							{" "}
+							Back to Sites List
+						</Button>
+					</Link>
 					<br></br>
 					<br></br>
 					<br></br>
@@ -169,6 +176,10 @@ function AddSiteByAdminScreen() {
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 								{message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
 								{loading && <Loading />}
+								{success &&
+									setTimeout(function () {
+										history.push("/admin-sites");
+									}, 2000)}
 							</div>
 							<br></br>
 							<Row className="SiteContainer">

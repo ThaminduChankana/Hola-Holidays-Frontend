@@ -256,20 +256,21 @@ const SitesListForCustomerScreen = () => {
 													<hr className="my-0" />
 													<MDBCardBody className="pb-0">
 														<div className="d-flex justify-content-between align-items-center pb-2 mb-4">
-															<Button
-																variant="success"
-																href={`/customer-site/${customerSiteList._id}`}
-																style={{
-																	width: "auto",
-																	fontSize: "15px",
-																	height: "40px",
-																	borderRadius: "10px",
-																	borderWidth: "5px white",
-																	marginLeft: "225px",
-																}}
-															>
-																Info
-															</Button>
+															<Link to={`/customer-site/${customerSiteList._id}`}>
+																<Button
+																	variant="success"
+																	style={{
+																		width: "auto",
+																		fontSize: "15px",
+																		height: "40px",
+																		borderRadius: "10px",
+																		borderWidth: "5px white",
+																		marginLeft: "225px",
+																	}}
+																>
+																	Info
+																</Button>
+															</Link>
 														</div>
 													</MDBCardBody>
 												</MDBCard>

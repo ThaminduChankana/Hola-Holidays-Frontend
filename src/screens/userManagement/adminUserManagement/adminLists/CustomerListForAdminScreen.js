@@ -15,6 +15,7 @@ import {
 import ErrorMessage from "../../../../components/ErrorMessage";
 import swal from "sweetalert";
 import "./userLists.css";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 const CustomerListForAdminScreen = () => {
 	const dispatch = useDispatch();
@@ -109,11 +110,9 @@ const CustomerListForAdminScreen = () => {
 						</Col>
 					</Row>
 					<br></br>
-
-					<Button variant="success" href="/admin">
-						Back to Dashboard
-					</Button>
-
+					<Link to="/admin">
+						<Button variant="success">Back to Dashboard</Button>
+					</Link>
 					<br></br>
 					{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 					{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
@@ -181,12 +180,9 @@ const CustomerListForAdminScreen = () => {
 																</label>{" "}
 															</span>
 															<div>
-																<Button
-																	style={{ marginTop: 20, fontSize: 15 }}
-																	href={`/admin-customer-edit/${customerList._id}`}
-																>
-																	Edit
-																</Button>
+																<Link to={`/admin-customer-edit/${customerList._id}`}>
+																	<Button style={{ marginTop: 20, fontSize: 15 }}>Edit</Button>
+																</Link>
 															</div>
 															&emsp;
 															<div>

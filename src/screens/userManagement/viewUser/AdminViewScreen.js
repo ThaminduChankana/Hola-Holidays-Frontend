@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MainScreen from "../../../components/MainScreen";
 import { adminLogout } from "../../../actions/userManagementActions/adminActions";
 import "./ViewScreen.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const AdminViewScreen = ({ history }) => {
 	const [name, setName] = useState("");
@@ -35,19 +36,20 @@ const AdminViewScreen = ({ history }) => {
 			<div className="profileViewBg">
 				<br></br>
 				<MainScreen title="VIEW PROFILE - ADMIN">
-					<Button
-						variant="success"
-						style={{
-							float: "left",
-							marginTop: 5,
-							fontSize: 15,
-							marginLeft: 10,
-						}}
-						href="/admin"
-					>
-						{" "}
-						Back to Dashboard
-					</Button>
+					<Link to="/admin">
+						<Button
+							variant="success"
+							style={{
+								float: "left",
+								marginTop: 5,
+								fontSize: 15,
+								marginLeft: 10,
+							}}
+						>
+							{" "}
+							Back to Dashboard
+						</Button>
+					</Link>
 					<Button
 						variant="danger"
 						onClick={logoutHandler}
@@ -120,7 +122,6 @@ const AdminViewScreen = ({ history }) => {
 									<br></br>
 									<Button
 										variant="primary"
-										href="/admin-edit"
 										style={{
 											fontSize: 15,
 										}}

@@ -58,9 +58,7 @@ export const customerLogin = (email, password) => async (dispatch) => {
 			timer: 2000,
 			button: false,
 		});
-		setTimeout(function () {
-			window.location.href = "/customer";
-		}, 2000);
+
 		localStorage.setItem("customerInfo", JSON.stringify(data));
 	} catch (error) {
 		dispatch({
@@ -124,9 +122,6 @@ export const customerRegister =
 				timer: 2000,
 				button: false,
 			});
-			setTimeout(function () {
-				window.location.href = "/customer-login";
-			}, 2000);
 		} catch (error) {
 			dispatch({
 				type: CUSTOMER_REGISTER_FAIL,
@@ -193,9 +188,7 @@ export const customerUpdateProfile = (customer) => async (dispatch, getState) =>
 			timer: 2000,
 			button: false,
 		});
-		setTimeout(function () {
-			window.location.href = "/customer-view";
-		}, 2000);
+
 		dispatch({ type: CUSTOMER_LOGIN_SUCCESS, payload: data });
 
 		localStorage.setItem("customerInfo", JSON.stringify(data));
@@ -228,7 +221,6 @@ export const customerDeleteProfile = () => async (dispatch, getState) => {
 
 		dispatch({ type: CUSTOMER_DELETE_SUCCESS, payload: data });
 
-		window.location.href = "/";
 		dispatch({ type: CUSTOMER_LOGOUT });
 		localStorage.removeItem("customerInfo");
 	} catch (error) {
@@ -371,9 +363,6 @@ export const customerUpdateProfileById =
 				timer: 2000,
 				button: false,
 			});
-			setTimeout(function () {
-				window.location.href = "/admin-customers";
-			}, 2000);
 		} catch (error) {
 			const message = "Customer Update Failed !!!";
 			dispatch({

@@ -7,6 +7,7 @@ import ErrorMessage from "../../../components/ErrorMessage";
 import { customerRegister } from "../../../actions/userManagementActions/customerActions";
 import MainScreen from "../../../components/MainScreen";
 import "./RegisterScreen.css";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const CustomerRegisterScreen = () => {
 	const [firstName, setFirstName] = useState("");
@@ -22,9 +23,11 @@ const CustomerRegisterScreen = () => {
 	const [message, setMessage] = useState(null);
 	const [picMessage, setPicMessage] = useState(null);
 
+	const history = useHistory();
+
 	const dispatch = useDispatch();
 	const customerRegistration = useSelector((state) => state.customerRegistration);
-	const { loading, error } = customerRegistration;
+	const { loading, error, success } = customerRegistration;
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
@@ -33,6 +36,8 @@ const CustomerRegisterScreen = () => {
 			setMessage("Passwords do not match");
 		} else {
 			dispatch(customerRegister(firstName, lastName, telephone, address, gender, country, email, password, pic));
+
+			resetHandler();
 		}
 	};
 
@@ -60,6 +65,11 @@ const CustomerRegisterScreen = () => {
 		setGender("");
 		setCountry("");
 		setEmail("");
+		setPassword("");
+		setConfirmPassword("");
+		setPic("https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg");
+		setMessage(null);
+		setPicMessage(null);
 	};
 
 	const postDetails = (pics) => {
@@ -111,6 +121,10 @@ const CustomerRegisterScreen = () => {
 							{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 							{message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
 							{loading && <Loading />}
+							{success &&
+								setTimeout(function () {
+									history.push("/customer-login");
+								}, 2000)}
 						</div>
 						<br></br>
 						<Row className="CustomerProfileContainer">

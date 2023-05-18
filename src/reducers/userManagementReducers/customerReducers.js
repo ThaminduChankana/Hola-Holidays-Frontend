@@ -34,9 +34,9 @@ export const customerLoginReducer = (state = {}, action) => {
 		case CUSTOMER_LOGIN_REQUEST:
 			return { loading: true };
 		case CUSTOMER_LOGIN_SUCCESS:
-			return { loading: false, customerInfo: action.payload };
+			return { loading: false, customerInfo: action.payload, success: true };
 		case CUSTOMER_LOGIN_FAIL:
-			return { loading: false, error: action.payload };
+			return { loading: false, error: action.payload, success: false };
 		case CUSTOMER_LOGOUT:
 			return {};
 
@@ -50,9 +50,9 @@ export const customerRegisterReducer = (state = {}, action) => {
 		case CUSTOMER_REGISTER_REQUEST:
 			return { loading: true };
 		case CUSTOMER_REGISTER_SUCCESS:
-			return { loading: false, customerInfo: action.payload };
+			return { loading: false, customerInfo: action.payload, success: true };
 		case CUSTOMER_REGISTER_FAIL:
-			return { loading: false, error: action.payload };
+			return { loading: false, error: action.payload, success: false };
 		default:
 			return state;
 	}
@@ -63,9 +63,9 @@ export const customerViewReducer = (state = {}, action) => {
 		case CUSTOMER_VIEW_REQUEST:
 			return { loading: true };
 		case CUSTOMER_VIEW_SUCCESS:
-			return { loading: false, customerInfo: action.payload };
+			return { loading: false, customerInfo: action.payload, success: true };
 		case CUSTOMER_VIEW_FAIL:
-			return { loading: false, error: action.payload };
+			return { loading: false, error: action.payload, success: false };
 		default:
 			return state;
 	}
@@ -102,9 +102,9 @@ export const customerListReducer = (state = { customers: [] }, action) => {
 		case CUSTOMER_LIST_REQUEST:
 			return { loading: true };
 		case CUSTOMER_LIST_SUCCESS:
-			return { loading: false, customers: action.payload };
+			return { loading: false, customers: action.payload, success: true };
 		case CUSTOMER_LIST_FAIL:
-			return { loading: false, error: action.payload };
+			return { loading: false, error: action.payload, success: false };
 		default:
 			return state;
 	}

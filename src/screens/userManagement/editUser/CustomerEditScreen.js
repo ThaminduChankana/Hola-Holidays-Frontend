@@ -7,6 +7,7 @@ import MainScreen from "../../../components/MainScreen";
 import { customerUpdateProfile, customerDeleteProfile } from "../../../actions/userManagementActions/customerActions";
 import swal from "sweetalert";
 import "./EditScreen.css";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const CustomerEditScreen = () => {
 	const [firstName, setFirstName] = useState("");
@@ -28,7 +29,7 @@ const CustomerEditScreen = () => {
 	const { customerInfo } = customer_Login;
 
 	const customerUpdate = useSelector((state) => state.customerUpdate);
-	const { loading, error } = customerUpdate;
+	const { loading, error, successUpdate } = customerUpdate;
 
 	const customerDelete = useSelector((state) => state.customerDelete);
 	const { loading: loadingDelete, error: errorDelete, success: successDelete } = customerDelete;
@@ -42,7 +43,7 @@ const CustomerEditScreen = () => {
 		setCountry(customerInfo.country);
 		setEmail(customerInfo.email);
 		setPic(customerInfo.pic);
-	}, [customerInfo, customerDelete, successDelete, loadingDelete, errorDelete]);
+	}, [customerInfo, customerDelete, successDelete, loadingDelete, errorDelete, successUpdate]);
 
 	const postDetails = (pics) => {
 		if (pics === "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg") {
@@ -88,8 +89,26 @@ const CustomerEditScreen = () => {
 				pic,
 			};
 			dispatch(customerUpdateProfile(customerUpdatedInfo));
+
+			setTimeout(function () {
+				history.push("/customer-view");
+			}, 2000);
+
+			setFirstName("");
+			setLastName("");
+			setTelephone("");
+			setAddress("");
+			setGender("");
+			setCountry("");
+			setEmail("");
+			setPassword("");
+			setConfirmPassword("");
+			setPic("");
+			setMessage(null);
 		}
 	};
+
+	const history = useHistory();
 
 	const deleteHandler = (customerInfo) => {
 		swal({
@@ -109,6 +128,10 @@ const CustomerEditScreen = () => {
 					timer: 2000,
 					button: false,
 				});
+
+				setTimeout(function () {
+					window.location.href = "/";
+				}, 1500);
 			}
 		});
 	};
@@ -117,18 +140,19 @@ const CustomerEditScreen = () => {
 		return (
 			<div className="editBg">
 				<MainScreen title="EDIT - CUSTOMER">
-					<Button
-						variant="success"
-						style={{
-							float: "left",
-							marginTop: 5,
-							fontSize: 15,
-						}}
-						href="/customer"
-					>
-						{" "}
-						Back to Dashboard
-					</Button>
+					<Link to="/customer">
+						<Button
+							variant="success"
+							style={{
+								float: "left",
+								marginTop: 5,
+								fontSize: 15,
+							}}
+						>
+							{" "}
+							Back to Dashboard
+						</Button>
+					</Link>
 					<br></br>
 					<br></br>
 					<br></br>
@@ -150,6 +174,10 @@ const CustomerEditScreen = () => {
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 								{message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
 								{loading && <Loading />}
+								{successUpdate &&
+									setTimeout(function () {
+										history.push("/customer-view");
+									}, 2000)}
 							</div>
 							<br></br>
 							<Row className="CustomerProfileContainer">

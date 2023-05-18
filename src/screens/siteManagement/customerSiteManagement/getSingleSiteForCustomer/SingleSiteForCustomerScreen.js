@@ -4,6 +4,7 @@ import axios from "axios";
 import { Button, Card, Form, Row } from "react-bootstrap";
 import "./singleSite.css";
 import { API_ENDPOINT } from "../../../../config";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 function SingleSiteForCustomerScreen({ match, history }) {
 	const [siteName, setSiteName] = useState("");
@@ -52,18 +53,19 @@ function SingleSiteForCustomerScreen({ match, history }) {
 		<div className="siteViewBg">
 			<br></br>
 			<MainScreen title={`View Site - ${siteName}`}>
-				<Button
-					variant="success"
-					style={{
-						float: "left",
-						marginTop: 5,
-						fontSize: 15,
-					}}
-					href="/"
-				>
-					{" "}
-					Back to Sites List
-				</Button>
+				<Link to="/">
+					<Button
+						variant="success"
+						style={{
+							float: "left",
+							marginTop: 5,
+							fontSize: 15,
+						}}
+					>
+						{" "}
+						Back to Sites List
+					</Button>
+				</Link>
 				<br></br>
 				<br></br>
 				<br></br>

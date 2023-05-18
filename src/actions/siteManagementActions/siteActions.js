@@ -164,9 +164,6 @@ export const createSite =
 				icon: "success",
 				timer: 2000,
 			});
-			setTimeout(function () {
-				window.location.href = "/admin-sites";
-			}, 2000);
 		} catch (error) {
 			const message = error.response && error.response.data.message ? error.response.data.message : error.message;
 			dispatch({
