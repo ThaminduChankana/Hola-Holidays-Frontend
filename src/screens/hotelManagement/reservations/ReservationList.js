@@ -21,10 +21,10 @@ export default function ReservationList() {
 	const { loading, reservations, error } = reservationList;
 
 	const reservationDelete = useSelector((state) => state.reservationDelete);
-	const { loading: loadingDelete, error: errorDelete } = reservationDelete;
+	const { loading: loadingDelete, error: errorDelete, success: successDelete } = reservationDelete;
 
 	const reservationUpdate = useSelector((state) => state.reservationUpdate);
-	const { loading: loadingUpdate, error: errorUpdate } = reservationUpdate;
+	const { loading: loadingUpdate, error: errorUpdate, success: successUpdate } = reservationUpdate;
 
 	const history = useHistory();
 
@@ -60,6 +60,15 @@ export default function ReservationList() {
 					<br></br>
 					{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
 					{loadingDelete && <Loading />}
+					{successUpdate &&
+						setTimeout(function () {
+							window.location.href = "/reservations";
+						}, 2000)}
+					{successDelete &&
+						setTimeout(function () {
+							window.location.href = "/reservations";
+						}, 2000)}
+
 					{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 					{loading && <Loading />}
 					<Table style={{ background: "white" }}>

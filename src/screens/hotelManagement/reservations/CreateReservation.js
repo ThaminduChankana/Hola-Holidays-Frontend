@@ -18,7 +18,7 @@ const CreateReservation = ({ match, history }) => {
 	const [checkOutDate, setCheckOutDate] = useState("");
 
 	const reservationCreate = useSelector((state) => state.reservationCreate);
-	const { loading, error } = reservationCreate;
+	const { loading, error, success } = reservationCreate;
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -74,6 +74,10 @@ const CreateReservation = ({ match, history }) => {
 						<Card.Body style={{ marginLeft: "10%", marginRight: "10%", marginTop: "50px", marginBottom: "50px" }}>
 							<Form onSubmit={submitHandler}>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+								{success &&
+									setTimeout(function () {
+										window.location.href = "/reservations";
+									}, 2000)}
 								<Form.Group controlId="name">
 									<Form.Label
 										style={{

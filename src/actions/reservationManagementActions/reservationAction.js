@@ -131,10 +131,6 @@ export const createReservationAction =
 				timer: 2000,
 				button: false,
 			});
-
-			setTimeout(function () {
-				window.location.href = "/reservations";
-			}, 2000);
 		} catch (error) {
 			const message = error.response && error.response.data.message ? error.response.data.message : error.message;
 			dispatch({
@@ -174,10 +170,6 @@ export const updateReservationAction = (id, rooms) => async (dispatch, getState)
 			timer: 2000,
 			button: false,
 		});
-
-		setTimeout(function () {
-			window.location.href = "/reservations";
-		}, 2000);
 	} catch (error) {
 		const message = error.response && error.response.data.message ? error.response.data.message : error.message;
 		dispatch({
@@ -216,10 +208,6 @@ export const deleteReservationAction = (id) => async (dispatch, getState) => {
 			timer: 2000,
 			button: false,
 		});
-
-		setTimeout(function () {
-			window.location.href = "/reservations";
-		}, 2000);
 	} catch (error) {
 		const message = error.response && error.response.data.message ? error.response.data.message : error.message;
 		dispatch({

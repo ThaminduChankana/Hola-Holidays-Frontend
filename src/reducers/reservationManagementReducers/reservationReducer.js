@@ -21,7 +21,7 @@ export const reservationListReducer = (state = { reservations: [] }, action) => 
 		case RESERVATION_LIST_REQUEST:
 			return { loading: true };
 		case RESERVATION_LIST_SUCCESS:
-			return { loading: false, reservations: action.payload };
+			return { loading: false, reservations: action.payload, success: true };
 		case RESERVATION_LIST_FAIL:
 			return { loading: false, error: action.payload };
 
@@ -35,7 +35,7 @@ export const hotelReservationListReducer = (state = { hotelReservations: [] }, a
 		case ADMIN_RESERVATION_LIST_REQUEST:
 			return { loading: true };
 		case ADMIN_RESERVATION_LIST_SUCCESS:
-			return { loading: false, hotelReservations: action.payload };
+			return { loading: false, hotelReservations: action.payload, success: true };
 		case ADMIN_RESERVATION_LIST_FAIL:
 			return { loading: false, error: action.payload };
 
