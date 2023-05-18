@@ -53,6 +53,7 @@ const CustomerListForAdminScreen = () => {
 		}).then((willDelete) => {
 			if (willDelete) {
 				dispatch(customerDeleteProfileById(id));
+
 				swal({
 					title: "Success!",
 					text: "Deleted Account Successfully",

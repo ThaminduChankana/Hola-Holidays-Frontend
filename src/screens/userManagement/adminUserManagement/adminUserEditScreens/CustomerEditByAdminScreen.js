@@ -10,6 +10,7 @@ import { authHeader } from "../../../../actions/userManagementActions/adminActio
 import { API_ENDPOINT } from "../../../../config";
 import "./adminUserEdit.css";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
+import { CUSTOMER_UPDATE_BY_ID_AFTER_SUCCESS } from "../../../../constants/userManagementConstants/customerConstants";
 
 const CustomerEditByAdminScreen = ({ match }) => {
 	const [firstName, setFirstName] = useState("");
@@ -68,7 +69,7 @@ const CustomerEditByAdminScreen = ({ match }) => {
 		if (password !== confirmpassword) {
 			setMessage("Passwords do not match");
 		} else {
-			dispatch(
+			await dispatch(
 				customerUpdateProfileById(
 					match.params.id,
 					firstName,
@@ -82,6 +83,7 @@ const CustomerEditByAdminScreen = ({ match }) => {
 					pic
 				)
 			);
+			await dispatch({ type: CUSTOMER_UPDATE_BY_ID_AFTER_SUCCESS, payload: null });
 		}
 	};
 

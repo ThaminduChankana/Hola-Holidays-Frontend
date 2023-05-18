@@ -8,6 +8,7 @@ import { customerRegister } from "../../../actions/userManagementActions/custome
 import MainScreen from "../../../components/MainScreen";
 import "./RegisterScreen.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { CUSTOMER_REGISTER_AFTER_SUCCESS } from "../../../constants/userManagementConstants/customerConstants";
 
 const CustomerRegisterScreen = () => {
 	const [firstName, setFirstName] = useState("");
@@ -35,8 +36,9 @@ const CustomerRegisterScreen = () => {
 		if (password !== confirmpassword) {
 			setMessage("Passwords do not match");
 		} else {
-			dispatch(customerRegister(firstName, lastName, telephone, address, gender, country, email, password, pic));
+			await dispatch(customerRegister(firstName, lastName, telephone, address, gender, country, email, password, pic));
 
+			await dispatch({ type: CUSTOMER_REGISTER_AFTER_SUCCESS, payload: null });
 			resetHandler();
 		}
 	};
