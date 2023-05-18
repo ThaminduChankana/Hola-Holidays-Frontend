@@ -25,9 +25,16 @@ const LoginSignUpScreen = ({ history }) => {
 						<div className="intro-text">
 							<br></br>
 							<br></br>
-							<Link to="/admin-login">
+							<Link to="/customer-login">
 								<Button id="loginsignupBtn" variant="info" size="lg" style={{ width: 350, height: 75 }}>
-									Admin Login
+									Login
+								</Button>
+							</Link>
+							<br></br>
+							<br></br>
+							<Link to="/customer-register">
+								<Button id="loginsignupBtn" variant="info" size="lg" style={{ width: 350, height: 75 }}>
+									Register
 								</Button>
 							</Link>
 							<br></br>
