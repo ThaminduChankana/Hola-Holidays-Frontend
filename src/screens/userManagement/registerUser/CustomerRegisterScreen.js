@@ -37,7 +37,7 @@ const CustomerRegisterScreen = () => {
 		} else {
 			dispatch(customerRegister(firstName, lastName, telephone, address, gender, country, email, password, pic));
 
-			resetHandler(e);
+			resetHandler();
 		}
 	};
 

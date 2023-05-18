@@ -32,7 +32,7 @@ const AdminRegisterScreen = () => {
 			setMessage("Passwords do not match");
 		} else {
 			dispatch(adminRegister(name, telephone, address, email, password, pic));
-			resetHandler(e);
+			resetHandler();
 		}
 	};
 

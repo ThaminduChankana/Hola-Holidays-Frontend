@@ -3,7 +3,6 @@ import "./header.css";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
 
 function Header({ setSearch }) {
 	const admin_Login = useSelector((state) => state.admin_Login);
@@ -11,23 +10,6 @@ function Header({ setSearch }) {
 
 	const customer_Login = useSelector((state) => state.customer_Login);
 	const { customerInfo } = customer_Login;
-
-	const handleClick = () => {
-		Swal.fire({
-			icon: "info",
-			title: "What do you want to do? ",
-			html: `Login or Sign up ? <br/><br/>
-		
-			
-			<button class="SwalBtn1 customSwalBtn">{history.push("/customer-login")}Login</button>&emsp;
-			
-			
-			<button class="SwalBtn1 customSwalBtn"{history.push("/customer-register")}>Sign up</button><br/>`,
-
-			showCancelButton: false,
-			showConfirmButton: false,
-		});
-	};
 
 	return (
 		<div className="Navbar">
@@ -41,46 +23,45 @@ function Header({ setSearch }) {
 			<div className="rightSide">
 				<div className="links">
 					<ButtonGroup className="mb-2" size="lg" style={{ width: "100%", marginTop: "2%" }}>
-						<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }} href="/">
-							HOME
-						</Button>
-
-						<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }} href="/map">
-							MAPS
-						</Button>
-
-						<Button
-							variant=""
-							style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}
-							href="/tour-guide-customer-list"
-						>
-							TOUR GUIDE
-						</Button>
-
-						<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }} href="/hotels">
-							HOTELS
-						</Button>
-
-						<Button
-							variant=""
-							style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}
-							href="/customer-transport"
-						>
-							TRANSPORT
-						</Button>
+						<Link to="/">
+							<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}>
+								HOME
+							</Button>
+						</Link>
+						<Link to="/map">
+							<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}>
+								MAPS
+							</Button>
+						</Link>
+						<Link to="/tour-guide-customer-list">
+							<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}>
+								TOUR GUIDE
+							</Button>
+						</Link>
+						<Link to="/hotels">
+							<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}>
+								HOTELS
+							</Button>
+						</Link>
+						<Link to="/customer-transport">
+							<Button variant="" style={{ color: "white", fontSize: "20px", marginLeft: "35px" }}>
+								TRANSPORT
+							</Button>
+						</Link>
 						{customerInfo ? (
 							<div>
-								<Button
-									variant=""
-									style={{
-										color: "white",
-										fontSize: "20px",
-										marginLeft: "35px",
-									}}
-									href="/reservations"
-								>
-									BOOKINGS
-								</Button>
+								<Link to="/reservations">
+									<Button
+										variant=""
+										style={{
+											color: "white",
+											fontSize: "20px",
+											marginLeft: "35px",
+										}}
+									>
+										BOOKINGS
+									</Button>
+								</Link>
 							</div>
 						) : (
 							<></>
@@ -91,7 +72,7 @@ function Header({ setSearch }) {
 				{adminInfo || customerInfo ? (
 					<></>
 				) : (
-					<Link to="/">
+					<Link to="/login-signup">
 						<Button
 							style={{
 								padding: "8px",
@@ -106,7 +87,6 @@ function Header({ setSearch }) {
 							}}
 							variant="primary"
 							className="logoutBtn"
-							onClick={handleClick}
 						>
 							Sign In / Sign Up
 						</Button>

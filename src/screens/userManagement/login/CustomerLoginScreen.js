@@ -20,7 +20,7 @@ const CustomerLogin = ({ history }) => {
 		if (customerInfo) {
 			window.history.pushState({}, "", "/customer");
 		}
-	}, [history, customerInfo, success]);
+	}, [history, customerInfo]);
 
 	const submitHandler = async (e) => {
 		e.preventDefault();

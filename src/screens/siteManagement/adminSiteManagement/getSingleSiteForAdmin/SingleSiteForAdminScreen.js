@@ -34,10 +34,10 @@ function SingleSiteForAdminScreen({ match, history }) {
 	const dispatch = useDispatch();
 
 	const siteUpdateByAdmin = useSelector((state) => state.siteUpdateByAdmin);
-	const { loading, error } = siteUpdateByAdmin;
+	const { loading, error, success } = siteUpdateByAdmin;
 
 	const siteDeleteByAdmin = useSelector((state) => state.siteDeleteByAdmin);
-	const { loading: loadingDelete, error: errorDelete } = siteDeleteByAdmin;
+	const { loading: loadingDelete, error: errorDelete, success: successDelete } = siteDeleteByAdmin;
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
@@ -226,6 +226,10 @@ function SingleSiteForAdminScreen({ match, history }) {
 							<div>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 								{loading && <Loading />}
+								{success &&
+									setTimeout(function () {
+										history.push("/admin-sites");
+									}, 2000)}
 							</div>
 							<Row className="SiteContainer">
 								<Col md={6}>
@@ -233,6 +237,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 										{loadingDelete && <Loading />}
 										{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 										{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
+										{successDelete && history.push("/admin-sites")}
 										<Form.Group controlId="siteFormBasicSiteName">
 											<Form.Label style={{ fontWeight: "bold", fontStyle: "italic" }}>Site Name</Form.Label>
 											<Form.Control
