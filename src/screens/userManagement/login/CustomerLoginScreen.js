@@ -24,8 +24,8 @@ const CustomerLogin = ({ history }) => {
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
-		dispatch(customerLogin(email, password));
-
+		await dispatch(customerLogin(email, password));
+	
 		setEmail("");
 		setPassword("");
 	};

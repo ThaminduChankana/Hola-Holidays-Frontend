@@ -24,7 +24,7 @@ const AdminLogin = ({ history }) => {
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
-		dispatch(adminLogin(email, password));
+		await dispatch(adminLogin(email, password));
 
 		setEmail("");
 		setPassword("");
