@@ -61,37 +61,6 @@ function SingleSiteForAdminScreen({ match, history }) {
 		setPicMessage(null);
 	};
 
-	const deleteHandler = (id) => {
-		swal({
-			title: "Are you sure?",
-			text: "Once deleted, you will not be able to recover these details!",
-			icon: "warning",
-			buttons: true,
-			dangerMode: true,
-		})
-			.then((willDelete) => {
-				if (willDelete) {
-					dispatch(deleteSiteByAdmin(id));
-					swal({
-						title: "Success!",
-						text: "Deleted Site Successfully",
-						icon: "success",
-						timer: 2000,
-						button: false,
-					});
-
-					history.push("/admin-sites");
-				}
-			})
-			.catch((err) => {
-				swal({
-					title: "Error!",
-					text: "Couldn't Delete Note",
-					type: "error",
-				});
-			});
-	};
-
 	const postDetails = (pics) => {
 		if (
 			pics ===
@@ -391,17 +360,6 @@ function SingleSiteForAdminScreen({ match, history }) {
 											}}
 										>
 											Update Site
-										</Button>
-										&emsp;
-										<Button
-											variant="danger"
-											onClick={deleteHandler}
-											style={{
-												fontSize: 15,
-												marginTop: 10,
-											}}
-										>
-											Delete Site
 										</Button>
 										&emsp;
 									</Form>
