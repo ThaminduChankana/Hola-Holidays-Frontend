@@ -7,6 +7,7 @@ import Loading from "../../../../components/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage";
 import "./addSite.css";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
+import { SITES_CREATE_AFTER_SUCCESS } from "../../../../constants/siteManagementConstants/siteConstants";
 
 function AddSiteByAdminScreen() {
 	const [siteName, setSiteName] = useState("");
@@ -73,7 +74,7 @@ function AddSiteByAdminScreen() {
 		setMoreInfoURL("https://en.wikipedia.org/wiki/Dambulla_cave_temple");
 	};
 
-	const submitHandler = (e) => {
+	const submitHandler = async (e) => {
 		e.preventDefault();
 
 		if (
@@ -91,7 +92,7 @@ function AddSiteByAdminScreen() {
 		)
 			return;
 		dispatch(
-			createSite(
+			await createSite(
 				siteName,
 				country,
 				province,
@@ -105,7 +106,7 @@ function AddSiteByAdminScreen() {
 				moreInfoURL
 			)
 		);
-
+		await dispatch({ type: SITES_CREATE_AFTER_SUCCESS, payload: null });
 		resetHandler();
 	};
 

@@ -8,6 +8,7 @@ import { customerUpdateProfile, customerDeleteProfile } from "../../../actions/u
 import swal from "sweetalert";
 import "./EditScreen.css";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
+import { CUSTOMER_UPDATE_AFTER_SUCCESS } from "../../../constants/userManagementConstants/customerConstants";
 
 const CustomerEditScreen = () => {
 	const [firstName, setFirstName] = useState("");
@@ -88,11 +89,13 @@ const CustomerEditScreen = () => {
 				password,
 				pic,
 			};
-			dispatch(customerUpdateProfile(customerUpdatedInfo));
+			await dispatch(customerUpdateProfile(customerUpdatedInfo));
 
 			setTimeout(function () {
 				history.push("/customer-view");
 			}, 2000);
+
+			await dispatch({ type: CUSTOMER_UPDATE_AFTER_SUCCESS, payload: null });
 
 			setFirstName("");
 			setLastName("");

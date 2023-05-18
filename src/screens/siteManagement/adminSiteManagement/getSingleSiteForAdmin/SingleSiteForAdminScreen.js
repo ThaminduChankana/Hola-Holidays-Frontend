@@ -5,7 +5,6 @@ import { Button, Card, Form, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	authHeaderForAdmin,
-	deleteSiteByAdmin,
 	updateSiteByAdmin,
 } from "../../../../actions/siteManagementActions/siteActions";
 import ErrorMessage from "../../../../components/ErrorMessage";
@@ -14,6 +13,7 @@ import swal from "sweetalert";
 import "./singleSite.css";
 import { API_ENDPOINT } from "../../../../config";
 import { Link } from "react-router-dom/cjs/react-router-dom";
+import { SITES_UPDATE_BY_ADMIN_AFTER_SUCCESS } from "../../../../constants/siteManagementConstants/siteConstants";
 
 function SingleSiteForAdminScreen({ match, history }) {
 	const [siteName, setSiteName] = useState("");
@@ -58,37 +58,6 @@ function SingleSiteForAdminScreen({ match, history }) {
 			"https://res.cloudinary.com/dfmnpw0yp/image/upload/v1682779898/Hola%20Holidays/assets/zsa4281sbunh7hq1kuys.jpg"
 		);
 		setPicMessage(null);
-	};
-
-	const deleteHandler = (id) => {
-		swal({
-			title: "Are you sure?",
-			text: "Once deleted, you will not be able to recover these details!",
-			icon: "warning",
-			buttons: true,
-			dangerMode: true,
-		})
-			.then((willDelete) => {
-				if (willDelete) {
-					dispatch(deleteSiteByAdmin(id));
-					swal({
-						title: "Success!",
-						text: "Deleted Site Successfully",
-						icon: "success",
-						timer: 2000,
-						button: false,
-					});
-
-					history.push("/admin-sites");
-				}
-			})
-			.catch((err) => {
-				swal({
-					title: "Error!",
-					text: "Couldn't Delete Note",
-					type: "error",
-				});
-			});
 	};
 
 	const postDetails = (pics) => {
@@ -143,9 +112,9 @@ function SingleSiteForAdminScreen({ match, history }) {
 		}
 	}, [match.params.id, adminInfo]);
 
-	const updateHandler = (e) => {
+	const updateHandler = async (e) => {
 		e.preventDefault();
-		dispatch(
+		await dispatch(
 			updateSiteByAdmin(
 				match.params.id,
 				siteName,
@@ -161,6 +130,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 				moreInfoURL
 			)
 		);
+
 		if (
 			!siteName ||
 			!country ||
@@ -175,7 +145,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 			!moreInfoURL
 		)
 			return;
-
+		await dispatch({ type: SITES_UPDATE_BY_ADMIN_AFTER_SUCCESS, payload: null });
 		resetHandler();
 
 		swal({
@@ -389,17 +359,6 @@ function SingleSiteForAdminScreen({ match, history }) {
 											}}
 										>
 											Update Site
-										</Button>
-										&emsp;
-										<Button
-											variant="danger"
-											onClick={deleteHandler}
-											style={{
-												fontSize: 15,
-												marginTop: 10,
-											}}
-										>
-											Delete Site
 										</Button>
 										&emsp;
 									</Form>
