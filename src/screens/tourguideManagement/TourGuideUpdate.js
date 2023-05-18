@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -59,19 +60,24 @@ export default function TourGuideUpdate({ match, history }) {
 
 		history.push("/tour-guide-list");
 	};
+
+
+
 	if (adminInfo) {
 		return (
 			<div className="GuideBackgroundUpdate">
 				{" "}
 				<MainScreen title={"UPDATE GUIDE DETAILS"}>
-					<Button
-						variant="success"
-						style={{ marginLeft: 10, marginBottom: 6, float: "left", fontSize: 15 }}
-						size="lg"
-						href="/tour-guide-list"
-					>
-						Back to Guide List
-					</Button>
+					<Link to="/tour-guide-list">
+						<Button
+							variant="success"
+							style={{ marginLeft: 10, marginBottom: 6, float: "left", fontSize: 15 }}
+							size="lg"
+						>
+							Back to Guide List
+						</Button>
+					</Link>
+
 					<br></br>
 					<br></br>
 					<Card
