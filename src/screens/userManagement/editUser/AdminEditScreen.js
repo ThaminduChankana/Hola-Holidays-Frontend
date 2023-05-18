@@ -7,6 +7,7 @@ import MainScreen from "../../../components/MainScreen";
 import { adminUpdateProfile } from "../../../actions/userManagementActions/adminActions";
 import "./EditScreen.css";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
+import { ADMIN_UPDATE_AFTER_SUCCESS } from "../../../constants/userManagementConstants/adminConstants";
 
 const AdminEditScreen = () => {
 	const [name, setName] = useState("");
@@ -90,10 +91,13 @@ const AdminEditScreen = () => {
 				pic,
 				password,
 			};
-			dispatch(adminUpdateProfile(adminUpdatedInfo));
+			await dispatch(adminUpdateProfile(adminUpdatedInfo));
+
 			setTimeout(function () {
 				history.push("/admin-view");
 			}, 2000);
+
+			await dispatch({ type: ADMIN_UPDATE_AFTER_SUCCESS, payload: null });
 
 			resetHandler();
 		}
