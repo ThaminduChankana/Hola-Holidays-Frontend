@@ -27,7 +27,6 @@ const AdminLogin = ({ history }) => {
 		e.preventDefault();
 		await dispatch(adminLogin(email, password));
 
-		await dispatch({ type: ADMIN_LOGIN_AFTER_SUCCESS, payload: null });
 		setEmail("");
 		setPassword("");
 	};

@@ -26,7 +26,7 @@ const CustomerLogin = ({ history }) => {
 	const submitHandler = async (e) => {
 		e.preventDefault();
 		await dispatch(customerLogin(email, password));
-		await dispatch({ type: CUSTOMER_LOGIN_AFTER_SUCCESS, payload: null });
+		
 		setEmail("");
 		setPassword("");
 	};
