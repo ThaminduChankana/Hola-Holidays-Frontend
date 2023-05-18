@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
 import { customerLogin } from "../../../actions/userManagementActions/customerActions";
+import { CUSTOMER_LOGIN_AFTER_SUCCESS } from "../../../constants/userManagementConstants/customerConstants";
 
 const CustomerLogin = ({ history }) => {
 	const [email, setEmail] = useState("");
@@ -24,8 +25,8 @@ const CustomerLogin = ({ history }) => {
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
-		dispatch(customerLogin(email, password));
-
+		await dispatch(customerLogin(email, password));
+		await dispatch({ type: CUSTOMER_LOGIN_AFTER_SUCCESS, payload: null });
 		setEmail("");
 		setPassword("");
 	};

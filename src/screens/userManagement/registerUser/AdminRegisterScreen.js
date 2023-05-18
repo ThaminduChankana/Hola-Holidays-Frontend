@@ -7,6 +7,7 @@ import { adminRegister } from "../../../actions/userManagementActions/adminActio
 import MainScreen from "../../../components/MainScreen";
 import "./RegisterScreen.css";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
+import { ADMIN_REGISTER_AFTER_SUCCESS } from "../../../constants/userManagementConstants/adminConstants";
 
 const AdminRegisterScreen = () => {
 	const [name, setName] = useState("");
@@ -31,7 +32,8 @@ const AdminRegisterScreen = () => {
 		if (password !== confirmpassword) {
 			setMessage("Passwords do not match");
 		} else {
-			dispatch(adminRegister(name, telephone, address, email, password, pic));
+			await dispatch(adminRegister(name, telephone, address, email, password, pic));
+			await dispatch({ type: ADMIN_REGISTER_AFTER_SUCCESS, payload: null });
 			resetHandler();
 		}
 	};

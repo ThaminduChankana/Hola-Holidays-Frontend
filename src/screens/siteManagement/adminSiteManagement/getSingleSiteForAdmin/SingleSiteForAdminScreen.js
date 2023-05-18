@@ -14,6 +14,7 @@ import swal from "sweetalert";
 import "./singleSite.css";
 import { API_ENDPOINT } from "../../../../config";
 import { Link } from "react-router-dom/cjs/react-router-dom";
+import { SITES_UPDATE_BY_ADMIN_AFTER_SUCCESS } from "../../../../constants/siteManagementConstants/siteConstants";
 
 function SingleSiteForAdminScreen({ match, history }) {
 	const [siteName, setSiteName] = useState("");
@@ -143,9 +144,9 @@ function SingleSiteForAdminScreen({ match, history }) {
 		}
 	}, [match.params.id, adminInfo]);
 
-	const updateHandler = (e) => {
+	const updateHandler = async (e) => {
 		e.preventDefault();
-		dispatch(
+		await dispatch(
 			updateSiteByAdmin(
 				match.params.id,
 				siteName,
@@ -161,6 +162,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 				moreInfoURL
 			)
 		);
+
 		if (
 			!siteName ||
 			!country ||
@@ -175,7 +177,7 @@ function SingleSiteForAdminScreen({ match, history }) {
 			!moreInfoURL
 		)
 			return;
-
+		await dispatch({ type: SITES_UPDATE_BY_ADMIN_AFTER_SUCCESS, payload: null });
 		resetHandler();
 
 		swal({
