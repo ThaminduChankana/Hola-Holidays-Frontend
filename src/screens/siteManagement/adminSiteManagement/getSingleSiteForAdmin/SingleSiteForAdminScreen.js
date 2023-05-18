@@ -5,7 +5,6 @@ import { Button, Card, Form, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	authHeaderForAdmin,
-	deleteSiteByAdmin,
 	updateSiteByAdmin,
 } from "../../../../actions/siteManagementActions/siteActions";
 import ErrorMessage from "../../../../components/ErrorMessage";
