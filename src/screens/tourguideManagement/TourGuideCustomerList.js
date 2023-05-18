@@ -1,12 +1,14 @@
-import { useHistory } from "react-router-dom";
+import { useHistory ,Link} from "react-router-dom";
 import { Accordion, Card, Button, Row, Col, Form } from "react-bootstrap";
 import MainScreen from "../../components/MainScreen";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GuideListAction } from "../../actions/TourGuideActions/TourGuideActions";
+import { CustomerGuideListAction } from "../../actions/TourGuideActions/TourGuideActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import "./tourguide.css";
+
+
 
 export default function TourGuideCustomerViewList() {
 	const dispatch = useDispatch();
@@ -24,8 +26,9 @@ export default function TourGuideCustomerViewList() {
 
 	const history = useHistory();
 	useEffect(() => {
-		dispatch(GuideListAction());
+		dispatch(CustomerGuideListAction());
 	}, [dispatch, history]);
+
 
 	return (
 		<div className="GuideCustomerBackgroundView">
@@ -41,7 +44,7 @@ export default function TourGuideCustomerViewList() {
 								fontStyle: "italic",
 							}}
 						>
-							Guide List
+							Tour Guides List
 						</h1>
 					</Col>
 					<Col>
@@ -66,10 +69,11 @@ export default function TourGuideCustomerViewList() {
 				</Row>
 				<br></br>
 				<br></br>
-
-				<Button href="/" style={{ float: "left", fontSize: "15px", padding: "10px" }}>
-					Back to Dashboard
-				</Button>
+				<Link to="/">
+					<Button id="backtobtn" style={{ float: "left", fontSize: "15px", padding: "10px" }}>
+						Back to Dashboard
+					</Button>
+				</Link>
 
 				<br></br>
 
@@ -85,56 +89,28 @@ export default function TourGuideCustomerViewList() {
 					)
 						.reverse()
 						.map((Guide) => (
-							<Accordion>
-								<Card
-									style={{
-										margin: 10,
-										borderRadius: 25,
-										borderWidth: 1.0,
-										borderColor: "rgb(0,0,0,0.5)",
-										marginTop: 20,
-										paddingInline: 10,
-										background: "#a8e5b5",
-									}}
+							<Accordion
+								style={{ marginTop: "20px", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)", borderRadius: "25px" }}
+							>
+								<Card className="mb-3" style={{
+									borderRadius: "25px",
+									background: "#d6e2eb"
+								}}
+								
+								
 								>
 									<Card.Header
+										className="d-flex align-items-center bg-info text-white"
 										style={{
-											display: "flex",
-											paddingInline: 10,
-											borderRadius: 25,
-											marginTop: 10,
-											marginBottom: 10,
-											borderColor: "black",
-											background: "#2596be",
+											borderRadius: "25px",
+											margin: 10,
+											padding:"20px"
 										}}
 									>
-										<center>
-											<h5
-												style={{
-													fontFamily: "Arial, Helvetica, sans-serif",
-													marginTop: "8px",
-													fontSize: "25px",
-													fontWeight: "bolder",
-												}}
-											>
-												{Guide.location}
-											</h5>
-
-											<h5 style={{ marginTop: "10px", fontSize: "25px" }}> {Guide.fee}</h5>
-										</center>
-										<span
-											style={{
-												color: "black",
-												textDecoration: "none",
-												flex: 1,
-												cursor: "pointer",
-												alignSelf: "center",
-												fontSize: 18,
-											}}
-										></span>
-										&emsp;
-										<br></br>
-										<br></br>
+										<div>
+											<h5 className="mb-0">{Guide.location}</h5>
+											<h5 className="mb-0">{Guide.fee}</h5>
+										</div>
 									</Card.Header>
 
 									<Card.Body>
