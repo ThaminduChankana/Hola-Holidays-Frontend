@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MainScreen from "../../../../components/MainScreen";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
+import { Link, useHistory} from "react-router-dom";
 import Loading from "../../../../components/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage";
 import { createTransport } from "../../../../actions/transportManagementActions/transportActions";
@@ -22,6 +23,7 @@ function AddTransport() {
 	const [message] = useState(null);
 
 	const dispatch = useDispatch();
+	const navigate = useHistory();
 
 	const transportCreate = useSelector((state) => state.transportCreate);
 	const { loading, error } = transportCreate;
@@ -87,10 +89,7 @@ function AddTransport() {
 		);
 
 		resetHandler();
-
-		setTimeout(function () {
-			window.location.href = "/admin-transport";
-		}, 2000);
+		navigate.push('/admin-transport');
 	};
 
 	useEffect(() => {}, []);
@@ -98,19 +97,35 @@ function AddTransport() {
 		return (
 			<div className="backgroundT">
 				<br></br>
-				<MainScreen title="Add A New Bus Entry">
-					<Button
-						variant="success"
-						style={{
-							float: "left",
-							marginTop: 5,
-							fontSize: 15,
-						}}
-						href="/admin-transport"
-					>
-						{" "}
-						Back to Transport Admin Page
-					</Button>
+				<MainScreen>
+				<Row>
+						<Col>
+							<h1
+								style={{
+									display: "flex",
+									marginLeft: "10px",
+									width: "500px",
+									color: "black",
+									fontStyle: "italic",
+								}}
+							>
+								Add A New Bus Entry
+							</h1>
+						</Col>
+					</Row>
+					<Link to="/admin-transport">
+						<Button
+							variant="success"
+							style={{
+								float: "left",
+								marginTop: 5,
+								fontSize: 15,
+							}}
+						>
+							{" "}
+							Back to Transport Admin Page
+						</Button>
+					</Link>
 					<br></br>
 					<br></br>
 					<br></br>

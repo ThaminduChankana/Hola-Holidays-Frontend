@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { useHistory ,Link} from "react-router-dom";
 import { Accordion, Card, Button, Row, Col, Form } from "react-bootstrap";
 import MainScreen from "../../components/MainScreen";
 import React, { useEffect, useState } from "react";
@@ -103,14 +103,42 @@ export default function TourGuideViewList() {
 					</Row>
 					<br></br>
 					<br></br>
+					<Link to="/admin">
+						<Button
+							id="adminbtn"
+							style={{
+								float: "left",
+								fontSize: "15px",
+								padding: "10px",
+								borderRadius: "1500px",
+								background: "#4CAF50",
+								color: "white",
+								textDecoration: "none",
+								border: "none",
+								marginRight: "10px",
+							}}
+						>
+							Back to Dashboard
+						</Button>
+					</Link>
 
-					<Button href="/admin" style={{ float: "left", fontSize: "15px", padding: "10px" }}>
-						Back to Dashboard
-					</Button>
-
-					<Button href="/tour-guide-add" style={{ float: "right", fontSize: "15px", padding: "10px" }}>
-						+ Guide Details Create
-					</Button>
+					<Link to="/tour-guide-add">
+						<Button
+							id="guideaddbtn"
+							style={{
+								float: "right",
+								fontSize: "15px",
+								padding: "10px",
+								borderRadius: "1500px",
+								background: "#2596be",
+								color: "white",
+								textDecoration: "none",
+								border: "none",
+							}}
+						>
+							+ Guide Details Create
+						</Button>
+					</Link>
 
 					<br></br>
 					{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
@@ -127,75 +155,36 @@ export default function TourGuideViewList() {
 						)
 							.reverse()
 							.map((Guide) => (
-								<Accordion>
-									<Card
-										style={{
-											margin: 10,
-											borderRadius: 25,
-											borderWidth: 1.0,
-											borderColor: "rgb(0,0,0,0.5)",
-											marginTop: 20,
-											paddingInline: 10,
-											background: "#a8e5b5",
-										}}
-									>
+								<Accordion style={{ marginTop: "20px" ,boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', borderRadius: '25px' }}>
+									<Card className="mb-3" style={{ borderRadius: "25px" }}>
 										<Card.Header
+											className="d-flex align-items-center bg-info text-white"
 											style={{
-												display: "flex",
-												paddingInline: 10,
-												borderRadius: 25,
-												marginTop: 10,
-												marginBottom: 10,
-												borderColor: "black",
-												background: "#2596be",
-											}}
-										>
-											<center>
-												<h5
-													style={{
-														fontFamily: "Arial, Helvetica, sans-serif",
-														marginTop: "8px",
-														fontSize: "25px",
-														fontWeight: "bolder",
-													}}
-												>
-													{Guide.location}
-												</h5>
-
-												<h5 style={{ marginTop: "10px", fontSize: "25px" }}> {Guide.fee}</h5>
-											</center>
-											<span
-												style={{
-													color: "black",
-													textDecoration: "none",
-													flex: 1,
-													cursor: "pointer",
-													alignSelf: "center",
-													fontSize: 18,
+												borderRadius: "25px",
+											    margin: 10,
+												borderColor: "rgb(0,0,0,0.5)",
+												padding:"20px",
 												}}
-											></span>
-											&emsp;
+										>
 											<div>
-												<Button
-													style={{ marginTop: 20, fontSize: 15, borderRadius: 25, borderColor: "black" }}
-													variant="success"
-													href={`/tour-guide-update/${Guide._id}`}
-												>
-													Edit
-												</Button>
+												<h5 className="mb-0">{Guide.location}</h5>
+												<h5 className="mb-0">{Guide.fee}</h5>
 											</div>
-											<div>
+											<div className="ml-auto">
+												<Link to={`/tour-guide-update/${Guide._id}`}>
+													<Button  className="mr-2" style={{ borderRadius: "25px" }}>
+														Edit
+													</Button>
+												</Link>
 												<Button
-													style={{ marginTop: 20, fontSize: 15, borderRadius: 25, borderColor: "black" }}
 													variant="danger"
-													className="mx-2"
+													className="mr-2"
 													onClick={() => deleteHandler(Guide._id)}
+													style={{ borderRadius: "25px" }}
 												>
 													Delete
 												</Button>
 											</div>
-											<br></br>
-											<br></br>
 										</Card.Header>
 
 										<Card.Body>
