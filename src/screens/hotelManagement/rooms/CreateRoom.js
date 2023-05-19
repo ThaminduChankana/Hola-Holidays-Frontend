@@ -76,10 +76,10 @@ export default function CreateRoom({ match }) {
 		}
 	};
 
-	const submitHandler = (e) => {
+	const submitHandler = async (e) => {
 		e.preventDefault();
 
-		dispatch(
+		await dispatch(
 			createRoomAction(
 				match.params.id,
 				roomType,
@@ -96,7 +96,7 @@ export default function CreateRoom({ match }) {
 			history.push("/hotels-admin-view");
 		}, 2000);
 
-		dispatch({ type: ROOM_CREATE_ADMIN_AFTER_SUCCESS, payload: null });
+		await dispatch({ type: ROOM_CREATE_ADMIN_AFTER_SUCCESS, payload: null });
 	};
 
 	useEffect(() => {}, []);

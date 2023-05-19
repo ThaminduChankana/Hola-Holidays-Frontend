@@ -74,15 +74,15 @@ export default function UpdateHotel({ match }) {
 		}
 	};
 
-	const submitHandler = (e) => {
+	const submitHandler = async (e) => {
 		e.preventDefault();
 
-		dispatch(updateHotelAction(match.params.id, hotelName, address, location, description, facilities, rules, pic));
+		await dispatch(updateHotelAction(match.params.id, hotelName, address, location, description, facilities, rules, pic));
 		setTimeout(function () {
 			history.push("/hotels-admin-view");
 		}, 2000);
 
-		dispatch({ type: HOTEL_UPDATE_ADMIN_AFTER_SUCCESS, payload: null });
+		await dispatch({ type: HOTEL_UPDATE_ADMIN_AFTER_SUCCESS, payload: null });
 	};
 
 	if (adminInfo) {
