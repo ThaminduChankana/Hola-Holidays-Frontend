@@ -5,8 +5,10 @@ import { createRoomAction } from "../../../actions/roomManagementActions/roomAct
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
 import MainScreen from "../../../components/MainScreen";
+import { useHistory } from "react-router-dom";
+import { ROOM_CREATE_ADMIN_AFTER_SUCCESS } from "../../../constants/roomManagementConstants/roomConstant";
 
-export default function CreateRoom({ match, history }) {
+export default function CreateRoom({ match }) {
 	const [roomType, setRoomType] = useState("");
 	const [availability, setAvailability] = useState("");
 	const [beds, setBeds] = useState("");
@@ -22,7 +24,9 @@ export default function CreateRoom({ match, history }) {
 	const { adminInfo } = admin_Login;
 
 	const roomCreate = useSelector((state) => state.roomCreate);
-	const { loading, error } = roomCreate;
+	const { loading, error, success } = roomCreate;
+
+	const history = useHistory();
 
 	const resetHandler = () => {
 		setRoomType("");
@@ -88,6 +92,11 @@ export default function CreateRoom({ match, history }) {
 				pic
 			)
 		);
+		setTimeout(function () {
+			history.push("/hotels-admin-view");
+		}, 2000);
+
+		dispatch({ type: ROOM_CREATE_ADMIN_AFTER_SUCCESS, payload: null });
 	};
 
 	useEffect(() => {}, []);
@@ -135,6 +144,10 @@ export default function CreateRoom({ match, history }) {
 						<Card.Body style={{ marginLeft: "10%", marginRight: "10%", marginTop: "50px", marginBottom: "50px" }}>
 							<Form onSubmit={submitHandler}>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+								{success &&
+									setTimeout(function () {
+										history.push("/hotels-admin-view");
+									}, 2000)}
 								<Form.Group controlId="roomType">
 									<Form.Control
 										type="name"
