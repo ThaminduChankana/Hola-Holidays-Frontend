@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import MainScreen from "../../../components/MainScreen";
 import { listRoomAdmin, deleteRoomAction } from "../../../actions/roomManagementActions/roomAction";
@@ -41,7 +42,6 @@ export default function RoomDetails({ match, history }) {
 						timer: 2000,
 						button: false,
 					});
-					window.location.reload();
 				}
 			})
 			.catch((err) => {
@@ -72,12 +72,9 @@ export default function RoomDetails({ match, history }) {
 							>
 								View Room
 							</h1>
-							<Button
-								href={`/room-create/${match.params.id}`}
-								style={{ marginLeft: "620px", width: "50px", height: "50px", fontSize: "20px" }}
-							>
-								+
-							</Button>
+							<Link to={`/room-create/${match.params.id}`}>
+								<Button style={{ marginLeft: "620px", width: "50px", height: "50px", fontSize: "20px" }}>+</Button>
+							</Link>
 						</span>
 					</div>
 					<br></br>
@@ -119,13 +116,11 @@ export default function RoomDetails({ match, history }) {
 										</span>
 									</div>
 
-									<Button
-										href={`/room-update/${room._id}`}
-										style={{ marginLeft: "50px", borderRadius: "15px" }}
-										className="cart"
-									>
-										View
-									</Button>
+									<Link to={`/room-update/${room._id}`}>
+										<Button style={{ marginLeft: "50px", borderRadius: "15px" }} className="cart">
+											View
+										</Button>
+									</Link>
 									<Button
 										onClick={() => deleteHandler(room._id)}
 										style={{ marginLeft: "20px", borderRadius: "15px", backgroundColor: "red" }}

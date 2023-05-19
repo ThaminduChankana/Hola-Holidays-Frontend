@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,7 +38,6 @@ export default function AdminHotelList() {
 						timer: 2000,
 						button: false,
 					});
-					history.push("/hotels-admin-view");
 				}
 			})
 			.catch((err) => {
@@ -75,12 +74,9 @@ export default function AdminHotelList() {
 							>
 								View Hotel
 							</h1>
-							<Button
-								href="/admin-hotel-create"
-								style={{ marginLeft: "720px", width: "50px", height: "50px", fontSize: "20px" }}
-							>
-								+
-							</Button>
+							<Link to="/admin-hotel-create">
+								<Button style={{ marginLeft: "720px", width: "50px", height: "50px", fontSize: "20px" }}>+</Button>
+							</Link>
 						</span>
 					</div>
 
@@ -120,13 +116,12 @@ export default function AdminHotelList() {
 										</span>
 									</div>
 
-									<Button
-										href={`/hotel-update/${hotel._id}`}
-										style={{ marginLeft: "50px", borderRadius: "15px" }}
-										className="cart"
-									>
-										View
-									</Button>
+									<Link to={`/hotel-update/${hotel._id}`}>
+										<Button style={{ marginLeft: "50px", borderRadius: "15px" }} className="cart">
+											View
+										</Button>
+									</Link>
+
 									<Button
 										onClick={() => deleteHandler(hotel._id)}
 										style={{ marginLeft: "20px", borderRadius: "15px", backgroundColor: "red" }}
