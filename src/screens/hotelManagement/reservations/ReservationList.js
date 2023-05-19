@@ -11,10 +11,10 @@ import {
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
 import MainScreen from "../../../components/MainScreen";
-// import {
-// 	RESERVATION_UPDATE_AFTER_SUCCESS,
-// 	RESERVATION_DELETE_AFTER_SUCCESS,
-// } from "../../../constants/reservationManagementConstants/reservationConstant";
+import {
+	RESERVATION_UPDATE_AFTER_SUCCESS,
+	RESERVATION_DELETE_AFTER_SUCCESS,
+} from "../../../constants/reservationManagementConstants/reservationConstant";
 
 export default function ReservationList() {
 	const dispatch = useDispatch();
@@ -32,19 +32,19 @@ export default function ReservationList() {
 
 	const history = useHistory();
 
-	function decreaseQuanity(id, noOfRooms) {
-		if (noOfRooms > 1) dispatch(updateReservationAction(id, noOfRooms - 1));
-		//dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
+	const decreaseQuanity = async (id, noOfRooms) => {
+		if (noOfRooms > 1)  await dispatch(updateReservationAction(id, noOfRooms - 1));
+		await dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
+	};
+
+	const increaseQuanity = async (id, noOfRooms) => {
+		await dispatch(updateReservationAction(id, noOfRooms + 1));
+		await dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
 	}
 
-	function increaseQuanity(id, noOfRooms) {
-		dispatch(updateReservationAction(id, noOfRooms + 1));
-		//dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
-	}
-
-	const deleteHandler = (id) => {
-		dispatch(deleteReservationAction(id));
-		//dispatch({ type: RESERVATION_DELETE_AFTER_SUCCESS, payload: null });
+	const deleteHandler = async (id) => {
+		await dispatch(deleteReservationAction(id));
+		await dispatch({ type: RESERVATION_DELETE_AFTER_SUCCESS, payload: null });
 	};
 
 	useEffect(() => {
