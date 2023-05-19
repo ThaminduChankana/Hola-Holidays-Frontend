@@ -11,6 +11,10 @@ import {
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
 import MainScreen from "../../../components/MainScreen";
+import {
+	RESERVATION_UPDATE_AFTER_SUCCESS,
+	RESERVATION_DELETE_AFTER_SUCCESS,
+} from "../../../constants/reservationManagementConstants/reservationConstant";
 
 export default function ReservationList() {
 	const dispatch = useDispatch();
@@ -30,14 +34,29 @@ export default function ReservationList() {
 
 	function decreaseQuanity(id, noOfRooms) {
 		if (noOfRooms > 1) dispatch(updateReservationAction(id, noOfRooms - 1));
+		setTimeout(function () {
+			history.push("/reservations");
+		}, 2000);
+
+		dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
 	}
 
 	function increaseQuanity(id, noOfRooms) {
 		dispatch(updateReservationAction(id, noOfRooms + 1));
+		setTimeout(function () {
+			history.push("/reservations");
+		}, 2000);
+
+		dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
 	}
 
 	const deleteHandler = (id) => {
 		dispatch(deleteReservationAction(id));
+		setTimeout(function () {
+			history.push("/reservations");
+		}, 2000);
+
+		dispatch({ type: RESERVATION_DELETE_AFTER_SUCCESS, payload: null });
 	};
 
 	useEffect(() => {
