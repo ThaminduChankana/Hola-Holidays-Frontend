@@ -6,6 +6,10 @@ import { GuideAddAction } from "../../actions/TourGuideActions/TourGuideActions"
 import ErrorMessage from "../../components/ErrorMessage";
 import MainScreen from "../../components/MainScreen";
 import "./tourguide.css";
+import { Link } from "react-router-dom/cjs/react-router-dom";
+import {TOUR_GUIDE_ADD_AFTER_SUCCESS} from "../../constants/TourGuideConstants/TourGuideConstants"
+
+
 
 export default function TourGuideAdd({ match }) {
 	const [name, setName] = useState("");
@@ -23,6 +27,7 @@ export default function TourGuideAdd({ match }) {
 	const Guide_Details_Create = useSelector((state) => state.Guide_Details_Create);
 	const { loading, error } = Guide_Details_Create;
 
+
 	const resetHandler = () => {
 		setName("");
 		setGender("");
@@ -32,14 +37,24 @@ export default function TourGuideAdd({ match }) {
 		setFee("");
 		setPhoneNumber("");
 	};
-	const submitHandler = (e) => {
+	const submitHandler = async (e) => {
 		e.preventDefault();
-
-		const sendingData = { name, gender, language, location, description, fee, phoneNumber };
-		console.log(sendingData);
-
-		dispatch(GuideAddAction(name, gender, language, location, description, fee, phoneNumber));
-
+			if (
+			!name ||
+			!gender ||
+			!language ||
+			!location ||
+			!description ||
+			!fee ||
+			!phoneNumber
+		)
+		// const sendingData = { name, gender, language, location, description, fee, phoneNumber };
+		// console.log(sendingData);
+          return;
+		dispatch(
+			await GuideAddAction
+				(name, gender, language, location, description, fee, phoneNumber));
+		await dispatch({ TOUR_GUIDE_ADD_AFTER_SUCCESS, payload: null });
 		resetHandler();
 	};
 	const demoHandler = async (e) => {
@@ -57,19 +72,21 @@ export default function TourGuideAdd({ match }) {
 		return (
 			<div className="GuardBackgroundCreate">
 				<MainScreen title={"Enter Tour Guide Info"}>
-					<Button
-						variant="success"
-						style={{
-							marginLeft: 10,
-							marginBottom: 6,
-							float: "left",
-							fontSize: 15,
-						}}
-						size="lg"
-						href={`/tour-guide-list`}
-					>
-						Back to the Tour guides List
-					</Button>
+					<Link to="/tour-guide-list">
+						<Button
+							variant="success"
+							style={{
+								marginLeft: 10,
+								marginBottom: 6,
+								float: "left",
+								fontSize: 15,
+							}}
+							size="lg"
+						>
+							Back to the Tour guides List
+						</Button>
+					</Link>
+
 					<br></br>
 					<br></br>
 					<br></br>
@@ -91,6 +108,7 @@ export default function TourGuideAdd({ match }) {
 
 							<Form onSubmit={submitHandler}>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+							
 								<Form.Group controlId="guidename">
 									<Form.Label
 										style={{
@@ -132,23 +150,6 @@ export default function TourGuideAdd({ match }) {
 										/>
 									</div>
 								</Form.Group>
-
-								{/* <Form.Group controlId="language">
-									<Form.Label
-										style={{
-											paddingTop: 10,
-										}}
-									>
-										language
-									</Form.Label>
-									<Form.Control
-										value={language}
-										placeholder="enter language"
-										rows={4}
-										onChange={(e) => setLanguage(e.target.value)}
-									/>
-								</Form.Group> */}
-
 								<Form.Group controlId="language">
 									<Form.Label style={{ paddingTop: 10 }}>Language:</Form.Label>
 									<div>

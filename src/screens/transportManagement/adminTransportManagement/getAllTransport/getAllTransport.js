@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Button, Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../../components/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage";
@@ -18,8 +18,6 @@ const TransportListForAdmin = () => {
 
 	const adminTransportList = useSelector((state) => state.adminTransportList);
 	const { loading, transport, error } = adminTransportList;
-
-	//console.log(adminTransportList);
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
@@ -84,24 +82,24 @@ const TransportListForAdmin = () => {
 						</Col>
 					</Row>
 					<br></br>
-
-					<Button
-						variant="success"
-						style={{
-							float: "left",
-							marginTop: 5,
-							fontSize: 15,
-						}}
-						href="/admin"
-					>
-						{" "}
-						Back to Admin Main Page
-					</Button>
-
-					<Button variant="success" href="/admin-transport-add" style={{ float: "right", fontSize: "15px" }}>
-						Add A New Bus Entry
-					</Button>
-
+					<Link to="/admin">
+						<Button
+							variant="success"
+							style={{
+								float: "left",
+								marginTop: 5,
+								fontSize: 15,
+							}}
+						>
+							{" "}
+							Back to Admin Main Page
+						</Button>
+					</Link>
+					<Link to = "/admin-transport-add">
+						<Button variant="success" style={{ float: "right", fontSize: "15px" }}>
+							Add A New Bus Entry
+						</Button>
+					</Link>
 					<br></br>
 
 					<div
@@ -198,8 +196,8 @@ const TransportListForAdmin = () => {
 											</td>
 
 											<td>
+												<Link to ={`/admin-transport-edit/${adminTransportList._id}`}>
 												<Button
-													href={`/admin-transport-edit/${adminTransportList._id}`}
 													style={{
 														fontSize: 15,
 														backgroundColor: "green",
@@ -209,7 +207,7 @@ const TransportListForAdmin = () => {
 												>
 													{" "}
 													Edit
-												</Button>
+												</Button> </Link>
 											</td>
 											<td>
 												<Button

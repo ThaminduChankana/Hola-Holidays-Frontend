@@ -41,12 +41,9 @@ const Footer = () => {
 						<Link to="/contactus" id="listElement">
 							Contact Us
 						</Link>
+
 						<br></br>
-						<Link to="/customer-register" id="listElement">
-							Sign Up
-						</Link>
-						<br></br>
-						<Link to="/customer-login" id="listElement">
+						<Link to="/admin-login" id="listElement">
 							Sign In
 						</Link>
 						<br></br>

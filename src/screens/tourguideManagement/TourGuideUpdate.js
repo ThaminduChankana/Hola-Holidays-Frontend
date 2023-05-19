@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +9,7 @@ import Loading from "../../components/Loading";
 import { authHeader } from "../../actions/userManagementActions/adminActions";
 import MainScreen from "../../components/MainScreen";
 import { API_ENDPOINT } from "../../config";
+import {TOUR_GUIDE_UPDATE_AFTER_SUCCESS} from "../../constants/TourGuideConstants/TourGuideConstants"
 
 export default function TourGuideUpdate({ match, history }) {
 	const [name, setName] = useState("");
@@ -51,27 +53,33 @@ export default function TourGuideUpdate({ match, history }) {
 		fetching();
 	}, [match.params.id]);
 
-	const updateHandler = (e) => {
+	const updateHandler =  async(e) => {
 		e.preventDefault();
 
 		dispatch(GuideUpdateAction(match.params.id, name, gender, language, location, description, fee, phoneNumber));
 		if (!name || !gender || !language || !location || !location || !description || !fee || !phoneNumber) return;
 
+		await dispatch({ type: TOUR_GUIDE_UPDATE_AFTER_SUCCESS, payload: null });
 		history.push("/tour-guide-list");
 	};
+
+
+
 	if (adminInfo) {
 		return (
 			<div className="GuideBackgroundUpdate">
 				{" "}
 				<MainScreen title={"UPDATE GUIDE DETAILS"}>
-					<Button
-						variant="success"
-						style={{ marginLeft: 10, marginBottom: 6, float: "left", fontSize: 15 }}
-						size="lg"
-						href="/tour-guide-list"
-					>
-						Back to Guide List
-					</Button>
+					<Link to="/tour-guide-list">
+						<Button
+							variant="success"
+							style={{ marginLeft: 10, marginBottom: 6, float: "left", fontSize: 15 }}
+							size="lg"
+						>
+							Back to Guide List
+						</Button>
+					</Link>
+
 					<br></br>
 					<br></br>
 					<Card
