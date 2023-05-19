@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateHotelAction } from "../../../actions/hotelManagementActions/hotelAction";
 import Loading from "../../../components/Loading";
@@ -8,9 +9,10 @@ import MainScreen from "../../../components/MainScreen";
 import axios from "axios";
 import "./hotelManagement.css";
 import { authHeader } from "../../../actions/userManagementActions/adminActions";
+import { HOTEL_UPDATE_ADMIN_AFTER_SUCCESS } from "../../../constants/hotelManagementConstants/hotelConstant";
 import { API_ENDPOINT } from "../../../config";
 
-export default function UpdateHotel({ match, history }) {
+export default function UpdateHotel({ match }) {
 	const [hotelName, setHotelName] = useState("");
 	const [address, setAddress] = useState("");
 	const [location, setLocation] = useState("");
@@ -25,7 +27,9 @@ export default function UpdateHotel({ match, history }) {
 	const { adminInfo } = admin_Login;
 
 	const hotelUpdate = useSelector((state) => state.hotelUpdate);
-	const { loading, error } = hotelUpdate;
+	const { loading, error, success } = hotelUpdate;
+
+	const history = useHistory();
 
 	useEffect(() => {
 		const fetching = async () => {
@@ -74,6 +78,11 @@ export default function UpdateHotel({ match, history }) {
 		e.preventDefault();
 
 		dispatch(updateHotelAction(match.params.id, hotelName, address, location, description, facilities, rules, pic));
+		setTimeout(function () {
+			history.push("/hotels-admin-view");
+		}, 2000);
+
+		dispatch({ type: HOTEL_UPDATE_ADMIN_AFTER_SUCCESS, payload: null });
 	};
 
 	if (adminInfo) {
@@ -85,19 +94,17 @@ export default function UpdateHotel({ match, history }) {
 					<br></br>
 					<div className="row">
 						<span style={{ display: "flex" }}>
-							<Button
-								href={`/room-details/${match.params.id}`}
-								style={{ marginLeft: "900px", width: "50px", height: "50px", fontSize: "20px" }}
-							>
-								<i class="fa fa-bed" aria-hidden="true"></i>
-							</Button>
+							<Link to={`/room-details/${match.params.id}`}>
+								<Button style={{ marginLeft: "900px", width: "50px", height: "50px", fontSize: "20px" }}>
+									<i class="fa fa-bed" aria-hidden="true"></i>
+								</Button>
+							</Link>
 
-							<Button
-								href={`/hotel-reservations/${match.params.id}`}
-								style={{ marginLeft: "30px", width: "50px", height: "50px", fontSize: "20px" }}
-							>
-								<i class="fa fa-calendar" aria-hidden="true"></i>
-							</Button>
+							<Link to={`/hotel-reservations/${match.params.id}`}>
+								<Button style={{ marginLeft: "30px", width: "50px", height: "50px", fontSize: "20px" }}>
+									<i class="fa fa-calendar" aria-hidden="true"></i>
+								</Button>
+							</Link>
 						</span>
 					</div>
 					<br></br>
@@ -138,6 +145,10 @@ export default function UpdateHotel({ match, history }) {
 						<Card.Body style={{ marginLeft: "10%", marginRight: "10%", marginTop: "50px", marginBottom: "50px" }}>
 							<Form onSubmit={submitHandler}>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+								{success &&
+									setTimeout(function () {
+										history.push("/hotels-admin-view");
+									}, 2000)}
 								<Form.Group controlId="nic">
 									<Form.Control
 										type="name"

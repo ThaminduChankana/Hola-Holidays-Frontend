@@ -110,9 +110,6 @@ export const createHotelAction =
 				button: false,
 			});
 
-			setTimeout(function () {
-				window.location.href = "/hotels-admin-view";
-			}, 2000);
 			dispatch({
 				type: HOTEL_CREATE_ADMIN_SUCCESS,
 				payload: data,
@@ -164,10 +161,6 @@ export const updateHotelAction =
 				timer: 2000,
 				button: false,
 			});
-
-			setTimeout(function () {
-				window.location.href = "/hotels-admin-view";
-			}, 2000);
 
 			dispatch({
 				type: HOTEL_UPDATE_ADMIN_SUCCESS,

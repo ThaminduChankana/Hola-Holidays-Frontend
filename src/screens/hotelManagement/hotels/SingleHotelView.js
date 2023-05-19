@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
@@ -132,9 +133,9 @@ export default function SingleHotelView({ match, history }) {
 								<h2>Room Size</h2>
 								<p>{room.roomSize}</p>
 								{customerInfo ? (
-									<Button href={`/create-reservation/${room._id}`} className="cart">
-										Reserve
-									</Button>
+									<Link to={`/create-reservation/${room._id}`}>
+										<Button className="cart">Reserve</Button>
+									</Link>
 								) : (
 									<></>
 								)}
