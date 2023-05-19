@@ -81,7 +81,7 @@ const CreateReservation = ({ match }) => {
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 								{success &&
 									setTimeout(function () {
-										window.location.href = "/reservations";
+										history.push("/reservations");
 									}, 2000)}
 								<Form.Group controlId="name">
 									<Form.Label
