@@ -42,9 +42,9 @@ export default function ReservationList() {
 		await dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
 	}
 
-	const deleteHandler =  (id) => {
+	const deleteHandler = async (id) => {
 		dispatch(deleteReservationAction(id));
-		dispatch({ type: RESERVATION_DELETE_AFTER_SUCCESS, payload: null });
+		await dispatch({ type: RESERVATION_DELETE_AFTER_SUCCESS, payload: null });
 	};
 
 	useEffect(() => {
