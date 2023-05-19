@@ -15,10 +15,6 @@ import {
 	RESERVATION_UPDATE_AFTER_SUCCESS,
 	RESERVATION_DELETE_AFTER_SUCCESS,
 } from "../../../constants/reservationManagementConstants/reservationConstant";
-import {
-	RESERVATION_UPDATE_AFTER_SUCCESS,
-	RESERVATION_DELETE_AFTER_SUCCESS,
-} from "../../../constants/reservationManagementConstants/reservationConstant";
 
 export default function ReservationList() {
 	const dispatch = useDispatch();
