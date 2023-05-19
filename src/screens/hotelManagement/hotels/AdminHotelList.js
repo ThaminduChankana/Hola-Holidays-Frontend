@@ -38,7 +38,6 @@ export default function AdminHotelList() {
 						timer: 2000,
 						button: false,
 					});
-					window.location.reload();
 				}
 			})
 			.catch((err) => {
