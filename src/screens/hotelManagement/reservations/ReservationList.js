@@ -49,7 +49,7 @@ export default function ReservationList() {
 
 	useEffect(() => {
 		dispatch(listReservation());
-	}, [dispatch, history, customerInfo._id, loadingUpdate, errorUpdate]);
+	}, [dispatch, history, customerInfo._id, loadingUpdate, errorUpdate, successDelete]);
 
 	if (customerInfo) {
 		return (
