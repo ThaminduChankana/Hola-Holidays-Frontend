@@ -1,5 +1,6 @@
 import MainScreen from "../../../components/MainScreen";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -257,22 +258,23 @@ const CustomerHotelView = () => {
 												<hr class="my-0" />
 												<MDBCardBody className="pb-0">
 													<div className="d-flex justify-content-between align-items-center pb-2 mb-4">
-														<MDBBtn
-															href={`/hotel-customer-view/${hotel._id}`}
-															style={{
-																paddingRight: "5px",
-																paddingLeft: "5px",
-																width: "80px",
-																backgroundColor: "black",
-																border: "3px solid white",
-																fontSize: "10px",
-																height: "35px",
-																borderRadius: "0px",
-																borderWidth: "5px white",
-															}}
-														>
-															More
-														</MDBBtn>
+														<Link to={`/hotel-customer-view/${hotel._id}`}>
+															<MDBBtn
+																style={{
+																	paddingRight: "5px",
+																	paddingLeft: "5px",
+																	width: "80px",
+																	backgroundColor: "black",
+																	border: "3px solid white",
+																	fontSize: "10px",
+																	height: "35px",
+																	borderRadius: "0px",
+																	borderWidth: "5px white",
+																}}
+															>
+																More
+															</MDBBtn>
+														</Link>
 													</div>
 												</MDBCardBody>
 											</MDBCard>
