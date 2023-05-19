@@ -1,18 +1,23 @@
 import {
 	HOTEL_LIST_ADMIN_REQUEST,
 	HOTEL_LIST_ADMIN_SUCCESS,
+	HOTEL_LIST_ADMIN_AFTER_SUCCESS,
 	HOTEL_LIST_ADMIN_FAIL,
 	HOTEL_CREATE_ADMIN_REQUEST,
 	HOTEL_CREATE_ADMIN_SUCCESS,
+	HOTEL_CREATE_ADMIN_AFTER_SUCCESS,
 	HOTEL_CREATE_ADMIN_FAIL,
 	HOTEL_UPDATE_ADMIN_REQUEST,
 	HOTEL_UPDATE_ADMIN_SUCCESS,
+	HOTEL_UPDATE_ADMIN_AFTER_SUCCESS,
 	HOTEL_UPDATE_ADMIN_FAIL,
 	HOTEL_DELETE_ADMIN_REQUEST,
 	HOTEL_DELETE_ADMIN_SUCCESS,
+	HOTEL_DELETE_ADMIN_AFTER_SUCCESS,
 	HOTEL_DELETE_ADMIN_FAIL,
 	HOTEL_LIST_CUSTOMER_REQUEST,
 	HOTEL_LIST_CUSTOMER_SUCCESS,
+	HOTEL_LIST_CUSTOMER_AFTER_SUCCESS,
 	HOTEL_LIST_CUSTOMER_FAIL,
 } from "../../constants/hotelManagementConstants/hotelConstant";
 
@@ -21,7 +26,9 @@ export const hotelListAdminReducer = (state = { adminHotels: [] }, action) => {
 		case HOTEL_LIST_ADMIN_REQUEST:
 			return { loading: true };
 		case HOTEL_LIST_ADMIN_SUCCESS:
-			return { loading: false, adminHotels: action.payload };
+			return { loading: false, adminHotels: action.payload, success: true };
+		case HOTEL_LIST_ADMIN_AFTER_SUCCESS:
+			return { loading: false, adminHotels: action.payload, success: false };
 		case HOTEL_LIST_ADMIN_FAIL:
 			return { loading: false, error: action.payload };
 
@@ -35,7 +42,9 @@ export const hotelListCustomerReducer = (state = { customerHotels: [] }, action)
 		case HOTEL_LIST_CUSTOMER_REQUEST:
 			return { loading: true };
 		case HOTEL_LIST_CUSTOMER_SUCCESS:
-			return { loading: false, customerHotels: action.payload };
+			return { loading: false, customerHotels: action.payload, success: true };
+		case HOTEL_LIST_CUSTOMER_AFTER_SUCCESS:
+			return { loading: false, customerHotels: action.payload, success: false };
 		case HOTEL_LIST_CUSTOMER_FAIL:
 			return { loading: false, error: action.payload };
 
@@ -50,6 +59,8 @@ export const hotelCreateReducer = (state = {}, action) => {
 			return { loading: true };
 		case HOTEL_CREATE_ADMIN_SUCCESS:
 			return { loading: false, success: true };
+		case HOTEL_CREATE_ADMIN_AFTER_SUCCESS:
+			return { loading: false, success: false };
 		case HOTEL_CREATE_ADMIN_FAIL:
 			return { loading: false, error: action.payload };
 
@@ -64,6 +75,8 @@ export const hotelUpdateReducer = (state = {}, action) => {
 			return { loading: true };
 		case HOTEL_UPDATE_ADMIN_SUCCESS:
 			return { loading: false, success: true };
+		case HOTEL_UPDATE_ADMIN_AFTER_SUCCESS:
+			return { loading: false, success: false };
 		case HOTEL_UPDATE_ADMIN_FAIL:
 			return { loading: false, error: action.payload, success: false };
 
@@ -78,6 +91,8 @@ export const hotelDeleteReducer = (state = {}, action) => {
 			return { loading: true };
 		case HOTEL_DELETE_ADMIN_SUCCESS:
 			return { loading: false, success: true };
+		case HOTEL_DELETE_ADMIN_AFTER_SUCCESS:
+			return { loading: false, success: false };
 		case HOTEL_DELETE_ADMIN_FAIL:
 			return { loading: false, error: action.payload, success: false };
 

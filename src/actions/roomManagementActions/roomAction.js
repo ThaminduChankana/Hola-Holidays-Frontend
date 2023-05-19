@@ -113,9 +113,6 @@ export const createRoomAction =
 				button: false,
 			});
 
-			setTimeout(function () {
-				window.location.href = "/hotels-admin-view";
-			}, 2000);
 			dispatch({
 				type: ROOM_CREATE_ADMIN_SUCCESS,
 				payload: data,
@@ -168,10 +165,6 @@ export const updateRoomAction =
 				timer: 2000,
 				button: false,
 			});
-
-			setTimeout(function () {
-				window.location.href = "/hotels-admin-view";
-			}, 2000);
 
 			dispatch({
 				type: ROOM_UPDATE_ADMIN_SUCCESS,

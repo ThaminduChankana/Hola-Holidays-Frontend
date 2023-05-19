@@ -6,8 +6,10 @@ import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
 import MainScreen from "../../../components/MainScreen";
 import "./hotelManagement.css";
+import { RESERVATION_CREATE_AFTER_SUCCESS } from "../../../constants/reservationManagementConstants/reservationConstant";
+import { useHistory } from "react-router-dom";
 
-const CreateReservation = ({ match, history }) => {
+const CreateReservation = ({ match }) => {
 	const dispatch = useDispatch();
 	const customer_Login = useSelector((state) => state.customer_Login);
 	const { customerInfo } = customer_Login;
@@ -20,12 +22,19 @@ const CreateReservation = ({ match, history }) => {
 	const reservationCreate = useSelector((state) => state.reservationCreate);
 	const { loading, error, success } = reservationCreate;
 
+	const history = useHistory();
+
 	const submitHandler = (e) => {
 		e.preventDefault();
 
 		dispatch(
 			createReservationAction(customerInfo._id, customerName, customerEmail, match.params.id, checkInDate, checkOutDate)
 		);
+		setTimeout(function () {
+			history.push("/reservations");
+		}, 2000);
+
+		dispatch({ type: RESERVATION_CREATE_AFTER_SUCCESS, payload: null });
 	};
 
 	useEffect(() => {}, []);

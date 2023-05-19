@@ -5,6 +5,8 @@ import { createHotelAction } from "../../../actions/hotelManagementActions/hotel
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
 import MainScreen from "../../../components/MainScreen";
+import { useHistory } from "react-router-dom";
+import { HOTEL_CREATE_ADMIN_AFTER_SUCCESS } from "../../../constants/hotelManagementConstants/hotelConstant";
 import "./hotelManagement.css";
 
 const CreateHotel = () => {
@@ -22,7 +24,9 @@ const CreateHotel = () => {
 	const { adminInfo } = admin_Login;
 
 	const hotelCreate = useSelector((state) => state.hotelCreate);
-	const { loading, error } = hotelCreate;
+	const { loading, error, success } = hotelCreate;
+
+	const history = useHistory();
 
 	const resetHandler = () => {
 		setHotelName("");
@@ -76,6 +80,11 @@ const CreateHotel = () => {
 		e.preventDefault();
 
 		dispatch(createHotelAction(hotelName, address, location, description, facilities, rules, pic));
+		setTimeout(function () {
+			history.push("/hotels-admin-view");
+		}, 2000);
+
+		dispatch({ type: HOTEL_CREATE_ADMIN_AFTER_SUCCESS, payload: null });
 	};
 
 	useEffect(() => {}, []);
@@ -123,6 +132,10 @@ const CreateHotel = () => {
 						<Card.Body style={{ marginLeft: "10%", marginRight: "10%", marginTop: "50px", marginBottom: "50px" }}>
 							<Form onSubmit={submitHandler}>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+								{success &&
+									setTimeout(function () {
+										history.push("/hotels-admin-view");
+									}, 2000)}
 								<Form.Group controlId="nic">
 									<Form.Control
 										type="name"
