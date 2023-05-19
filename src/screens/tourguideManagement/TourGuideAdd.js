@@ -7,9 +7,7 @@ import ErrorMessage from "../../components/ErrorMessage";
 import MainScreen from "../../components/MainScreen";
 import "./tourguide.css";
 import { Link } from "react-router-dom/cjs/react-router-dom";
-import {TOUR_GUIDE_ADD_AFTER_SUCCESS} from "../../constants/TourGuideConstants/TourGuideConstants"
-
-
+import { TOUR_GUIDE_ADD_AFTER_SUCCESS } from "../../constants/TourGuideConstants/TourGuideConstants";
 
 export default function TourGuideAdd({ match }) {
 	const [name, setName] = useState("");
@@ -27,7 +25,6 @@ export default function TourGuideAdd({ match }) {
 	const Guide_Details_Create = useSelector((state) => state.Guide_Details_Create);
 	const { loading, error } = Guide_Details_Create;
 
-
 	const resetHandler = () => {
 		setName("");
 		setGender("");
@@ -39,21 +36,11 @@ export default function TourGuideAdd({ match }) {
 	};
 	const submitHandler = async (e) => {
 		e.preventDefault();
-			if (
-			!name ||
-			!gender ||
-			!language ||
-			!location ||
-			!description ||
-			!fee ||
-			!phoneNumber
-		)
-		// const sendingData = { name, gender, language, location, description, fee, phoneNumber };
-		// console.log(sendingData);
-          return;
-		dispatch(
-			await GuideAddAction
-				(name, gender, language, location, description, fee, phoneNumber));
+		if (!name || !gender || !language || !location || !description || !fee || !phoneNumber)
+			// const sendingData = { name, gender, language, location, description, fee, phoneNumber };
+			// console.log(sendingData);
+			return;
+		dispatch(await GuideAddAction(name, gender, language, location, description, fee, phoneNumber));
 		await dispatch({ TOUR_GUIDE_ADD_AFTER_SUCCESS, payload: null });
 		resetHandler();
 	};
@@ -108,7 +95,7 @@ export default function TourGuideAdd({ match }) {
 
 							<Form onSubmit={submitHandler}>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-							
+
 								<Form.Group controlId="guidename">
 									<Form.Label
 										style={{

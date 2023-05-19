@@ -9,7 +9,7 @@ import Loading from "../../components/Loading";
 import { authHeader } from "../../actions/userManagementActions/adminActions";
 import MainScreen from "../../components/MainScreen";
 import { API_ENDPOINT } from "../../config";
-import {TOUR_GUIDE_UPDATE_AFTER_SUCCESS} from "../../constants/TourGuideConstants/TourGuideConstants"
+import { TOUR_GUIDE_UPDATE_AFTER_SUCCESS } from "../../constants/TourGuideConstants/TourGuideConstants";
 
 export default function TourGuideUpdate({ match, history }) {
 	const [name, setName] = useState("");
@@ -53,7 +53,7 @@ export default function TourGuideUpdate({ match, history }) {
 		fetching();
 	}, [match.params.id]);
 
-	const updateHandler =  async(e) => {
+	const updateHandler = async (e) => {
 		e.preventDefault();
 
 		dispatch(GuideUpdateAction(match.params.id, name, gender, language, location, description, fee, phoneNumber));
@@ -62,8 +62,6 @@ export default function TourGuideUpdate({ match, history }) {
 		await dispatch({ type: TOUR_GUIDE_UPDATE_AFTER_SUCCESS, payload: null });
 		history.push("/tour-guide-list");
 	};
-
-
 
 	if (adminInfo) {
 		return (
