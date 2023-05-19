@@ -1,4 +1,4 @@
-import { useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Accordion, Card, Row, Col, Form } from "react-bootstrap";
 import MainScreen from "../../components/MainScreen";
 import React, { useEffect, useState } from "react";
@@ -7,8 +7,6 @@ import { CustomerGuideListAction } from "../../actions/TourGuideActions/TourGuid
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import "./tourguide.css";
-
-
 
 export default function TourGuideCustomerViewList() {
 	const dispatch = useDispatch();
@@ -28,7 +26,6 @@ export default function TourGuideCustomerViewList() {
 	useEffect(() => {
 		dispatch(CustomerGuideListAction());
 	}, [dispatch, history]);
-
 
 	return (
 		<div className="GuideCustomerBackgroundView">

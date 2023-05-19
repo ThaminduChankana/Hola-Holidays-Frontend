@@ -1,4 +1,4 @@
-import { useHistory ,Link} from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { Accordion, Card, Button, Row, Col, Form } from "react-bootstrap";
 import MainScreen from "../../components/MainScreen";
 import React, { useEffect, useState } from "react";
@@ -155,16 +155,18 @@ export default function TourGuideViewList() {
 						)
 							.reverse()
 							.map((Guide) => (
-								<Accordion style={{ marginTop: "20px" ,boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', borderRadius: '25px' }}>
+								<Accordion
+									style={{ marginTop: "20px", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)", borderRadius: "25px" }}
+								>
 									<Card className="mb-3" style={{ borderRadius: "25px" }}>
 										<Card.Header
 											className="d-flex align-items-center bg-info text-white"
 											style={{
 												borderRadius: "25px",
-											    margin: 10,
+												margin: 10,
 												borderColor: "rgb(0,0,0,0.5)",
-												padding:"20px",
-												}}
+												padding: "20px",
+											}}
 										>
 											<div>
 												<h5 className="mb-0">{Guide.location}</h5>
@@ -172,7 +174,7 @@ export default function TourGuideViewList() {
 											</div>
 											<div className="ml-auto">
 												<Link to={`/tour-guide-update/${Guide._id}`}>
-													<Button  className="mr-2" style={{ borderRadius: "25px" }}>
+													<Button className="mr-2" style={{ borderRadius: "25px" }}>
 														Edit
 													</Button>
 												</Link>

@@ -77,7 +77,9 @@ export default function UpdateHotel({ match }) {
 	const submitHandler = async (e) => {
 		e.preventDefault();
 
-		await dispatch(updateHotelAction(match.params.id, hotelName, address, location, description, facilities, rules, pic));
+		await dispatch(
+			updateHotelAction(match.params.id, hotelName, address, location, description, facilities, rules, pic)
+		);
 		setTimeout(function () {
 			history.push("/hotels-admin-view");
 		}, 2000);

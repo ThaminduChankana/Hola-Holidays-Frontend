@@ -93,7 +93,7 @@ function EditTransport({ match, history }) {
 			icon: "success",
 			button: false,
 		});
-		navigate.push('/admin-transport');
+		navigate.push("/admin-transport");
 	};
 
 	if (adminInfo) {
@@ -101,7 +101,7 @@ function EditTransport({ match, history }) {
 			<div className="backgroundT">
 				<br></br>
 				<MainScreen>
-				<Row>
+					<Row>
 						<Col>
 							<h1
 								style={{
@@ -116,7 +116,7 @@ function EditTransport({ match, history }) {
 							</h1>
 						</Col>
 					</Row>
-					<Link to ="/admin-transport">
+					<Link to="/admin-transport">
 						<Button
 							variant="success"
 							style={{

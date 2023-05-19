@@ -33,14 +33,14 @@ export default function ReservationList() {
 	const history = useHistory();
 
 	const decreaseQuanity = async (id, noOfRooms) => {
-		if (noOfRooms > 1)  await dispatch(updateReservationAction(id, noOfRooms - 1));
+		if (noOfRooms > 1) await dispatch(updateReservationAction(id, noOfRooms - 1));
 		await dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
 	};
 
 	const increaseQuanity = async (id, noOfRooms) => {
 		await dispatch(updateReservationAction(id, noOfRooms + 1));
 		await dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
-	}
+	};
 
 	const deleteHandler = async (id) => {
 		await dispatch(deleteReservationAction(id));

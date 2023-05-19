@@ -95,7 +95,7 @@ const TransportListForAdmin = () => {
 							Back to Admin Main Page
 						</Button>
 					</Link>
-					<Link to = "/admin-transport-add">
+					<Link to="/admin-transport-add">
 						<Button variant="success" style={{ float: "right", fontSize: "15px" }}>
 							Add A New Bus Entry
 						</Button>
@@ -196,18 +196,19 @@ const TransportListForAdmin = () => {
 											</td>
 
 											<td>
-												<Link to ={`/admin-transport-edit/${adminTransportList._id}`}>
-												<Button
-													style={{
-														fontSize: 15,
-														backgroundColor: "green",
-														borderRadius: 0,
-														border: "3px solid white",
-													}}
-												>
-													{" "}
-													Edit
-												</Button> </Link>
+												<Link to={`/admin-transport-edit/${adminTransportList._id}`}>
+													<Button
+														style={{
+															fontSize: 15,
+															backgroundColor: "green",
+															borderRadius: 0,
+															border: "3px solid white",
+														}}
+													>
+														{" "}
+														Edit
+													</Button>{" "}
+												</Link>
 											</td>
 											<td>
 												<Button
