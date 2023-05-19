@@ -30,10 +30,6 @@ const CreateReservation = ({ match }) => {
 		dispatch(
 			createReservationAction(customerInfo._id, customerName, customerEmail, match.params.id, checkInDate, checkOutDate)
 		);
-		setTimeout(function () {
-			history.push("/reservations");
-		}, 2000);
-
 		dispatch({ type: RESERVATION_CREATE_AFTER_SUCCESS, payload: null });
 	};
 
