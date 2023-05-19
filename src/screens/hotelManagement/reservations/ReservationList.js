@@ -42,9 +42,9 @@ export default function ReservationList() {
 		await dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
 	}
 
-	const deleteHandler = async (id) => {
+	const deleteHandler = (id) => {
 		dispatch(deleteReservationAction(id));
-		await dispatch({ type: RESERVATION_DELETE_AFTER_SUCCESS, payload: null });
+		dispatch({ type: RESERVATION_DELETE_AFTER_SUCCESS, payload: null });
 	};
 
 	useEffect(() => {
@@ -68,10 +68,6 @@ export default function ReservationList() {
 					{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
 					{loadingDelete && <Loading />}
 					{successUpdate &&
-						setTimeout(function () {
-							history.push("/reservations");
-						}, 2000)}
-					{successDelete &&
 						setTimeout(function () {
 							history.push("/reservations");
 						}, 2000)}
