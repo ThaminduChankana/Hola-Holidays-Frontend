@@ -69,11 +69,11 @@ export default function ReservationList() {
 					{loadingDelete && <Loading />}
 					{successUpdate &&
 						setTimeout(function () {
-							window.location.href = "/reservations";
+							history.push("/reservations");
 						}, 2000)}
 					{successDelete &&
 						setTimeout(function () {
-							window.location.href = "/reservations";
+							history.push("/reservations");
 						}, 2000)}
 
 					{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
