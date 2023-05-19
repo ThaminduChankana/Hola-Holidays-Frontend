@@ -109,13 +109,13 @@ export default function TourGuideCustomerViewList() {
 									<Card.Body>
 										<Row>
 											<Col md={8}>
-												<h5> name : {Guide.name}</h5>
-												<h5> gender : {Guide.gender}</h5>
-												<h5> location : {Guide.location}</h5>
-												<h5> description : {Guide.description}</h5>
-												<h5> language : {Guide.language}</h5>
-												<h5> fee : {Guide.fee}</h5>
-												<h5> telephone : {Guide.phoneNumber}</h5>
+												<h5> Name : {Guide.name}</h5>
+												<h5> Gender : {Guide.gender}</h5>
+												<h5> Location : {Guide.location}</h5>
+												<h5> Description : {Guide.description}</h5>
+												<h5> Language : {Guide.language}</h5>
+												<h5> Fee : {Guide.fee}</h5>
+												<h5> Telephone : {Guide.phoneNumber}</h5>
 											</Col>
 										</Row>
 									</Card.Body>
