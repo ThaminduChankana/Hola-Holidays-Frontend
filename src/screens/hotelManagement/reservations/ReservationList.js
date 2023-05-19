@@ -34,28 +34,16 @@ export default function ReservationList() {
 
 	function decreaseQuanity(id, noOfRooms) {
 		if (noOfRooms > 1) dispatch(updateReservationAction(id, noOfRooms - 1));
-		setTimeout(function () {
-			history.push("/reservations");
-		}, 2000);
-
 		dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
 	}
 
 	function increaseQuanity(id, noOfRooms) {
 		dispatch(updateReservationAction(id, noOfRooms + 1));
-		setTimeout(function () {
-			history.push("/reservations");
-		}, 2000);
-
 		dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
 	}
 
 	const deleteHandler = (id) => {
 		dispatch(deleteReservationAction(id));
-		setTimeout(function () {
-			history.push("/reservations");
-		}, 2000);
-
 		dispatch({ type: RESERVATION_DELETE_AFTER_SUCCESS, payload: null });
 	};
 
