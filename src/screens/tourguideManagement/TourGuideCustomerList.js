@@ -1,5 +1,5 @@
-import { useHistory ,Link} from "react-router-dom";
-import { Accordion, Card, Button, Row, Col, Form } from "react-bootstrap";
+import { useHistory} from "react-router-dom";
+import { Accordion, Card, Row, Col, Form } from "react-bootstrap";
 import MainScreen from "../../components/MainScreen";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -68,14 +68,6 @@ export default function TourGuideCustomerViewList() {
 					</Col>
 				</Row>
 				<br></br>
-				<br></br>
-				<Link to="/">
-					<Button id="backtobtn" style={{ float: "left", fontSize: "15px", padding: "10px" }}>
-						Back to Dashboard
-					</Button>
-				</Link>
-
-				<br></br>
 
 				{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 				{loading && <Loading />}
@@ -90,21 +82,22 @@ export default function TourGuideCustomerViewList() {
 						.reverse()
 						.map((Guide) => (
 							<Accordion
+								key={Guide.id}
 								style={{ marginTop: "20px", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)", borderRadius: "25px" }}
 							>
-								<Card className="mb-3" style={{
-									borderRadius: "25px",
-									background: "#d6e2eb"
-								}}
-								
-								
+								<Card
+									className="mb-3"
+									style={{
+										borderRadius: "25px",
+										background: "#d6e2eb",
+									}}
 								>
 									<Card.Header
 										className="d-flex align-items-center bg-info text-white"
 										style={{
 											borderRadius: "25px",
 											margin: 10,
-											padding:"20px"
+											padding: "20px",
 										}}
 									>
 										<div>
