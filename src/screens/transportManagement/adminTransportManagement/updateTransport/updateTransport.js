@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MainScreen from "../../../../components/MainScreen";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
 import Loading from "../../../../components/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage";
 import { UpdateTransport, authHeaderForAdmin } from "../../../../actions/transportManagementActions/transportActions";
@@ -23,6 +24,7 @@ function EditTransport({ match, history }) {
 	const [leavingTime, setLeavingTime] = useState("");
 
 	const dispatch = useDispatch();
+	const navigate = useHistory();
 
 	const transportUpdateByAdmin = useSelector((state) => state.transportUpdateByAdmin);
 	const { loading, error } = transportUpdateByAdmin;
@@ -91,29 +93,42 @@ function EditTransport({ match, history }) {
 			icon: "success",
 			button: false,
 		});
-
-		setTimeout(function () {
-			window.location.href = "/admin-transport";
-		}, 2000);
+		navigate.push('/admin-transport');
 	};
 
 	if (adminInfo) {
 		return (
 			<div className="backgroundT">
 				<br></br>
-				<MainScreen title="Update Bus Entry Details">
-					<Button
-						variant="success"
-						style={{
-							float: "left",
-							marginTop: 5,
-							fontSize: 15,
-						}}
-						href="/admin-transport"
-					>
-						{" "}
-						Back to Transport Admin Page
-					</Button>
+				<MainScreen>
+				<Row>
+						<Col>
+							<h1
+								style={{
+									display: "flex",
+									marginLeft: "10px",
+									width: "500px",
+									color: "black",
+									fontStyle: "italic",
+								}}
+							>
+								Update Bus Entry Details
+							</h1>
+						</Col>
+					</Row>
+					<Link to ="/admin-transport">
+						<Button
+							variant="success"
+							style={{
+								float: "left",
+								marginTop: 5,
+								fontSize: 15,
+							}}
+						>
+							{" "}
+							Back to Transport Admin Page
+						</Button>
+					</Link>
 					<br></br>
 					<br></br>
 					<br></br>
