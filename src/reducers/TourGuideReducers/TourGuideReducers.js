@@ -46,7 +46,7 @@ export const GuideViewListReducer = (state = { Guides: [] }, action) => {
 		case TOUR_GUIDE_VIEW_AFTER_SUCCESS:
 			return { loading: false, Guides: action.payload, success: false };
 		case TOUR_GUIDE_VIEW_FAIL:
-			return { loading: false, error: action.payload ,success: false};
+			return { loading: false, error: action.payload, success: false };
 
 		default:
 			return state;
@@ -72,7 +72,7 @@ export const GuideUpdateReducer = (state = {}, action) => {
 		case TOUR_GUIDE_UPDATE_REQUEST:
 			return { loading: true };
 		case TOUR_GUIDE_UPDATE_SUCCESS:
-			return { loading: false,  success: true };
+			return { loading: false, success: true };
 		case TOUR_GUIDE_UPDATE_AFTER_SUCCESS:
 			return { loading: false, success: false };
 		case TOUR_GUIDE_UPDATE_FAIL:

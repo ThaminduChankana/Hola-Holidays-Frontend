@@ -3,10 +3,7 @@ import MainScreen from "../../../../components/MainScreen";
 import axios from "axios";
 import { Button, Card, Form, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import {
-	authHeaderForAdmin,
-	updateSiteByAdmin,
-} from "../../../../actions/siteManagementActions/siteActions";
+import { authHeaderForAdmin, updateSiteByAdmin } from "../../../../actions/siteManagementActions/siteActions";
 import ErrorMessage from "../../../../components/ErrorMessage";
 import Loading from "../../../../components/Loading";
 import swal from "sweetalert";

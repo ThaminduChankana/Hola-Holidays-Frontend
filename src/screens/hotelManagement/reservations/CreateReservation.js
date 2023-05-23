@@ -24,10 +24,10 @@ const CreateReservation = ({ match }) => {
 
 	const history = useHistory();
 
-	const submitHandler = (e) => {
+	const submitHandler = async (e) => {
 		e.preventDefault();
 
-		dispatch(
+		await dispatch(
 			createReservationAction(customerInfo._id, customerName, customerEmail, match.params.id, checkInDate, checkOutDate)
 		);
 		setTimeout(function () {
@@ -85,7 +85,7 @@ const CreateReservation = ({ match }) => {
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 								{success &&
 									setTimeout(function () {
-										window.location.href = "/reservations";
+										history.push("/reservations");
 									}, 2000)}
 								<Form.Group controlId="name">
 									<Form.Label

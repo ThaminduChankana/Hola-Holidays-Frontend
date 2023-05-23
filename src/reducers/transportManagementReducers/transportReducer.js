@@ -26,7 +26,7 @@ export const customerTransportListReducer = (state = { transport: [] }, action) 
 		case TRANSPORT_LIST_FOR_CUSTOMER_REQUEST:
 			return { loading: true };
 		case TRANSPORT_LIST_FOR_CUSTOMER_SUCCESS:
-			return { loading: false, transport: action.payload, success: true};
+			return { loading: false, transport: action.payload, success: true };
 		case TRANSPORT_LIST_FOR_CUSTOMER_AFTER_SUCCESS:
 			return { loading: false, transport: action.payload, success: false };
 		case TRANSPORT_LIST_FOR_CUSTOMER_FAIL:
@@ -42,7 +42,7 @@ export const adminTransportListReducer = (state = { transport: [] }, action) => 
 		case TRANSPORT_LIST_FOR_ADMIN_REQUEST:
 			return { loading: true };
 		case TRANSPORT_LIST_FOR_ADMIN_SUCCESS:
-			return { loading: false, transport: action.payload, success: true  };
+			return { loading: false, transport: action.payload, success: true };
 		case TRANSPORT_LIST_FOR_ADMIN_AFTER_SUCCESS:
 			return { loading: false, transport: action.payload, success: false };
 		case TRANSPORT_LIST_FOR_ADMIN_FAIL:
@@ -62,7 +62,7 @@ export const transportCreateReducer = (state = {}, action) => {
 		case TRANSPORT_CREATE_AFTER_SUCCESS:
 			return { loading: false, success: false };
 		case TRANSPORT_CREATE_FAIL:
-			return { loading: false, error: action.payload, success: false  };
+			return { loading: false, error: action.payload, success: false };
 
 		default:
 			return state;

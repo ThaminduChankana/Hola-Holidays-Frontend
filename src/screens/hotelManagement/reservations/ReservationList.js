@@ -32,36 +32,24 @@ export default function ReservationList() {
 
 	const history = useHistory();
 
-	function decreaseQuanity(id, noOfRooms) {
-		if (noOfRooms > 1) dispatch(updateReservationAction(id, noOfRooms - 1));
-		setTimeout(function () {
-			history.push("/reservations");
-		}, 2000);
+	const decreaseQuanity = async (id, noOfRooms) => {
+		if (noOfRooms > 1) await dispatch(updateReservationAction(id, noOfRooms - 1));
+		await dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
+	};
 
-		dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
-	}
+	const increaseQuanity = async (id, noOfRooms) => {
+		await dispatch(updateReservationAction(id, noOfRooms + 1));
+		await dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
+	};
 
-	function increaseQuanity(id, noOfRooms) {
-		dispatch(updateReservationAction(id, noOfRooms + 1));
-		setTimeout(function () {
-			history.push("/reservations");
-		}, 2000);
-
-		dispatch({ type: RESERVATION_UPDATE_AFTER_SUCCESS, payload: null });
-	}
-
-	const deleteHandler = (id) => {
-		dispatch(deleteReservationAction(id));
-		setTimeout(function () {
-			history.push("/reservations");
-		}, 2000);
-
-		dispatch({ type: RESERVATION_DELETE_AFTER_SUCCESS, payload: null });
+	const deleteHandler = async (id) => {
+		await dispatch(deleteReservationAction(id));
+		await dispatch({ type: RESERVATION_DELETE_AFTER_SUCCESS, payload: null });
 	};
 
 	useEffect(() => {
 		dispatch(listReservation());
-	}, [dispatch, history, customerInfo._id, loadingUpdate, errorUpdate]);
+	}, [dispatch, history, customerInfo._id, loadingUpdate, errorUpdate, successDelete]);
 
 	if (customerInfo) {
 		return (
@@ -81,11 +69,7 @@ export default function ReservationList() {
 					{loadingDelete && <Loading />}
 					{successUpdate &&
 						setTimeout(function () {
-							window.location.href = "/reservations";
-						}, 2000)}
-					{successDelete &&
-						setTimeout(function () {
-							window.location.href = "/reservations";
+							history.push("/reservations");
 						}, 2000)}
 
 					{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}

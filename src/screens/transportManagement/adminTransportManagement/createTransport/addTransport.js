@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MainScreen from "../../../../components/MainScreen";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
-import { Link, useHistory} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Loading from "../../../../components/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage";
 import { createTransport } from "../../../../actions/transportManagementActions/transportActions";
@@ -89,7 +89,7 @@ function AddTransport() {
 		);
 
 		resetHandler();
-		navigate.push('/admin-transport');
+		navigate.push("/admin-transport");
 	};
 
 	useEffect(() => {}, []);
@@ -98,7 +98,7 @@ function AddTransport() {
 			<div className="backgroundT">
 				<br></br>
 				<MainScreen>
-				<Row>
+					<Row>
 						<Col>
 							<h1
 								style={{

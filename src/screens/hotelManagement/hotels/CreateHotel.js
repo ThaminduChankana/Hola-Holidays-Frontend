@@ -76,15 +76,15 @@ const CreateHotel = () => {
 		}
 	};
 
-	const submitHandler = (e) => {
+	const submitHandler = async (e) => {
 		e.preventDefault();
 
-		dispatch(createHotelAction(hotelName, address, location, description, facilities, rules, pic));
+		await dispatch(createHotelAction(hotelName, address, location, description, facilities, rules, pic));
 		setTimeout(function () {
 			history.push("/hotels-admin-view");
 		}, 2000);
 
-		dispatch({ type: HOTEL_CREATE_ADMIN_AFTER_SUCCESS, payload: null });
+		await dispatch({ type: HOTEL_CREATE_ADMIN_AFTER_SUCCESS, payload: null });
 	};
 
 	useEffect(() => {}, []);
