@@ -73,8 +73,6 @@ const CustomerEditScreen = () => {
 	};
 
 	const submitHandler = async (e) => {
-		e.preventDefault();
-
 		if (password !== confirmpassword) {
 			setMessage("Passwords do not match");
 		} else {

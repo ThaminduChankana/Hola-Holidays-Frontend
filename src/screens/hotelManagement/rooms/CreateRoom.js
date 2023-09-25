@@ -38,7 +38,6 @@ export default function CreateRoom({ match }) {
 		setPrice("");
 	};
 	const demoHandler = async (e) => {
-		e.preventDefault();
 		setRoomType("Standard Double Room");
 		setAvailability("100");
 		setBeds("1 queen bed, 3 twin beds ");
@@ -77,8 +76,6 @@ export default function CreateRoom({ match }) {
 	};
 
 	const submitHandler = (e) => {
-		e.preventDefault();
-
 		dispatch(
 			createRoomAction(
 				match.params.id,

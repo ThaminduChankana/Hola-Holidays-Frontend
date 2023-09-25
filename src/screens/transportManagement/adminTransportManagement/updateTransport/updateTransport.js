@@ -55,8 +55,6 @@ function EditTransport({ match, history }) {
 	}, [match.params.id, adminInfo]);
 
 	const submitHandler = (e) => {
-		e.preventDefault();
-
 		dispatch(
 			UpdateTransport(
 				match.params.id,

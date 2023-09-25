@@ -35,7 +35,6 @@ export default function TourGuideAdd({ match }) {
 		setPhoneNumber("");
 	};
 	const submitHandler = async (e) => {
-		e.preventDefault();
 		if (!name || !gender || !language || !location || !description || !fee || !phoneNumber)
 			// const sendingData = { name, gender, language, location, description, fee, phoneNumber };
 			// console.log(sendingData);
@@ -45,7 +44,6 @@ export default function TourGuideAdd({ match }) {
 		resetHandler();
 	};
 	const demoHandler = async (e) => {
-		e.preventDefault();
 		setName("Gregory Pink");
 		setGender("");
 		setLocation("Galle");

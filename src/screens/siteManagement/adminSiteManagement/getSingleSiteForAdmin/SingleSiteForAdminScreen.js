@@ -110,7 +110,6 @@ function SingleSiteForAdminScreen({ match, history }) {
 	}, [match.params.id, adminInfo]);
 
 	const updateHandler = async (e) => {
-		e.preventDefault();
 		await dispatch(
 			updateSiteByAdmin(
 				match.params.id,

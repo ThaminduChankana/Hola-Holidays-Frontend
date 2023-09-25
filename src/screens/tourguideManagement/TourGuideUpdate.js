@@ -54,8 +54,6 @@ export default function TourGuideUpdate({ match, history }) {
 	}, [match.params.id]);
 
 	const updateHandler = async (e) => {
-		e.preventDefault();
-
 		dispatch(GuideUpdateAction(match.params.id, name, gender, language, location, description, fee, phoneNumber));
 		if (!name || !gender || !language || !location || !location || !description || !fee || !phoneNumber) return;
 
