@@ -75,6 +75,8 @@ function AddSiteByAdminScreen() {
 	};
 
 	const submitHandler = async (e) => {
+		e.preventDefault();
+
 		if (
 			!siteName ||
 			!country ||

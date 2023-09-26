@@ -25,6 +25,8 @@ const CreateReservation = ({ match }) => {
 	const history = useHistory();
 
 	const submitHandler = async (e) => {
+		e.preventDefault();
+
 		await dispatch(
 			createReservationAction(customerInfo._id, customerName, customerEmail, match.params.id, checkInDate, checkOutDate)
 		);

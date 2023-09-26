@@ -58,6 +58,8 @@ function AddTransport() {
 	};
 
 	const submitHandler = (e) => {
+		e.preventDefault();
+
 		if (
 			!licensePlate ||
 			!startingStation ||

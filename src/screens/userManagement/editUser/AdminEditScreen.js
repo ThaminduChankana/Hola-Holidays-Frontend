@@ -38,6 +38,8 @@ const AdminEditScreen = () => {
 	}, [adminInfo]);
 
 	const resetHandler = async (e) => {
+		e.preventDefault();
+
 		setName("");
 		setTelephone("");
 		setAddress("");
@@ -76,6 +78,8 @@ const AdminEditScreen = () => {
 	};
 
 	const submitHandler = async (e) => {
+		e.preventDefault();
+
 		if (password !== confirmpassword) {
 			setMessage("Passwords do not match");
 		} else {

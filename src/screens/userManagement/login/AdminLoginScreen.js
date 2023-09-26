@@ -23,6 +23,7 @@ const AdminLogin = ({ history }) => {
 	}, [history, adminInfo]);
 
 	const submitHandler = async (e) => {
+		e.preventDefault();
 		await dispatch(adminLogin(email, password));
 
 		setEmail("");

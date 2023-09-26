@@ -75,6 +75,8 @@ export default function UpdateHotel({ match }) {
 	};
 
 	const submitHandler = (e) => {
+		e.preventDefault();
+
 		dispatch(updateHotelAction(match.params.id, hotelName, address, location, description, facilities, rules, pic));
 		setTimeout(function () {
 			history.push("/hotels-admin-view");

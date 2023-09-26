@@ -37,6 +37,7 @@ const CreateHotel = () => {
 		setRules("");
 	};
 	const demoHandler = async (e) => {
+		e.preventDefault();
 		setHotelName("Granbell Hotel Colombo");
 		setAddress("282/5, Kollupitiya Road, Kollupitiya, 00300 Colombo, Sri Lanka");
 		setLocation("Colombo");
@@ -76,6 +77,8 @@ const CreateHotel = () => {
 	};
 
 	const submitHandler = (e) => {
+		e.preventDefault();
+
 		dispatch(createHotelAction(hotelName, address, location, description, facilities, rules, pic));
 		setTimeout(function () {
 			history.push("/hotels-admin-view");

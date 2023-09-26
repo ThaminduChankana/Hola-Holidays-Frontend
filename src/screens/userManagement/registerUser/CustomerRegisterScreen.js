@@ -31,6 +31,8 @@ const CustomerRegisterScreen = () => {
 	const { loading, error, success } = customerRegistration;
 
 	const submitHandler = async (e) => {
+		e.preventDefault();
+
 		if (password !== confirmpassword) {
 			setMessage("Passwords do not match");
 		} else {
@@ -42,6 +44,8 @@ const CustomerRegisterScreen = () => {
 	};
 
 	const demoHandler = async (e) => {
+		e.preventDefault();
+
 		setFirstName("Jan");
 		setLastName("Levinson");
 		setTelephone("0778569896");
@@ -54,6 +58,8 @@ const CustomerRegisterScreen = () => {
 	};
 
 	const resetHandler = async (e) => {
+		e.preventDefault();
+
 		setFirstName("");
 		setLastName("");
 		setTelephone("");
@@ -252,7 +258,7 @@ const CustomerRegisterScreen = () => {
 									<br></br>
 									<Button
 										variant="primary"
-										onClick={submitHandler}
+										type="submit"
 										style={{
 											fontSize: 15,
 											marginTop: 10,

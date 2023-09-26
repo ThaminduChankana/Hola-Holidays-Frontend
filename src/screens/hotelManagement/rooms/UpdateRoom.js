@@ -77,6 +77,8 @@ export default function UpdateRoom({ match }) {
 	};
 
 	const submitHandler = (e) => {
+		e.preventDefault();
+
 		dispatch(
 			updateRoomAction(
 				match.params.id,

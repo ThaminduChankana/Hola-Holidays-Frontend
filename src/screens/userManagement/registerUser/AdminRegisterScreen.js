@@ -27,6 +27,8 @@ const AdminRegisterScreen = () => {
 	const history = useHistory();
 
 	const submitHandler = async (e) => {
+		e.preventDefault();
+
 		if (password !== confirmpassword) {
 			setMessage("Passwords do not match");
 		} else {
@@ -37,6 +39,8 @@ const AdminRegisterScreen = () => {
 	};
 
 	const demoHandler = async (e) => {
+		e.preventDefault();
+
 		setName("Dwight Shrute");
 		setTelephone("0715689562");
 		setAddress("Colombo");
@@ -46,6 +50,8 @@ const AdminRegisterScreen = () => {
 	};
 
 	const resetHandler = async (e) => {
+		e.preventDefault();
+
 		setName("");
 		setTelephone("");
 		setAddress("");
